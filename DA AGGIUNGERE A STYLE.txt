@@ -1,0 +1,111 @@
+.banner-image-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.banner-image-container img {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    border: 2px solid #8b6f2b;
+    background: rgba(0,0,0,0.4);
+}
+
+#hints {
+    margin: 15px;
+}
+
+#hints button {
+    margin: 5px;
+    padding: 10px 15px;
+    border: 1px solid #8b6f2b;
+    background: #222;
+    color: #e5d3a1;
+    cursor: not-allowed;
+}
+
+#hints button:not(:disabled) {
+    cursor: pointer;
+    background: #8b6f2b;
+    color: black;
+}
+
+#hint-output {
+    margin: 10px auto;
+    text-align: center;
+    color: #e5d3a1;
+    font-size: 16px;
+    min-height: 20px;
+}
+
+/* VICTORY CARD */
+#victory-card {
+    margin: 25px auto;
+    padding: 20px;
+    max-width: 500px;
+    text-align: center;
+
+    border: 2px solid #8b6f2b;
+    background: rgba(20, 20, 20, 0.85);
+
+    color: #e5d3a1;
+}
+
+#victory-card h2 {
+    margin-bottom: 10px;
+}
+
+#victory-card img {
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+    margin: 10px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+/* HINT BUTTON ACTIVE */
+#hints button:not(:disabled) {
+    cursor: pointer;
+    background: #8b6f2b;
+    color: black;
+}
+
+/* ===== VICTORY CARD ANIMATION ===== */
+
+#victory-card {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#victory-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* elementi interni inizialmente nascosti */
+.victory-item {
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+.victory-item.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.4s ease;
+}
+
+.victory-image {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.victory-image.show {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 0.6s ease;
+}
