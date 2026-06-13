@@ -22,13 +22,32 @@
 <select id="guessInput"></select>
 
 <button id="guessButton">Indovina</button>
-
+<!-- HINTS -->
+<div id="hints">
+    <button id="hint-region" disabled>🔒 Regione</button>
+    <button id="hint-affiliation" disabled>🔒 Affiliazione</button>
+    <button id="hint-letter" disabled>🔒 Prima lettera</button>
+</div>
+    <!-- FINE HINTS -->
 <div id="hint-output"></div>
 
-<table id="results">
+<!--old> <table id="results">
     <tbody></tbody>
 </table>
-
+<!fine old-->
+    <!--aggiunta-->
+    <!-- RISULTATI -->
+<table id="results">
+    <thead>
+        <tr>
+            <th>Casata</th>
+            <th>Regione</th>
+            <th>Affiliazione</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+    <!-- FINE RIISULTATI -->
 <div id="victory-card"></div>
 
 <script src="houses.js"></script>
