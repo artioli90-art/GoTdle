@@ -1,14 +1,13 @@
-const guessed = [];
-const hintOutput = document.getElementById("hint-output");
-const victoryCard = document.getElementById("victory-card");
+document.addEventListener("DOMContentLoaded", () => {
+
 const select = document.getElementById("guessInput");
 const tbody = document.querySelector("#results tbody");
-const bannerImg = document.getElementById("bannerImage");
-const finalMessage = document.getElementById("final-message");
 
-// =====================
-// CASA DEL GIORNO
-// =====================
+const guessed = [];
+
+// =========================
+// SEED GIORNALIERO
+// =========================
 const today = new Date();
 
 const seed =
@@ -20,12 +19,16 @@ const index = seed % houses.length;
 
 const secretHouse = houses[index];
 
-bannerImg.src = secretHouse.immagine;
+// =========================
+// IMMAGINE RANDOM GIORNALIERA
+// =========================
+document.getElementById("bannerImage").src = secretHouse.immagine;
 
-// =====================
-// POPOLA DROPDOWN
-// =====================
+// =========================
+// DROPDOWN
+// =========================
 function renderDropdown() {
+
     select.innerHTML = "";
 
     const defaultOption = document.createElement("option");
@@ -34,7 +37,135 @@ function renderDropdown() {
     select.appendChild(defaultOption);
 
     houses
-        .filter(h => !guessedCharacters.includes(h.nome))
+        .filter(h => !guessed.includes(h.nome))
+        .sort((a, b) => a.nome.localeCompare(b.nome))
+        .forEach(h => {
+
+            const option = document.createElement("option");
+            option.value = h.nome;
+            option.textContent = h.nome;
+            select.appendChild(option);
+        });
+}
+
+// =========================
+// CHECK GUESS
+// =========================
+document.getElementById("guessButton").addEventListener("click", checkGuess);
+
+function checkGuess() {
+
+    const guessName = select.value;
+    if (!guessName) return;
+
+    const guess = houses.find(h => h.nome === guessName);
+
+    if (!guess) return;
+
+    if (guessed.includes(guess.nome)) return;
+
+    guessed.push(guess.nome);
+
+    displayResult(guess);
+    renderDropdown();
+    select.value = "";
+
+    if (guess.nome === secretHouse.nome) {
+        showVictory();
+    }
+
+    updateHints();
+}
+
+// =========================
+// DISPLAY RESULT
+// =========================
+function displayResult(house) {
+
+    const row = document.createElement("tr");
+    tbody.prepend(row);
+
+    const data = [
+        {
+            value: house.nome,
+            correct: house.nome === secretHouse.nome
+        },
+        {
+            value: house.regione,
+            correct: house.regione === secretHouse.regione
+        },
+        {
+            value: house.affiliazione,
+            correct: house.affiliazione === secretHouse.affiliazione
+        }
+    ];
+
+    data.forEach((cell, i) => {
+
+        setTimeout(() => {
+
+            const td = document.createElement("td");
+
+            td.textContent = cell.value;
+            td.style.background = cell.correct ? "#4CAF50" : "#f44336";
+
+            row.appendChild(td);
+
+        }, i * 300);
+    });
+}
+
+// =========================
+// HINT SYSTEM (3-7-10)
+// =========================
+function updateHints() {
+
+    const mistakes = guessed.length;
+
+    const regionBtn = document.getElementById("hint-region");
+    const affBtn = document.getElementById("hint-affiliation");
+    const letterBtn = document.getElementById("hint-letter");
+    const out = document.getElementById("hint-output");
+
+    if (mistakes >= 3) {
+        regionBtn.disabled = false;
+        regionBtn.textContent = "Regione sbloccata";
+    }
+
+    if (mistakes >= 7) {
+        affBtn.disabled = false;
+        affBtn.textContent = "Affiliazione sbloccata";
+    }
+
+    if (mistakes >= 10) {
+        letterBtn.disabled = false;
+        letterBtn.textContent = "Prima lettera: " + secretHouse.nome[0];
+    }
+
+    regionBtn.onclick = () => out.textContent = secretHouse.regione;
+    affBtn.onclick = () => out.textContent = secretHouse.affiliazione;
+    letterBtn.onclick = () => out.textContent = secretHouse.nome[0];
+}
+
+// =========================
+// VICTORY CARD
+// =========================
+function showVictory() {
+
+    const card = document.getElementById("victory-card");
+
+    card.innerHTML = `
+        <h2>🏆 Vittoria!</h2>
+        <p>Casata: ${secretHouse.nome}</p>
+    `;
+
+    card.style.opacity = "1";
+}
+
+renderDropdown();
+updateHints();
+
+});        .filter(h => !guessedCharacters.includes(h.nome))
         .sort((a, b) => a.nome.localeCompare(b.nome))
         .forEach(h => {
             const option = document.createElement("option");
