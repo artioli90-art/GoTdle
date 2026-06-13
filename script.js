@@ -86,7 +86,6 @@ function checkGuess() {
     if (guess.nome === secretCharacter.nome) {
     alert("Hai vinto!");
 }
-    }
 }
 
 // ===============================
