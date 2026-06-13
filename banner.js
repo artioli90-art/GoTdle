@@ -156,8 +156,5 @@ function updateHints() {
         };
     }
 }
-//AGGIUNTA FINALE BANNER
-    closeVictory.addEventListener("click", () => {
-    victoryModal.classList.add("hidden");
 });
 });
