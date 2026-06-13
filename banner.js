@@ -34,7 +34,7 @@ function renderDropdown() {
     select.appendChild(defaultOption);
 
     houses
-        .filter(h => !guessed.includes(h.nome))
+        .filter(h => !guessedCharacters.includes(h.nome))
         .sort((a, b) => a.nome.localeCompare(b.nome))
         .forEach(h => {
             const option = document.createElement("option");
