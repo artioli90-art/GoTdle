@@ -84,8 +84,10 @@ function checkGuess() {
     select.value = "";
 
     if (correct) {
-        document.getElementById("victory-card").textContent =
-            "🎉 Hai indovinato la casata!";
+        //old--- document.getElementById("victory-card").textContent =
+           //old--- "🎉 Hai indovinato la casata!";
+        victoryImage.src = secretHouse.immagine;
+victoryModal.classList.remove("hidden");
     }
 }
 
@@ -154,5 +156,8 @@ function updateHints() {
         };
     }
 }
-
+//AGGIUNTA FINALE BANNER
+    closeVictory.addEventListener("click", () => {
+    victoryModal.classList.add("hidden");
+});
 });
