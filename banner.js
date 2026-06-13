@@ -1,5 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
+//---------
+//proviamo sta riga
 
+const hintOutput = document.getElementById("hint-output");
+
+const hintRegionBtn = document.getElementById("hint-region");
+const hintAffiliationBtn = document.getElementById("hint-affiliation");
+const hintLetterBtn = document.getElementById("hint-letter");
+// ------
+    
 console.log("BannerDle loaded");
 
 const select = document.getElementById("guessInput");
