@@ -2,7 +2,8 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>🛡️ BannerDle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛡️ BannerDle 🛡️</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -16,25 +17,47 @@
 
 <h1>🛡️ BannerDle 🛡️</h1>
 
-<!-- STEMMA GIORNALIERO -->
+<!-- BANNER -->
 <div class="banner-image-container">
     <img id="bannerImage" src="" alt="Stemma casata">
 </div>
 
 <!-- INPUT -->
-<div>
+<div class="search-container">
     <select id="guessInput"></select>
 </div>
 
 <button id="guessButton">Indovina</button>
 
-<!-- AIUTI -->
+<!-- HINTS -->
 <div id="hints">
     <button id="hint-region" disabled>🔒 Regione</button>
     <button id="hint-affiliation" disabled>🔒 Affiliazione</button>
     <button id="hint-letter" disabled>🔒 Prima lettera</button>
 </div>
 
+<div id="hint-output"></div>
+
+<!-- TABLE -->
+<table id="results">
+    <thead>
+        <tr>
+            <th>Casata</th>
+            <th>Regione</th>
+            <th>Affiliazione</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<!-- VICTORY -->
+<div id="victory-card"></div>
+
+<script src="houses.js"></script>
+<script src="banner.js"></script>
+
+</body>
+</html>
 <div id="hint-output"></div>
 
 <!-- RISULTATI -->
