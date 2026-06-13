@@ -111,44 +111,12 @@ function checkGuess() {
     select.value = "";
 
     if (guess.nome === secretHouse.nome) {
-        function showVictoryCard() {
 
-    document.getElementById("guessInput").style.display = "none";
-    document.getElementById("guessButton").style.display = "none";
-    document.getElementById("hints").style.display = "none";
-    hintOutput.style.display = "none";
+    document.getElementById("win-message").textContent =
+        `🛡️ Hai indovinato! Era la Casa ${secretHouse.nome}.`;
 
-    victoryCard.classList.remove("hidden");
-
-    victoryCard.innerHTML = `
-        <h2 class="victory-item">🛡️ CASA ${secretHouse.nome.toUpperCase()}</h2>
-
-        <p class="victory-item"><em>${secretHouse.descrizione}</em></p>
-
-        <img class="victory-image" src="${secretHouse.immagine}" alt="${secretHouse.nome}">
-
-        <p class="victory-item"><strong>Regione:</strong> ${secretHouse.regione}</p>
-        <p class="victory-item"><strong>Affiliazione:</strong> ${secretHouse.affiliazione}</p>
-    `;
-
-    // trigger fade-in card
-    setTimeout(() => {
-        victoryCard.classList.add("show");
-    }, 50);
-
-    // stagger elementi interni
-    const items = victoryCard.querySelectorAll(".victory-item");
-    const img = victoryCard.querySelector(".victory-image");
-
-    items.forEach((el, i) => {
-        setTimeout(() => {
-            el.classList.add("show");
-        }, 300 + i * 200);
-    });
-
-    setTimeout(() => {
-        img.classList.add("show");
-    }, 300 + items.length * 200);
+    select.disabled = true;
+    document.getElementById("guessButton").disabled = true;
 }
 }
 
