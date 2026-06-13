@@ -84,7 +84,11 @@ function checkGuess() {
     select.value = "";
 
     if (guess.nome === secretCharacter.nome) {
-        alert("Hai vinto!");
+
+    document.getElementById("win-message").textContent =
+        `🎉 Hai indovinato! Era ${secretCharacter.nome}.`;
+
+}
     }
 }
 
