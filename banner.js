@@ -84,48 +84,5 @@ document.getElementById("guessButton").addEventListener("click", () => {
         document.getElementById("victory-card").innerHTML =
             "<h2>VITTORIA</h2>";
     }
-    //proviamo qui
-    //----
-function renderRow(house) {
-
-    const row = document.createElement("tr");
-    tbody.prepend(row);
-
-    const cells = [
-        {
-            value: house.nome,
-            ok: house.nome === secret.nome
-        },
-        {
-            value: house.regione,
-            ok: house.regione === secret.regione
-        },
-        {
-            value: house.affiliazione,
-            ok: house.affiliazione === secret.affiliazione
-        }
-    ];
-
-    cells.forEach((c, i) => {
-
-        setTimeout(() => {
-
-            const td = document.createElement("td");
-            td.textContent = c.value;
-
-            td.style.backgroundColor = c.ok ? "#7c9c5b" : "#8b3a3a";
-            td.style.color = "white";
-            td.style.textAlign = "center";
-            td.style.padding = "8px";
-
-            td.style.animation = "flipIn 0.25s ease";
-
-            row.appendChild(td);
-
-        }, i * 200);
-    });
-}
-    //----
-});
-
+    
 });
