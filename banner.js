@@ -84,5 +84,8 @@ document.getElementById("guessButton").addEventListener("click", () => {
         document.getElementById("victory-card").innerHTML =
             "<h2>VITTORIA</h2>";
     }
+
+    //prova
+    renderDropdown()
     
 });
