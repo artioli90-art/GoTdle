@@ -36,9 +36,9 @@ const seed =
 const secret = houses[seed % houses.length];
 
 console.log("SECRET:", secret.nome);
-const secret = houses[Math.floor(Math.random() * houses.length)];
+
 // immagine
-bannerImg.src = secret.immagine;
+img.src = secret.immagine;
 
 // dropdown
 function renderDropdown() {
@@ -84,8 +84,5 @@ document.getElementById("guessButton").addEventListener("click", () => {
         document.getElementById("victory-card").innerHTML =
             "<h2>VITTORIA</h2>";
     }
-
-    //prova
-    renderDropdown()
     
 });
