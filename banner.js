@@ -1,88 +1,158 @@
 document.addEventListener("DOMContentLoaded", () => {
-//---------
-//proviamo sta riga
 
-const hintOutput = document.getElementById("hint-output");
+const select = document.getElementById("guessInput");
+const tbody = document.querySelector("#results tbody");
+
+const bannerImg = document.getElementById("bannerImage");
 
 const hintRegionBtn = document.getElementById("hint-region");
 const hintAffiliationBtn = document.getElementById("hint-affiliation");
 const hintLetterBtn = document.getElementById("hint-letter");
-// ------
-    
-console.log("BannerDle loaded");
-
-const select = document.getElementById("guessInput");
-const img = document.getElementById("bannerImage");
-
-if (!select) console.error("SELECT NON TROVATO");
-if (!img) console.error("IMG NON TROVATA");
-if (typeof houses === "undefined") console.error("HOUSES NON CARICATO");
+const hintOutput = document.getElementById("hint-output");
 
 const guessed = [];
+let wrongCount = 0;
 
-// sicurezza base
-if (!houses || houses.length === 0) {
-    console.error("houses.js vuoto o non caricato");
-    return;
-}
-
-// seed daily
+// =========================
+// CASA DEL GIORNO
+// =========================
 const today = new Date();
 const seed =
     today.getFullYear() * 10000 +
     (today.getMonth() + 1) * 100 +
     today.getDate();
 
-const secret = houses[seed % houses.length];
+const secretHouse = houses[seed % houses.length];
 
-console.log("SECRET:", secret.nome);
+// set banner immagine
+bannerImg.src = secretHouse.immagine;
 
-// immagine
-img.src = secret.immagine;
-
-// dropdown
+// =========================
+// DROPDOWN
+// =========================
 function renderDropdown() {
 
     select.innerHTML = "";
 
-    const opt0 = document.createElement("option");
-    opt0.textContent = "-- Seleziona --";
-    opt0.value = "";
-    select.appendChild(opt0);
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "-- Seleziona una casata --";
+    select.appendChild(defaultOption);
 
-    houses.forEach(h => {
-        if (guessed.includes(h.nome)) return;
+    houses
+        .filter(h => !guessed.includes(h.nome))
+        .sort((a, b) => a.nome.localeCompare(b.nome))
+        .forEach(h => {
 
-        const opt = document.createElement("option");
-        opt.value = h.nome;
-        opt.textContent = h.nome;
+            const option = document.createElement("option");
+            option.value = h.nome;
+            option.textContent = h.nome;
 
-        select.appendChild(opt);
-    });
-
-    console.log("Dropdown size:", select.children.length);
+            select.appendChild(option);
+        });
 }
 
 renderDropdown();
 
-// guess
-document.getElementById("guessButton").addEventListener("click", () => {
+// =========================
+// CHECK GUESS
+// =========================
+document.getElementById("guessButton").addEventListener("click", checkGuess);
 
-    const value = select.value;
-    if (!value) return;
+function checkGuess() {
 
-    const h = houses.find(x => x.nome === value);
-    if (!h) return;
+    const guessName = select.value;
+    if (!guessName) return;
 
-    guessed.push(h.nome);
+    const guess = houses.find(h => h.nome === guessName);
+    if (!guess) return;
 
-    console.log("Guess:", h.nome);
+    if (guessed.includes(guess.nome)) return;
+
+    guessed.push(guess.nome);
+
+    const correct = guess.nome === secretHouse.nome;
+
+    if (!correct) {
+        wrongCount++;
+        updateHints();
+    }
+
+    renderRow(guess);
 
     renderDropdown();
+    select.value = "";
 
-    if (h.nome === secret.nome) {
-        document.getElementById("victory-card").innerHTML =
-            "<h2>VITTORIA</h2>";
+    if (correct) {
+        document.getElementById("victory-card").textContent =
+            "🎉 Hai indovinato la casata!";
     }
-    
+}
+
+// =========================
+// ROW UI
+// =========================
+function renderRow(house) {
+
+    const row = document.createElement("tr");
+    tbody.prepend(row);
+
+    const data = [
+        {
+            value: house.nome,
+            ok: house.nome === secretHouse.nome
+        },
+        {
+            value: house.regione,
+            ok: house.regione === secretHouse.regione
+        },
+        {
+            value: house.affiliazione,
+            ok: house.affiliazione === secretHouse.affiliazione
+        }
+    ];
+
+    data.forEach((cell, i) => {
+
+        const td = document.createElement("td");
+        td.textContent = cell.value;
+
+        td.style.backgroundColor = cell.ok ? "#6ea76e" : "#a34b4b";
+        td.style.color = "white";
+        td.style.padding = "8px";
+
+        td.style.animation = "flipIn 0.3s ease";
+
+        row.appendChild(td);
+    });
+}
+
+// =========================
+// HINT SYSTEM
+// =========================
+function updateHints() {
+
+    if (wrongCount >= 3) {
+        hintRegionBtn.disabled = false;
+        hintRegionBtn.onclick = () => {
+            hintOutput.textContent = "🌍 Regione: " + secretHouse.regione;
+        };
+    }
+
+    if (wrongCount >= 7) {
+        hintAffiliationBtn.disabled = false;
+        hintAffiliationBtn.onclick = () => {
+            hintOutput.textContent = "🏰 Affiliazione: " + secretHouse.affiliazione;
+        };
+    }
+
+    if (wrongCount >= 10) {
+        hintLetterBtn.disabled = false;
+        hintLetterBtn.onclick = () => {
+            hintOutput.textContent =
+                "🔤 Iniziale: " + secretHouse.nome.charAt(0);
+        };
+    }
+}
+
 });
