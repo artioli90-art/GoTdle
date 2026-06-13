@@ -111,7 +111,7 @@ function checkGuess() {
     select.value = "";
 
     if (guess.nome === secretHouse.nome) {
-        function showWin() {
+        function showVictoryCard() {
 
     document.getElementById("guessInput").style.display = "none";
     document.getElementById("guessButton").style.display = "none";
