@@ -403,14 +403,3 @@ td {
     transform: scale(1);
     transition: all 0.6s ease;
 }
-#win-message {
-    min-height: 40px;
-    margin: 20px auto;
-
-    text-align: center;
-
-    font-size: 24px;
-    font-weight: bold;
-
-    color: #e5d3a1;
-}
