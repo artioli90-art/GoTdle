@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
 const select = document.getElementById("guessInput");
 const tbody = document.querySelector("#results tbody");
 
