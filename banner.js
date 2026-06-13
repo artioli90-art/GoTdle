@@ -84,10 +84,10 @@ function checkGuess() {
     select.value = "";
 
     if (correct) {
-        //old--- document.getElementById("victory-card").textContent =
-           //old--- "🎉 Hai indovinato la casata!";
-        victoryImage.src = secretHouse.immagine;
-victoryModal.classList.remove("hidden");
+        document.getElementById("victory-card").textContent =
+           "🎉 Hai indovinato la casata!";
+        //victoryImage.src = secretHouse.immagine;
+//victoryModal.classList.remove("hidden");
     }
 }
 
