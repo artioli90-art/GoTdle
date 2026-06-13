@@ -110,9 +110,9 @@ function checkGuess() {
 
     select.value = "";
 
-    if (guess.nome === secretHouse.nome) {
-if (guess.nome === secretCharacter.nome) {
+if (guess.nome === secretHouse.nome) {
     alert("Hai vinto!");
+}
 }
     select.disabled = true;
     document.getElementById("guessButton").disabled = true;
