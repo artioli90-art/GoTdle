@@ -403,3 +403,22 @@ td {
     transform: scale(1);
     transition: all 0.6s ease;
 }
+
+
+
+
+
+#results {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#results td, #results th {
+    border: 1px solid #444;
+}
+#results tr {
+    display: table-row;
+}
+#results td {
+    display: table-cell;
+}
