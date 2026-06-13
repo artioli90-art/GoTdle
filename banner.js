@@ -111,10 +111,9 @@ function checkGuess() {
     select.value = "";
 
     if (guess.nome === secretHouse.nome) {
-
-    document.getElementById("win-message").textContent =
-        `🛡️ Hai indovinato! Era la Casa ${secretHouse.nome}.`;
-
+if (guess.nome === secretCharacter.nome) {
+    alert("Hai vinto!");
+}
     select.disabled = true;
     document.getElementById("guessButton").disabled = true;
 }
