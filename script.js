@@ -1,3 +1,6 @@
+console.log("SCRIPT PARTITO");
+console.log("characters:", characters);
+
 document.addEventListener("DOMContentLoaded", () => {
 
 const guessedCharacters = [];
