@@ -268,13 +268,6 @@ td {
     font-size: 14px;
 }
 
-td {
-    transform: rotateX(90deg);
-    opacity: 0;
-    animation: flipIn 1.40s ease forwards;
-    transform-origin: left;
-}
-
 @keyframes flipIn {
     0% {
         transform: rotateX(90deg);
