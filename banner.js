@@ -36,9 +36,9 @@ const seed =
 const secret = houses[seed % houses.length];
 
 console.log("SECRET:", secret.nome);
-
+const secret = houses[Math.floor(Math.random() * houses.length)];
 // immagine
-img.src = secret.immagine;
+bannerImg.src = secret.immagine;
 
 // dropdown
 function renderDropdown() {
