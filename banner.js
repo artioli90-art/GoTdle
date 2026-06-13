@@ -85,9 +85,7 @@ function checkGuess() {
 
     if (correct) {
         document.getElementById("victory-card").textContent =
-           "🎉 Hai indovinato la casata!";
-        //victoryImage.src = secretHouse.immagine;
-//victoryModal.classList.remove("hidden");
+            "🎉 Hai indovinato la casata!";
     }
 }
 
@@ -156,5 +154,5 @@ function updateHints() {
         };
     }
 }
-});
+
 });
