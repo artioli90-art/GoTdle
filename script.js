@@ -18,8 +18,27 @@ const seed =
     (today.getMonth() + 1) * 100 +
     today.getDate();
 
-const index = seed % characters.length;
+//QUESTO L'HO SOSTITUITO CON QUELLA CHIAMATA "RANDOMIZZATO"
+    //const index = seed % characters.length;
+    
+//QUESTA è LA FUNZIONE RANDOMIZZATA
+    function getDailyIndex(seed, length) {
+    let hash = seed.toString();
 
+    let value = 0;
+
+    for (let i = 0; i < hash.length; i++) {
+        value = ((value << 5) - value) + hash.charCodeAt(i);
+        value |= 0; // converte in intero 32 bit
+    }
+
+    return Math.abs(value) % length;
+}
+
+const index = getDailyIndex(seed, characters.length);
+
+    //FINO A QUA SOPRA è LA FUNZIONE RANDOMIZZATA
+    
 const secretCharacter = characters[index];
 
 document.getElementById("daily-number").textContent =
