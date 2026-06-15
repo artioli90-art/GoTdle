@@ -13,15 +13,45 @@ const guessed = [];
 let wrongCount = 0;
 
 // =========================
-// CASA DEL GIORNO
+// CASA DEL GIORNO -- vecchia versione
+// =========================
+//const today = new Date();
+//const seed =
+  //  today.getFullYear() * 10000 +
+  //  (today.getMonth() + 1) * 100 +
+   // today.getDate();
+
+//const secretHouse = houses[seed % houses.length];
+
+// set banner immagine
+//bannerImg.src = secretHouse.immagine;
+
+    // =========================
+// CASA DEL GIORNO (HASH DETERMINISTICO) - nuova versione
 // =========================
 const today = new Date();
+
 const seed =
     today.getFullYear() * 10000 +
     (today.getMonth() + 1) * 100 +
     today.getDate();
 
-const secretHouse = houses[seed % houses.length];
+function getDailyIndex(seed, length) {
+    let value = 0;
+
+    const str = seed.toString();
+
+    for (let i = 0; i < str.length; i++) {
+        value = ((value << 5) - value) + str.charCodeAt(i);
+        value |= 0; // force 32-bit int
+    }
+
+    return Math.abs(value) % length;
+}
+
+const index = getDailyIndex(seed, houses.length);
+
+const secretHouse = houses[index];
 
 // set banner immagine
 bannerImg.src = secretHouse.immagine;
