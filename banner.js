@@ -121,11 +121,8 @@ function checkGuess() {
 // =========================
 // ROW UI
 // =========================
-//vecchia funzione -> function renderRow(house) {
-    //nuova funzione
-  function displayResult(house) {
-    //fine nuova funzione
-    
+function renderRow(house) {
+        
           const row = document.createElement("tr");
     tbody.prepend(row);
 
@@ -145,9 +142,7 @@ function checkGuess() {
     ];
 
     data.forEach((cell, i) => {
-//nuova riga
-      setTimeout(() => {
-        //fine nuova riga
+
         const td = document.createElement("td");
         td.textContent = cell.value;
 
@@ -158,9 +153,6 @@ function checkGuess() {
         td.style.animation = "flipIn 0.3s ease";
 
         row.appendChild(td);
-        //altra nuova riga
-        }, i * 500);
-      //fine nuova riga
     });
 }
 
