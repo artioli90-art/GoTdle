@@ -14,7 +14,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Essos, Roccia del Drago",
     stagione: 1,
-    stato: "Morta"
+    stato: "Morto"
 },
 {
     nome: "Tyrion Lannister",
@@ -30,7 +30,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Castel Granito",
     stagione: 1,
-    stato: "Morta"
+    stato: "Morto"
 },
 {
     nome: "Jaime Lannister",
@@ -46,7 +46,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Nord",
     stagione: 1,
-    stato: "Viva"
+    stato: "Vivo"
 },
 {
     nome: "Sansa Stark",
@@ -54,7 +54,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Nord",
     stagione: 1,
-    stato: "Viva"
+    stato: "Vivo"
 },
 {
     nome: "Bran Stark",
@@ -128,7 +128,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Approdo del Re, Dorne",
     stagione: 2,
-    stato: "Morta"
+    stato: "Morto"
 },
 
 {
@@ -169,7 +169,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Isole di Ferro",
     stagione: 2,
-    stato: "Viva"
+    stato: "Vivo"
 },
 {
     nome: "Euron Greyjoy",
@@ -186,7 +186,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Tarth",
     stagione: 2,
-    stato: "Viva"
+    stato: "Vivo"
 },
 {
     nome: "Sandor Clegane",
@@ -210,7 +210,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Asshai",
     stagione: 2,
-    stato: "Morta"
+    stato: "Morto"
 },
 {
     nome: "Samwell Tarly",
@@ -226,7 +226,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Oltre la Barriera",
     stagione: 2,
-    stato: "Viva"
+    stato: "Vivo"
 },
 
 {
@@ -243,7 +243,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Essos",
     stagione: 3,
-    stato: "Morta"
+    stato: "Morto"
 },
 {
     nome: "Grey Worm",
@@ -284,7 +284,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Alto Giardino",
     stagione: 2,
-    stato: "Morta"
+    stato: "Morto"
 },
 {
     nome: "Olenna Tyrell",
@@ -292,7 +292,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Alto Giardino",
     stagione: 1,
-    stato: "Morta"
+    stato: "Morto"
 },
 {
     nome: "Loras Tyrell",
@@ -309,7 +309,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Oltre la Barriera",
     stagione: 2,
-    stato: "Morta"
+    stato: "Morto"
 },
 {
     nome: "Gendry",
@@ -349,7 +349,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Approdo del Re",
     stagione: 1,
-    stato: "Morta"
+    stato: "Morto"
 },
 {
     nome: "Jaqen H'ghar",
@@ -389,7 +389,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Volantis, Nord",
     stagione: 2,
-    stato: "Morta"
+    stato: "Morto"
 },
 {
     nome: "Catelyn Stark",
@@ -397,7 +397,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Nord",
     stagione: 1,
-    stato: "Morta"
+    stato: "Morto"
 },
 {
     nome: "Rickon Stark",
@@ -421,7 +421,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Nord",
     stagione: 6,
-    stato: "Morta"
+    stato: "Morto"
 },
 {
     nome: "Maestro Aemon",
@@ -445,7 +445,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Dorne",
     stagione: 4,
-    stato: "Viva"
+    stato: "Vivo"
 },
 {
     nome: "Doran Martell",
