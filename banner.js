@@ -87,11 +87,6 @@ renderDropdown();
 // CHECK GUESS
 // =========================
 document.getElementById("guessButton").addEventListener("click", checkGuess);
-
-  //mia aggiunta -1-
-  function showVictory() {
-  alert("✔ Risposta esatta!");
-  //fine mia aggiunta -1-
     
 function checkGuess() {
 
@@ -120,9 +115,6 @@ function checkGuess() {
     if (correct) {
         document.getElementById("victory-card").textContent =
             "🎉 Hai indovinato la casata!";
-      //mia aggiunta -2-
-          showVictory();
-    //fine mia aggiunta -2-
     }
 }
 
