@@ -518,7 +518,7 @@ const characters = [
     regione: "Oltre la Barriera",
     stagione: 4,
     stato: "Morto"
-}
+},
     {
     nome: "Vecchia Nan",
     casata: "Nessuna",
