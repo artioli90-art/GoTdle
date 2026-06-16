@@ -74,6 +74,10 @@ function setupAutocomplete() {
 
 function normalize(str) {
   return str.toLowerCase().trim().replace(/\s+/g, " ");
+  }
+function showVictory() {
+  alert("✔ Risposta esatta!");
+  
 }
 function checkAnswer() {
   const guess = normalize(document.getElementById("guess").value);
