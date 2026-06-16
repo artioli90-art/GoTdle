@@ -152,6 +152,7 @@ function showVictory() {
   card.classList.remove("hidden");
   setTimeout(() => card.classList.add("show"), 50);
 }
-
+//aggiunta nuova
+document.getElementById("checkBtn").addEventListener("click", checkAnswer);
 // init
 initGame();
