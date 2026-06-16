@@ -519,4 +519,12 @@ const characters = [
     stagione: 4,
     stato: "Morto"
 }
+    {
+    nome: "Vecchia Nan",
+    casata: "Nessuna",
+    sesso: "Femmina",
+    regione: "Nord",
+    stagione: 1,
+    stato: "Morto"
+}
 ];
