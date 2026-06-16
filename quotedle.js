@@ -109,8 +109,8 @@ function checkAnswer() {
   const row = document.createElement("tr");
 
   // colonna quote
-  const quoteCell = document.createElement("td");
-  quoteCell.textContent = currentQuote.testo.slice(0, 40) + "...";
+//  const quoteCell = document.createElement("td");
+  //quoteCell.textContent = currentQuote.testo.slice(0, 40) + "...";
 
   // autore
   const authorCell = document.createElement("td");
@@ -123,9 +123,9 @@ function checkAnswer() {
   }
 
   // destinatario (sempre reveal ma colorato rispetto al target reale)
-  const destCell = document.createElement("td");
-  destCell.textContent = currentQuote.destinatario;
-  destCell.classList.add("wrong");
+  //const destCell = document.createElement("td");
+  //destCell.textContent = currentQuote.destinatario;
+  //destCell.classList.add("wrong");
 
   // se vuoi renderlo “più Wordle-like”
   if (guess === correctAuthor) {
