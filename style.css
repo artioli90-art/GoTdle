@@ -411,3 +411,38 @@ td {
 #results td {
     display: table-cell;
 }
+/* PROVA AGGIUNTA CHECKBOX SINGOLO*/
+#results {
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+#results th {
+    background: #111;
+    color: #d4af37;
+    padding: 12px;
+    border: 1px solid #333;
+}
+
+#results td {
+    background: rgba(25,25,25,0.95);
+    color: #e5d3a1;
+    padding: 14px;
+    text-align: center;
+    border: 1px solid #333;
+    font-weight: bold;
+}
+
+/* stato intera cella risposta */
+.correct {
+    background: #1f6f3a !important;
+    color: white !important;
+}
+
+.wrong {
+    background: #7a1f1f !important;
+    color: white !important;
+}
