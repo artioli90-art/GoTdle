@@ -75,27 +75,74 @@ function setupAutocomplete() {
 function normalize(str) {
   return str.toLowerCase().trim().replace(/\s+/g, " ");
 }
+//OLD ANSWER
+//function checkAnswer() {
+  //const guess = normalize(document.getElementById("guess").value);
+  //const correct = normalize(currentQuote.autore);
+
+  //const result = document.getElementById("result");
+  //const meta = document.getElementById("meta");
+
+  //const row = document.createElement("div");
+  //row.classList.add("result-row");
+
+  //if (guess === correct) {
+    //result.textContent = "✔ Corretto!";
+    //result.style.color = "green";
+    //showVictory();
+  //} else {
+    //result.textContent = `✖ Sbagliato. Era: ${currentQuote.autore}`;
+    //result.style.color = "red";
+  //}
+
+  //meta.textContent = `Destinatario: ${currentQuote.destinatario}`;
+//}
 
 function checkAnswer() {
   const guess = normalize(document.getElementById("guess").value);
-  const correct = normalize(currentQuote.autore);
 
-  const result = document.getElementById("result");
-  const meta = document.getElementById("meta");
+  const correctAuthor = normalize(currentQuote.autore);
+  const correctDest = normalize(currentQuote.destinatario);
 
-  const row = document.createElement("div");
-  row.classList.add("result-row");
+  const tbody = document.querySelector("#results tbody");
 
-  if (guess === correct) {
-    result.textContent = "✔ Corretto!";
-    result.style.color = "green";
-    showVictory();
+  const row = document.createElement("tr");
+
+  // colonna quote
+  const quoteCell = document.createElement("td");
+  quoteCell.textContent = currentQuote.testo.slice(0, 40) + "...";
+
+  // autore
+  const authorCell = document.createElement("td");
+  if (guess === correctAuthor) {
+    authorCell.textContent = currentQuote.autore;
+    authorCell.classList.add("correct");
   } else {
-    result.textContent = `✖ Sbagliato. Era: ${currentQuote.autore}`;
-    result.style.color = "red";
+    authorCell.textContent = guess;
+    authorCell.classList.add("wrong");
   }
 
-  meta.textContent = `Destinatario: ${currentQuote.destinatario}`;
+  // destinatario (sempre reveal ma colorato rispetto al target reale)
+  const destCell = document.createElement("td");
+  destCell.textContent = currentQuote.destinatario;
+  destCell.classList.add("wrong");
+
+  // se vuoi renderlo “più Wordle-like”
+  if (guess === correctAuthor) {
+    destCell.classList.remove("wrong");
+    destCell.classList.add("correct");
+  }
+
+  row.appendChild(quoteCell);
+  row.appendChild(authorCell);
+  row.appendChild(destCell);
+
+  tbody.appendChild(row);
+
+  // risultato globale
+  if (guess === correctAuthor) {
+    showVictory();
+  }
 }
 
 function showVictory() {
