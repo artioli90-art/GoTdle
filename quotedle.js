@@ -1,12 +1,10 @@
 const characters = [...new Set(quotes.map(q => q.autore))];
+const recipients = [...new Set(quotes.map(q => q.destinatario))];
 
 let currentQuote = null;
-let phase = "author"; // "author" → "dest"
+let step = 1; // 1 = autore, 2 = destinatario
 
-// ==========================
-// DAILY QUOTE
-// ==========================
-
+// deterministico: 1 quote al giorno
 function getDailyIndex() {
   const start = new Date("2025-01-01");
   const now = new Date();
@@ -19,137 +17,126 @@ function initGame() {
   const index = getDailyIndex();
   currentQuote = quotes[index];
 
-  phase = "author";
+  step = 1;
 
   renderQuote();
-  setupAutocomplete();
+  setupDropdowns();
 }
 
+// ==========================
+// RENDER
+// ==========================
 function renderQuote() {
   document.getElementById("quote").textContent = currentQuote.testo;
-  document.getElementById("result").textContent = "";
-  document.getElementById("meta").textContent = "";
-  document.getElementById("guess").value = "";
+
+  document.getElementById("guessAuthor").value = "";
+  document.getElementById("guessDest").value = "";
 }
 
 // ==========================
-// AUTOCOMPLETE
+// DROPDOWNS (NO AUTOCOMPLETE)
 // ==========================
+function setupDropdowns() {
+  const authorSelect = document.getElementById("guessAuthor");
+  const destSelect = document.getElementById("guessDest");
 
+  // reset
+  authorSelect.innerHTML = `<option value="">Seleziona autore</option>`;
+  destSelect.innerHTML = `<option value="">Seleziona destinatario</option>`;
+
+  characters
+    .sort()
+    .forEach(name => {
+      const opt = document.createElement("option");
+      opt.value = name;
+      opt.textContent = name;
+      authorSelect.appendChild(opt);
+    });
+
+  recipients
+    .sort()
+    .forEach(name => {
+      const opt = document.createElement("option");
+      opt.value = name;
+      opt.textContent = name;
+      destSelect.appendChild(opt);
+    });
+
+  // destinatario disabilitato all’inizio
+  destSelect.disabled = true;
+}
+
+// ==========================
+// NORMALIZE
+// ==========================
 function normalize(str) {
   return str.toLowerCase().trim().replace(/\s+/g, " ");
 }
 
-function setupAutocomplete() {
-  const input = document.getElementById("guess");
-  const box = document.getElementById("suggestions");
-
-  input.addEventListener("input", () => {
-    const val = normalize(input.value);
-
-    box.innerHTML = "";
-    if (!val) return;
-
-    const matches = characters
-      .filter(c => normalize(c).includes(val))
-      .slice(0, 8);
-
-    matches.forEach(name => {
-      const div = document.createElement("div");
-      div.classList.add("suggestion");
-      div.textContent = name;
-
-      div.onclick = () => {
-        input.value = name;
-        box.innerHTML = "";
-      };
-
-      box.appendChild(div);
-    });
-  });
-
-  document.addEventListener("click", (e) => {
-    if (e.target !== input) {
-      box.innerHTML = "";
-    }
-  });
-}
-
 // ==========================
-// VICTORY
+// VICTORY POPUP
 // ==========================
-
 function showVictory(message = "✔ Risposta esatta!") {
   alert(message);
 }
 
 // ==========================
-// GAME LOGIC 2 STEP
+// CHECK LOGIC 2 STEP
 // ==========================
-
 function checkAnswer() {
-  const guess = normalize(document.getElementById("guess").value);
-  if (!guess) return;
+  const authorGuess = normalize(document.getElementById("guessAuthor").value);
+
+  if (!authorGuess) return;
+
+  const correctAuthor = normalize(currentQuote.autore);
+  const correctDest = normalize(currentQuote.destinatario);
 
   const tbody = document.querySelector("#results tbody");
   const row = document.createElement("tr");
 
-  // STEP 1: AUTORE
-  if (phase === "author") {
-    const correctAuthor = normalize(currentQuote.autore);
+  // colonna autore
+  const authorCell = document.createElement("td");
+  authorCell.textContent = currentQuote.autore;
 
-    const quoteCell = document.createElement("td");
-    quoteCell.textContent = currentQuote.testo.slice(0, 40) + "...";
+  if (authorGuess === correctAuthor) {
+    authorCell.classList.add("correct");
 
-    const authorCell = document.createElement("td");
+    // passo 2 sblocca
+    step = 2;
+    document.getElementById("guessDest").disabled = false;
 
-    if (guess === correctAuthor) {
-      authorCell.textContent = currentQuote.autore;
-      authorCell.classList.add("correct");
-
-      showVictory("✔ Autore corretto! Ora indovina il destinatario 🎯");
-
-      phase = "dest"; // passa allo step 2
-      document.getElementById("guess").value = "";
-    } else {
-      authorCell.textContent = document.getElementById("guess").value;
-      authorCell.classList.add("wrong");
-    }
-
-    row.appendChild(quoteCell);
-    row.appendChild(authorCell);
-    tbody.appendChild(row);
-    return;
+    showVictory("✔ Autore corretto! Ora il destinatario");
+  } else {
+    authorCell.classList.add("wrong");
+    showVictory("✖ Autore sbagliato");
   }
 
-  // STEP 2: DESTINATARIO
-  if (phase === "dest") {
-    const correctDest = normalize(currentQuote.destinatario);
+  row.appendChild(authorCell);
 
-    const quoteCell = document.createElement("td");
-    quoteCell.textContent = "BONUS";
+  // NON aggiungo destinatario finché non si arriva al step 2
+  if (step === 2) {
+    const destGuess = normalize(document.getElementById("guessDest").value);
 
     const destCell = document.createElement("td");
+    destCell.textContent = currentQuote.destinatario;
 
-    if (guess === correctDest) {
-      destCell.textContent = currentQuote.destinatario;
+    if (destGuess === correctDest) {
       destCell.classList.add("correct");
-
-      showVictory("🏆 Hai completato la quote!");
+      showVictory("🏆 Vittoria completa!");
     } else {
-      destCell.textContent = document.getElementById("guess").value;
       destCell.classList.add("wrong");
     }
 
-    row.appendChild(quoteCell);
     row.appendChild(destCell);
-    tbody.appendChild(row);
   }
+
+  tbody.prepend(row);
 }
 
 // ==========================
-// INIT
+// EVENT
 // ==========================
-
 document.getElementById("checkBtn").addEventListener("click", checkAnswer);
+
+// INIT
 initGame();
