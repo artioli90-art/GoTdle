@@ -109,8 +109,8 @@ function checkAnswer() {
   const row = document.createElement("tr");
 
   // colonna quote
-//  const quoteCell = document.createElement("td");
-  //quoteCell.textContent = currentQuote.testo.slice(0, 40) + "...";
+ const quoteCell = document.createElement("td");
+ quoteCell.textContent = currentQuote.testo.slice(0, 40) + "...";
 
   // autore
   const authorCell = document.createElement("td");
