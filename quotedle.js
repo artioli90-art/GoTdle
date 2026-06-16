@@ -69,38 +69,54 @@ function setupAutocomplete() {
 }
 
 // ==========================
-// CHECK ANSWER
+// CHECK ANSWER - OLD
 // ==========================
 
-function normalize(str) {
-  return str.toLowerCase().trim().replace(/\s+/g, " ");
-}
-//OLD ANSWER
-//function checkAnswer() {
-  //const guess = normalize(document.getElementById("guess").value);
-  //const correct = normalize(currentQuote.autore);
-
-  //const result = document.getElementById("result");
-  //const meta = document.getElementById("meta");
-
-  //const row = document.createElement("div");
-  //row.classList.add("result-row");
-
-  //if (guess === correct) {
-    //result.textContent = "✔ Corretto!";
-    //result.style.color = "green";
-    //showVictory();
-  //} else {
-    //result.textContent = `✖ Sbagliato. Era: ${currentQuote.autore}`;
-    //result.style.color = "red";
-  //}
-
-  //meta.textContent = `Destinatario: ${currentQuote.destinatario}`;
+//function normalize(str) {
+  //return str.toLowerCase().trim().replace(/\s+/g, " ");
 //}
+//function checkAnswer() {
+//  const guess = normalize(document.getElementById("guess").value);
+
+//  if (!guess) return;
+
+ // const correctAuthor = normalize(currentQuote.autore);
+
+//  const tbody = document.querySelector("#results tbody");
+
+//  const row = document.createElement("tr");
+
+  // Citazione abbreviata
+//  const quoteCell = document.createElement("td");
+//  quoteCell.textContent = currentQuote.testo.slice(0, 40) + "...";
+
+  // Risposta utente
+//  const authorCell = document.createElement("td");
+
+//  if (guess === correctAuthor) {
+//    authorCell.textContent = currentQuote.autore;
+ //   authorCell.classList.add("correct");
+
+//    showVictory();
+//  } else {
+//    authorCell.textContent =
+//      document.getElementById("guess").value;
+
+//    authorCell.classList.add("wrong");
+  }
+
+//  row.appendChild(quoteCell);
+//  row.appendChild(authorCell);
+
+//  tbody.appendChild(row);
+//}
+
+// ==========================
+// CHECK ANSWER - NUOVA
+// ==========================
 
 function checkAnswer() {
   const guess = normalize(document.getElementById("guess").value);
-
   if (!guess) return;
 
   const correctAuthor = normalize(currentQuote.autore);
@@ -108,29 +124,18 @@ function checkAnswer() {
   const tbody = document.querySelector("#results tbody");
 
   const row = document.createElement("tr");
+  const cell = document.createElement("td");
 
-  // Citazione abbreviata
-  const quoteCell = document.createElement("td");
-  quoteCell.textContent = currentQuote.testo.slice(0, 40) + "...";
-
-  // Risposta utente
-  const authorCell = document.createElement("td");
+  cell.textContent = document.getElementById("guess").value;
 
   if (guess === correctAuthor) {
-    authorCell.textContent = currentQuote.autore;
-    authorCell.classList.add("correct");
-
+    cell.classList.add("correct");
     showVictory();
   } else {
-    authorCell.textContent =
-      document.getElementById("guess").value;
-
-    authorCell.classList.add("wrong");
+    cell.classList.add("wrong");
   }
 
-  row.appendChild(quoteCell);
-  row.appendChild(authorCell);
-
+  row.appendChild(cell);
   tbody.appendChild(row);
 }
 
