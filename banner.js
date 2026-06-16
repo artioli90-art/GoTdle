@@ -182,6 +182,22 @@ function updateHints() {
                 "🔤 Iniziale: " + secretHouse.nome.charAt(0);
         };
     }
+  //NUOVO POPUP
+function showWinPopup() {
+    const popup = document.getElementById("winPopup");
+    if (popup) popup.classList.remove("hidden");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("winPopup");
+    const closeBtn = document.getElementById("closeWinPopup");
+
+    if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+            popup.classList.add("hidden");
+        });
+    }
+  //FINE NUOVO POPUP
 }
 
 });
