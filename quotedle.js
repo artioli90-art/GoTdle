@@ -1,48 +1,110 @@
-let currentQuoteIndex = 0;
+const characters = [
+  ...new Set(quotes.map(q => q.autore))
+];
 
-function pickRandomQuote() {
-  currentQuoteIndex = Math.floor(Math.random() * quotes.length);
+let currentQuote = null;
+
+// deterministico: 1 quote al giorno
+function getDailyIndex() {
+  const start = new Date("2025-01-01");
+  const now = new Date();
+
+  const diff = Math.floor((now - start) / (1000 * 60 * 60 * 24));
+  return diff % quotes.length;
+}
+
+function initGame() {
+  const index = getDailyIndex();
+  currentQuote = quotes[index];
+
   renderQuote();
+  setupAutocomplete();
 }
 
 function renderQuote() {
-  const q = quotes[currentQuoteIndex];
-
-  document.getElementById("quote").textContent = q.testo;
+  document.getElementById("quote").textContent = currentQuote.testo;
   document.getElementById("result").textContent = "";
   document.getElementById("meta").textContent = "";
-
   document.getElementById("guess").value = "";
 }
 
+// ==========================
+// AUTOCOMPLETE DROPDOWN
+// ==========================
+
+function setupAutocomplete() {
+  const input = document.getElementById("guess");
+  const box = document.getElementById("suggestions");
+
+  input.addEventListener("input", () => {
+    const val = normalize(input.value);
+
+    box.innerHTML = "";
+
+    if (!val) return;
+
+    const matches = characters
+      .filter(c => normalize(c).includes(val))
+      .slice(0, 8);
+
+    matches.forEach(name => {
+      const div = document.createElement("div");
+      div.classList.add("suggestion");
+      div.textContent = name;
+
+      div.onclick = () => {
+        input.value = name;
+        box.innerHTML = "";
+      };
+
+      box.appendChild(div);
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (e.target !== input) {
+      box.innerHTML = "";
+    }
+  });
+}
+
+// ==========================
+// CHECK ANSWER
+// ==========================
+
 function normalize(str) {
-  return str
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, " ");
+  return str.toLowerCase().trim().replace(/\s+/g, " ");
 }
 
 function checkAnswer() {
-  const userGuess = normalize(document.getElementById("guess").value);
-  const correct = normalize(quotes[currentQuoteIndex].autore);
+  const guess = normalize(document.getElementById("guess").value);
+  const correct = normalize(currentQuote.autore);
 
   const result = document.getElementById("result");
+  const meta = document.getElementById("meta");
 
-  if (userGuess === correct) {
+  const row = document.createElement("div");
+  row.classList.add("result-row");
+
+  if (guess === correct) {
     result.textContent = "✔ Corretto!";
     result.style.color = "green";
+    showVictory();
   } else {
-    result.textContent = `✖ Sbagliato. Era: ${quotes[currentQuoteIndex].autore}`;
+    result.textContent = `✖ Sbagliato. Era: ${currentQuote.autore}`;
     result.style.color = "red";
   }
 
-  document.getElementById("meta").textContent =
-    `Destinatario: ${quotes[currentQuoteIndex].destinatario}`;
+  meta.textContent = `Destinatario: ${currentQuote.destinatario}`;
 }
 
-function nextQuote() {
-  pickRandomQuote();
+function showVictory() {
+  const card = document.getElementById("victory-card");
+  if (!card) return;
+
+  card.classList.remove("hidden");
+  setTimeout(() => card.classList.add("show"), 50);
 }
 
 // init
-pickRandomQuote();
+initGame();
