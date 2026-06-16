@@ -72,51 +72,12 @@ function setupAutocomplete() {
 // CHECK ANSWER - OLD
 // ==========================
 
-//function normalize(str) {
-  //return str.toLowerCase().trim().replace(/\s+/g, " ");
-//}
-//function checkAnswer() {
-//  const guess = normalize(document.getElementById("guess").value);
-
-//  if (!guess) return;
-
- // const correctAuthor = normalize(currentQuote.autore);
-
-//  const tbody = document.querySelector("#results tbody");
-
-//  const row = document.createElement("tr");
-
-  // Citazione abbreviata
-//  const quoteCell = document.createElement("td");
-//  quoteCell.textContent = currentQuote.testo.slice(0, 40) + "...";
-
-  // Risposta utente
-//  const authorCell = document.createElement("td");
-
-//  if (guess === correctAuthor) {
-//    authorCell.textContent = currentQuote.autore;
- //   authorCell.classList.add("correct");
-
-//    showVictory();
-//  } else {
-//    authorCell.textContent =
-//      document.getElementById("guess").value;
-
-//    authorCell.classList.add("wrong");
-  }
-
-//  row.appendChild(quoteCell);
-//  row.appendChild(authorCell);
-
-//  tbody.appendChild(row);
-//}
-
-// ==========================
-// CHECK ANSWER - NUOVA
-// ==========================
-
+function normalize(str) {
+  return str.toLowerCase().trim().replace(/\s+/g, " ");
+}
 function checkAnswer() {
   const guess = normalize(document.getElementById("guess").value);
+
   if (!guess) return;
 
   const correctAuthor = normalize(currentQuote.autore);
@@ -124,28 +85,32 @@ function checkAnswer() {
   const tbody = document.querySelector("#results tbody");
 
   const row = document.createElement("tr");
-  const cell = document.createElement("td");
 
-  cell.textContent = document.getElementById("guess").value;
+  //Citazione abbreviata
+  const quoteCell = document.createElement("td");
+  quoteCell.textContent = currentQuote.testo.slice(0, 40) + "...";
+
+  //Risposta utente
+  const authorCell = document.createElement("td");
 
   if (guess === correctAuthor) {
-    cell.classList.add("correct");
+    authorCell.textContent = currentQuote.autore;
+   authorCell.classList.add("correct");
+
     showVictory();
   } else {
-    cell.classList.add("wrong");
+    authorCell.textContent =
+      document.getElementById("guess").value;
+
+    authorCell.classList.add("wrong");
   }
 
-  row.appendChild(cell);
+  row.appendChild(quoteCell);
+  row.appendChild(authorCell);
+
   tbody.appendChild(row);
 }
 
-function showVictory() {
-  const card = document.getElementById("victory-card");
-  if (!card) return;
-
-  card.classList.remove("hidden");
-  setTimeout(() => card.classList.add("show"), 50);
-}
 //aggiunta nuova
 document.getElementById("checkBtn").addEventListener("click", checkAnswer);
 // init
