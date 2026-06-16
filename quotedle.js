@@ -101,48 +101,37 @@ function normalize(str) {
 function checkAnswer() {
   const guess = normalize(document.getElementById("guess").value);
 
+  if (!guess) return;
+
   const correctAuthor = normalize(currentQuote.autore);
-  const correctDest = normalize(currentQuote.destinatario);
 
   const tbody = document.querySelector("#results tbody");
 
   const row = document.createElement("tr");
 
-  // colonna quote
- const quoteCell = document.createElement("td");
- quoteCell.textContent = currentQuote.testo.slice(0, 40) + "...";
+  // Citazione abbreviata
+  const quoteCell = document.createElement("td");
+  quoteCell.textContent = currentQuote.testo.slice(0, 40) + "...";
 
-  // autore
+  // Risposta utente
   const authorCell = document.createElement("td");
+
   if (guess === correctAuthor) {
     authorCell.textContent = currentQuote.autore;
     authorCell.classList.add("correct");
+
+    showVictory();
   } else {
-    authorCell.textContent = guess;
+    authorCell.textContent =
+      document.getElementById("guess").value;
+
     authorCell.classList.add("wrong");
-  }
-
-  // destinatario (sempre reveal ma colorato rispetto al target reale)
-  //const destCell = document.createElement("td");
-  //destCell.textContent = currentQuote.destinatario;
-  //destCell.classList.add("wrong");
-
-  // se vuoi renderlo “più Wordle-like”
-  if (guess === correctAuthor) {
-    destCell.classList.remove("wrong");
-    destCell.classList.add("correct");
   }
 
   row.appendChild(quoteCell);
   row.appendChild(authorCell);
-  row.appendChild(destCell);
 
   tbody.appendChild(row);
-
-  // risultato globale
-  if (guess === correctAuthor) {
-    showVictory();
-  }
 }
 
 function showVictory() {
