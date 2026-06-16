@@ -10,23 +10,23 @@
 </head>
 
 <body>
-  
+
 <nav class="top-nav">
     <a href="index.html">👑 GOTdle</a>
     <a href="bannerdle.html">🛡️ BannerDle</a>
     <a href="quotedle.html">❓ QuoteDle</a>
 </nav>
-  
-  <h1>❓ Daily Westeros - QuoteDle</h1>
-    <button id="checkBtn">Verifica</button>
+
+<h1>❓ Daily Westeros - QuoteDle</h1>
+
+<!-- QUOTE -->
 <div id="quote-container">
     <p id="quote"></p>
 </div>
 
-    <div id="quote-container">
-    <p id="quote"></p>
-</div>
+<br><br>
 
+<!-- SELECT SOLO VALIDO -->
 <select id="guess">
     <option value="">Seleziona un personaggio</option>
 
@@ -44,8 +44,12 @@
     <option>Theon Greyjoy</option>
 </select>
 
+<br><br>
+
+<!-- UN SOLO BOTTONE -->
 <button id="checkBtn">Verifica</button>
 
+<!-- RISULTATI -->
 <table id="results">
     <thead>
         <tr>
@@ -55,63 +59,9 @@
     </thead>
     <tbody></tbody>
 </table>
-<!--
-<select id="guess">
-    <option value="">Seleziona un personaggio</option>
-    <option>Jon Snow</option>
-    <option>Tyrion Lannister</option>
-    <option>Daenerys Targaryen</option>
-    <option>Cersei Lannister</option>
-    <option>Arya Stark</option>
-    <option>Sansa Stark</option>
-    <option>Eddard Stark</option>
-    <option>Jaime Lannister</option>
-    <option>Varys</option>
-    <option>Petyr Baelish</option>
-    <option>Ygritte</option>
-    <option>Theon Greyjoy</option>
-</select>
 
-  <option value="">Seleziona un personaggio</option>
-        
-    <table id="results">
-  <thead>
-    <tr>
-      <th>Citazione</th>
-      <th>Tua risposta</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
-    -->
-  <!-- <div id="quote" class="quote-box"></div> -->
-
-  <option>Jon Snow</option>
-  <option>Tyrion Lannister</option>
-  <option>Daenerys Targaryen</option>
-  <option>Cersei Lannister</option>
-  <option>Arya Stark</option>
-  <option>Sansa Stark</option>
-  <option>Eddard Stark</option>
-  <option>Jaime Lannister</option>
-  <option>Varys</option>
-  <option>Petyr Baelish</option>
-  <option>Ygritte</option>
-  <option>Theon Greyjoy</option>
-</select>
-    
-    <!-- QUESTO ERA IL PRECEDENTE
-  <div>
-    <button onclick="checkAnswer()">Verifica</button>
-    <button onclick="nextQuote()">Prossima</button>
-  </div>
-
- <div id="result" class="result"></div>
-  <div id="meta" class="meta"></div>
-   FINIVA QUI -->
-  <script src="quotes.js"></script>
-  <script src="quotedle.js"></script>
-
+<script src="quotes.js"></script>
+<script src="quotedle.js"></script>
 
 </body>
 </html>
