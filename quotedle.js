@@ -1,8 +1,8 @@
-const characters = [...new Set(quotes.map(q => q.autore))];
-const recipients = [...new Set(quotes.map(q => q.destinatario))];
+const characters = [
+  ...new Set(quotes.map(q => q.autore))
+];
 
 let currentQuote = null;
-let step = 1; // 1 = autore, 2 = destinatario
 
 // deterministico: 1 quote al giorno
 function getDailyIndex() {
@@ -17,126 +17,105 @@ function initGame() {
   const index = getDailyIndex();
   currentQuote = quotes[index];
 
-  step = 1;
-
   renderQuote();
-  setupDropdowns();
+  setupAutocomplete();
 }
 
-// ==========================
-// RENDER
-// ==========================
 function renderQuote() {
   document.getElementById("quote").textContent = currentQuote.testo;
-
-  document.getElementById("guessAuthor").value = "";
-  document.getElementById("guessDest").value = "";
+  document.getElementById("result").textContent = "";
+  document.getElementById("meta").textContent = "";
+  document.getElementById("guess").value = "";
 }
 
 // ==========================
-// DROPDOWNS (NO AUTOCOMPLETE)
+// AUTOCOMPLETE DROPDOWN
 // ==========================
-function setupDropdowns() {
-  const authorSelect = document.getElementById("guessAuthor");
-  const destSelect = document.getElementById("guessDest");
 
-  // reset
-  authorSelect.innerHTML = `<option value="">Seleziona autore</option>`;
-  destSelect.innerHTML = `<option value="">Seleziona destinatario</option>`;
+function setupAutocomplete() {
+  const input = document.getElementById("guess");
+  const box = document.getElementById("suggestions");
 
-  characters
-    .sort()
-    .forEach(name => {
-      const opt = document.createElement("option");
-      opt.value = name;
-      opt.textContent = name;
-      authorSelect.appendChild(opt);
+  input.addEventListener("input", () => {
+    const val = normalize(input.value);
+
+    box.innerHTML = "";
+
+    if (!val) return;
+
+    const matches = characters
+      .filter(c => normalize(c).includes(val))
+      .slice(0, 8);
+
+    matches.forEach(name => {
+      const div = document.createElement("div");
+      div.classList.add("suggestion");
+      div.textContent = name;
+
+      div.onclick = () => {
+        input.value = name;
+        box.innerHTML = "";
+      };
+
+      box.appendChild(div);
     });
+  });
 
-  recipients
-    .sort()
-    .forEach(name => {
-      const opt = document.createElement("option");
-      opt.value = name;
-      opt.textContent = name;
-      destSelect.appendChild(opt);
-    });
-
-  // destinatario disabilitato all’inizio
-  destSelect.disabled = true;
+  document.addEventListener("click", (e) => {
+    if (e.target !== input) {
+      box.innerHTML = "";
+    }
+  });
 }
 
 // ==========================
-// NORMALIZE
+// CHECK ANSWER - OLD
 // ==========================
+
 function normalize(str) {
   return str.toLowerCase().trim().replace(/\s+/g, " ");
+  }
+function showVictory() {
+  alert("✔ Risposta esatta!");
+  
 }
-
-// ==========================
-// VICTORY POPUP
-// ==========================
-function showVictory(message = "✔ Risposta esatta!") {
-  alert(message);
-}
-
-// ==========================
-// CHECK LOGIC 2 STEP
-// ==========================
 function checkAnswer() {
-  const authorGuess = normalize(document.getElementById("guessAuthor").value);
+  const guess = normalize(document.getElementById("guess").value);
 
-  if (!authorGuess) return;
+  if (!guess) return;
 
   const correctAuthor = normalize(currentQuote.autore);
-  const correctDest = normalize(currentQuote.destinatario);
 
   const tbody = document.querySelector("#results tbody");
+
   const row = document.createElement("tr");
 
-  // colonna autore
+  //Citazione abbreviata
+  const quoteCell = document.createElement("td");
+  quoteCell.textContent = currentQuote.testo.slice(0, 40) + "...";
+
+  //Risposta utente
   const authorCell = document.createElement("td");
-  authorCell.textContent = currentQuote.autore;
 
-  if (authorGuess === correctAuthor) {
-    authorCell.classList.add("correct");
+  if (guess === correctAuthor) {
+    authorCell.textContent = currentQuote.autore;
+   authorCell.classList.add("correct");
 
-    // passo 2 sblocca
-    step = 2;
-    document.getElementById("guessDest").disabled = false;
-
-    showVictory("✔ Autore corretto! Ora il destinatario");
+    showVictory();
   } else {
+    authorCell.textContent =
+      document.getElementById("guess").value;
+
     authorCell.classList.add("wrong");
-    showVictory("✖ Autore sbagliato");
   }
 
+  row.appendChild(quoteCell);
   row.appendChild(authorCell);
 
-  // NON aggiungo destinatario finché non si arriva al step 2
-  if (step === 2) {
-    const destGuess = normalize(document.getElementById("guessDest").value);
-
-    const destCell = document.createElement("td");
-    destCell.textContent = currentQuote.destinatario;
-
-    if (destGuess === correctDest) {
-      destCell.classList.add("correct");
-      showVictory("🏆 Vittoria completa!");
-    } else {
-      destCell.classList.add("wrong");
-    }
-
-    row.appendChild(destCell);
-  }
-
-  tbody.prepend(row);
+  tbody.appendChild(row);
 }
 
-// ==========================
-// EVENT
-// ==========================
+//aggiunta nuova
 document.getElementById("checkBtn").addEventListener("click", checkAnswer);
-
-// INIT
+// init
 initGame();
