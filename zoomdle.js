@@ -1,85 +1,163 @@
-const images = [
-  {
-    image: "images/daenerys1.png",
-    answer: "Daenerys Targaryen"
-  },
-];
+const guessedCharacters = [];
 
-let errors = 0;
+const wrapper = document.getElementById("imageWrapper");
+const select = document.getElementById("guessInput");
+const tbody = document.querySelector("#results tbody");
+
+// ==========================
+// PERSONAGGIO DEL GIORNO
+// ==========================
+
+function getDailyIndex(seed, length) {
+let hash = seed.toString();
+
+```
+let value = 0;
+
+for (let i = 0; i < hash.length; i++) {
+    value = ((value << 5) - value) + hash.charCodeAt(i);
+    value |= 0;
+}
+
+return Math.abs(value) % length;
+```
+
+}
 
 const today = new Date();
 
 const seed =
-    today.getFullYear() * 10000 +
-    (today.getMonth() + 1) * 100 +
-    today.getDate();
+today.getFullYear() * 10000 +
+(today.getMonth() + 1) * 100 +
+today.getDate();
 
-const index = getDailyIndex(seed, images.length);
+const index = getDailyIndex(seed, zoomCharacters.length);
 
-const currentCharacter = images[index];
+const secretCharacter = zoomCharacters[index];
+
+// ==========================
+// IMMAGINE
+// ==========================
 
 wrapper.style.backgroundImage =
-  `url("${currentCharacter.image}")`;
+`url("${secretCharacter.image}")`;
 
-const solution = currentCharacter.answer;
+// ==========================
+// DROPDOWN
+// ==========================
 
-const wrapper = document.getElementById("imageWrapper");
-const input = document.getElementById("guessInput");
-const feedback = document.getElementById("feedback");
+function renderDropdown() {
 
-//NUOVO ZOOM
-function setZoom(force = null) {
-  wrapper.classList.remove("z400","z300","z200","z150","z100");
+```
+select.innerHTML = "";
 
-  const level = force !== null ? force : errors;
+const defaultOption = document.createElement("option");
 
-  if (level === 0) wrapper.classList.add("z400");
-  else if (level === 1) wrapper.classList.add("z300");
-  else if (level === 2) wrapper.classList.add("z200");
-  else if (level === 3) wrapper.classList.add("z150");
-  else wrapper.classList.add("z100");
+defaultOption.value = "";
+defaultOption.textContent = "-- Seleziona un personaggio --";
 
-function check() {
-  const guess = input.value.trim();
+select.appendChild(defaultOption);
 
-  //MENU TENDINA:
+zoomCharacters
+    .map(c => c.answer)
+    .sort()
+    .forEach(name => {
 
-const input = document.getElementById("guessInput");
-  const options = [
-  "Robb Stark",
-  "Cersei Lannister",
-  "Daenerys Targaryen",
-  "Robert Baratheon"
-];
+        const option = document.createElement("option");
 
-options.forEach(name => {
-  const option = document.createElement("option");
-  option.value = name;
-  option.textContent = name;
+        option.value = name;
+        option.textContent = name;
 
-  input.appendChild(option);
-});
-  //FINE MENU TENDINA:
+        select.appendChild(option);
+    });
+```
 
-  if (!guess) return;
-  
-  //NUOVA
-  if (guess.toLowerCase() === solution.toLowerCase()) {
-  feedback.textContent = "✔ Corretto!";
-  feedback.style.color = "green";
-
-  setZoom(4); // forza 100% (vittoria)
-
-  return;
 }
 
-  errors++;
-  setZoom();
+renderDropdown();
 
-  feedback.textContent = "✖ Sbagliato";
-  feedback.style.color = "red";
+// ==========================
+// ZOOM
+// ==========================
+
+let errors = 0;
+
+function setZoom() {
+
+```
+wrapper.className = "image-wrapper";
+
+const zoomValue = Math.max(100, 500 - (errors * 40));
+
+wrapper.classList.add("z" + zoomValue);
+```
+
 }
-
-document.getElementById("checkBtn").addEventListener("click", check);
 
 setZoom();
+
+// ==========================
+// RISULTATI
+// ==========================
+
+function addResult(name, correct) {
+
+```
+const row = document.createElement("tr");
+
+const td = document.createElement("td");
+
+td.textContent = name;
+
+td.classList.add(
+    correct ? "correct" : "wrong"
+);
+
+row.appendChild(td);
+
+tbody.prepend(row);
+```
+
+}
+
+// ==========================
+// CHECK
+// ==========================
+
+document
+.getElementById("guessButton")
+.addEventListener("click", checkGuess);
+
+function checkGuess() {
+
+```
+const guess = select.value;
+
+if (!guess) return;
+
+if (guessedCharacters.includes(guess))
+    return;
+
+guessedCharacters.push(guess);
+
+const correct =
+    guess === secretCharacter.answer;
+
+addResult(guess, correct);
+
+if (correct) {
+
+    wrapper.className =
+        "image-wrapper z100";
+
+    alert("🏆 Hai indovinato!");
+
+    return;
+}
+
+errors++;
+
+setZoom();
+```
+
+}
