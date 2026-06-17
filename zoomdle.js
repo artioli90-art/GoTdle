@@ -57,13 +57,12 @@ const img = new Image();
 
 
 img.onload = () => {
-wrapper.style.background = "url('images/zoom/daenerys1.png')";
-
-wrapper.style.backgroundSize = "400%";
-wrapper.style.width = "320px";
-wrapper.style.height = "320px";
-wrapper.style.border = "3px solid black";
-  };
+  wrapper.style.backgroundImage = `url("${current.image}")`;
+  wrapper.style.backgroundSize = "400%";
+  wrapper.style.width = "320px";
+  wrapper.style.height = "320px";
+  wrapper.style.border = "3px solid black";
+};
   
 img.onerror = () => {
   console.error("Immagine non trovata:", current.image);
