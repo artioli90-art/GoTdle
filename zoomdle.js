@@ -1,6 +1,17 @@
 const guessedCharacters = [];
 
 const wrapper = document.getElementById("imageWrapper");
+const input = document.getElementById("guessInput");
+const feedback = document.getElementById("feedback");
+
+const images = [
+  {
+    image: "images/zoom/daenerys1.png",
+    answer: "Daenerys Targaryen"
+  }
+];
+
+let errors = 0;
 const select = document.getElementById("guessInput");
 const tbody = document.querySelector("#results tbody");
 
@@ -27,54 +38,51 @@ return Math.abs(value) % length;
 const today = new Date();
 
 const seed =
-today.getFullYear() * 10000 +
-(today.getMonth() + 1) * 100 +
-today.getDate();
+  today.getFullYear() * 10000 +
+  (today.getMonth() + 1) * 100 +
+  today.getDate();
 
-const index = getDailyIndex(seed, zoomCharacters.length);
+function getDailyIndex(seed, length) {
+  let hash = seed.toString();
+  let value = 0;
 
-const secretCharacter = zoomCharacters[index];
+  for (let i = 0; i < hash.length; i++) {
+    value = ((value << 5) - value) + hash.charCodeAt(i);
+    value |= 0;
+  }
 
-// ==========================
-// IMMAGINE
-// ==========================
+  return Math.abs(value) % length;
+}
 
-wrapper.style.backgroundImage =
-`url("${secretCharacter.image}")`;
+const index = getDailyIndex(seed, images.length);
+const currentCharacter = images[index];
+const solution = currentCharacter.answer;
+
+//  QUESTO QUI DOPO CHE WRAPPER
+wrapper.style.backgroundImage = `url("${currentCharacter.image}")`;
 
 // ==========================
 // DROPDOWN
 // ==========================
 
-function renderDropdown() {
+function setupDropdown() {
+  const select = document.getElementById("guessInput");
 
-```
-select.innerHTML = "";
+  select.innerHTML = `<option value="">Seleziona un personaggio</option>`;
 
-const defaultOption = document.createElement("option");
+  const names = [...new Set(images.map(i => i.answer))];
 
-defaultOption.value = "";
-defaultOption.textContent = "-- Seleziona un personaggio --";
+  names.forEach(name => {
+    const opt = document.createElement("option");
+    opt.value = name;
+    opt.textContent = name;
+    select.appendChild(opt);
 
-select.appendChild(defaultOption);
-
-zoomCharacters
-    .map(c => c.answer)
-    .sort()
-    .forEach(name => {
-
-        const option = document.createElement("option");
-
-        option.value = name;
-        option.textContent = name;
-
-        select.appendChild(option);
-    });
-```
-
+      
+  });
 }
 
-renderDropdown();
+setupDropdown();
 
 // ==========================
 // ZOOM
