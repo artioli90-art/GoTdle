@@ -61,16 +61,12 @@ const img = new Image();
 //FINE SCARTATO
 
 //NUOVA VARIANTE
-const img = new Image();
+//const img = new Image();
 
 img.onload = () => {
   wrapper.style.backgroundImage = `url("${current.image}")`;
   wrapper.style.backgroundSize = "400%";
   wrapper.style.backgroundPosition = "center";
-};
-
-img.onerror = () => {
-  console.error("Immagine non trovata:", current.image);
 };
 
 img.src = current.image;
