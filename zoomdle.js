@@ -91,7 +91,10 @@ setupDropdown();
 // ZOOM SYSTEM
 // ==========================
 function setZoom() {
-  wrapper.className = "image-wrapper";
+  // reset SOLO classi zoom
+  wrapper.classList.forEach(c => {
+    if (c.startsWith("z")) wrapper.classList.remove(c);
+  });
 
   let zoom = 400 - (errors * 10);
   if (zoom < 100) zoom = 100;
