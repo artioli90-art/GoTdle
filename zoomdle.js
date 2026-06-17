@@ -146,7 +146,8 @@ function checkGuess() {
 const correct = guess === solution;
     addResult(guess, correct);
   if (correct) {
-    wrapper.className = "image-wrapper z100";
+    wrapper.style.backgroundSize = "100%";
+    //wrapper.className = "image-wrapper z100";
     feedback.textContent = "🏆 Corretto!";
     feedback.style.color = "green";
     return;
