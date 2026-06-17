@@ -46,9 +46,22 @@ const current = images[index];
 const solution = current.answer;
 
 // ==========================
-// INIT IMAGE
+// INIT IMAGE old
 // ==========================
-wrapper.style.backgroundImage = `url("${current.image}")`;
+//wrapper.style.backgroundImage = `url("${current.image}")`;
+
+// ==========================
+// INIT IMAGE NEW
+// ==========================
+const img = new Image();
+
+img.onload = () => {
+  wrapper.style.backgroundImage = `url("${current.image}")`;
+};
+img.onerror = () => {
+  console.error("Immagine non trovata:", current.image);
+};
+img.src = current.image;
 
 // ==========================
 // DROPDOWN
