@@ -7,30 +7,43 @@
     <title>👓 Daily Westeros - Chi è?</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="zoomdle.css">
 </head>
 
 <body>
-    <nav class="top-nav">
+
+<nav class="top-nav">
     <a href="index.html">👑 Indovina il personaggio</a>
     <a href="bannerdle.html">🛡️ Indovina lo stendardo</a>
     <a href="quotedle.html">❓ Indovina la citazione</a>
     <a href="zoomdle.html">👓 Chi è?</a>
 </nav>
-    <h1>👓 Daily Westeros - Chi è?/h1> 
+
+<h1>👓 Daily Westeros - Chi è?</h1>
 
 <div class="image-wrapper" id="imageWrapper"></div>
 
 <div class="controls">
-  <select id="guessInput">
-  <option value="">Seleziona una risposta</option>
-</select>
+    <select id="guessInput">
+        <option value="">Seleziona una risposta</option>
+    </select>
 
-<button id="checkBtn">Verifica</button>
-  <button id="checkBtn">Verifica</button>
+    <button id="checkBtn">Indovina</button>
 </div>
 
 <div id="feedback"></div>
 
+<!-- risultati -->
+<table id="results">
+    <thead>
+        <tr>
+            <th>Risposta</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
 <script src="zoomdle.js"></script>
+
 </body>
 </html>
