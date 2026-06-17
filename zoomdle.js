@@ -64,6 +64,7 @@ wrapper.style.backgroundSize = "400%";
 wrapper.style.width = "320px";
 wrapper.style.height = "320px";
 wrapper.style.border = "3px solid red";
+  };
   //FINE NUOVO TEST
   
 img.onerror = () => {
