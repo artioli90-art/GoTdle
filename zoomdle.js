@@ -1,7 +1,7 @@
 const images = [
   {
     image: "images/daenerys1.png",
-    answer: "Jon Snow"
+    answer: "Daenerys Targaryen"
   },
 ];
 
@@ -41,6 +41,25 @@ function setZoom(force = null) {
 
 function check() {
   const guess = input.value.trim();
+
+  //MENU TENDINA:
+
+const input = document.getElementById("guessInput");
+  const options = [
+  "Robb Stark",
+  "Cersei Lannister",
+  "Daenerys Targaryen",
+  "Robert Baratheon"
+];
+
+options.forEach(name => {
+  const option = document.createElement("option");
+  option.value = name;
+  option.textContent = name;
+
+  input.appendChild(option);
+});
+  //FINE MENU TENDINA:
 
   if (!guess) return;
   
