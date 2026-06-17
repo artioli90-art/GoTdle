@@ -87,3 +87,32 @@ button {
   margin-top: 15px;
   font-weight: bold;
 }
+#guessInput {
+padding: 10px;
+width: 280px;
+font-size: 16px;
+}
+
+#results {
+margin: 30px auto;
+width: 320px;
+border-collapse: collapse;
+}
+
+#results td,
+#results th {
+padding: 12px;
+text-align: center;
+}
+
+.correct {
+background: #7c9c5b;
+color: white;
+font-weight: bold;
+}
+
+.wrong {
+background: #8b3a3a;
+color: white;
+font-weight: bold;
+}
