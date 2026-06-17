@@ -55,15 +55,31 @@ const solution = current.answer;
 // ==========================
 const img = new Image();
 
+//SCARTATO:
+//img.onload = () => {
+//wrapper.style.background = "url('images/zoom/daenerys1.png')";
+//FINE SCARTATO
+
+//NUOVA VARIANTE
+const img = new Image();
+
 img.onload = () => {
-//PROVA QUI --- wrapper.style.backgroundImage = `url("${current.image}")`;
-//};
-//NUOVO TEST
-wrapper.style.background = "url('images/zoom/daenerys1.png')";
+  wrapper.style.backgroundImage = `url("${current.image}")`;
+  wrapper.style.backgroundSize = "400%";
+  wrapper.style.backgroundPosition = "center";
+};
+
+img.onerror = () => {
+  console.error("Immagine non trovata:", current.image);
+};
+
+img.src = current.image;
+//FINE NUOVA VARIANTE
+
 wrapper.style.backgroundSize = "400%";
 wrapper.style.width = "320px";
 wrapper.style.height = "320px";
-wrapper.style.border = "3px solid red";
+wrapper.style.border = "3px solid black";
   };
   //FINE NUOVO TEST
   
@@ -96,8 +112,16 @@ setupDropdown();
 function setZoom() {
   wrapper.className = "image-wrapper";
 
-  const zoom = Math.max(100, 500 - errors * 80);
+  //SCARTATO
+ // const zoom = Math.max(100, 500 - errors * 80);
+ // wrapper.classList.add("z" + zoom);
+  //FINE SCARTATO
+
+  //NUOVO ZOOM
+  const zoom = Math.max(100, 500 - errors * 10);
+  wrapper.className = "image-wrapper";
   wrapper.classList.add("z" + zoom);
+  //FINE NUOVO ZOOM
 }
 
 setZoom();
@@ -123,13 +147,12 @@ function checkGuess() {
   const guess = select.value;
 
   if (!guess) return;
-
-  if (guessed.includes(guess)) return;
-  guessed.push(guess);
-
+  
   const correct = guess === solution;
 
   addResult(guess, correct);
+   if (guessed.includes(guess)) return;
+  guessed.push(guess);
 
   if (correct) {
     wrapper.className = "image-wrapper z100";
