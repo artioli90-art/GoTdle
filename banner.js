@@ -84,7 +84,7 @@ function renderDropdown() {
 renderDropdown();
 
 // =========================
-// CHECK GUESS
+// CHECK GUESS - OLD E FUNZIONANTE MA NESSUN AVVISO
 // =========================
 document.getElementById("guessButton").addEventListener("click", checkGuess);
     
@@ -103,18 +103,36 @@ function checkGuess() {
     const correct = guess.nome === secretHouse.nome;
 
     if (!correct) {
-        wrongCount++;
-        updateHints();
+      wrongCount++;
+       updateHints();
     }
-
+ 
     renderRow(guess);
 
     renderDropdown();
     select.value = "";
 
+    //if (correct) {
+      //  document.getElementById("victory-card").textContent =
+        //    "🎉 Hai indovinato la casata!";
+  
+  //--- AGGIUNTA ---
     if (correct) {
-        document.getElementById("victory-card").textContent =
-            "🎉 Hai indovinato la casata!";
+    wrapper.className = "image-wrapper z100";
+    feedback.textContent = "🏆 Corretto!";
+    feedback.style.color = "green";
+   
+      return;
+   
+      errors++;
+    setZoom();
+
+    feedback.textContent = "✖ Sbagliato";
+    feedback.style.color = "red";
+       //--- FINE AGGIUNTA ---
+}
+
+   
     }
 }
 
