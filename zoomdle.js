@@ -88,21 +88,36 @@ function setupDropdown() {
 setupDropdown();
 
 // ==========================
-// ZOOM SYSTEM
+// ZOOM SYSTEM - OLD INIZIO
 // ==========================
-function setZoom() {
+//function setZoom() {
   // reset SOLO classi zoom
-  wrapper.classList.forEach(c => {
-    if (c.startsWith("z")) wrapper.classList.remove(c);
-  });
+  //wrapper.classList.forEach(c => {
+   // if (c.startsWith("z")) wrapper.classList.remove(c);
+  //});
+
+  //let zoom = 400 - (errors * 10);
+  //if (zoom < 100) zoom = 100;
+
+  //wrapper.classList.add("z" + zoom);
+//}
+
+// setZoom();
+//OLD ZOOM - FINE
+
+//ZOOM NUOVO - INIZIO
+function setZoom() {
 
   let zoom = 400 - (errors * 10);
+
   if (zoom < 100) zoom = 100;
 
-  wrapper.classList.add("z" + zoom);
+  wrapper.style.backgroundSize = zoom + "%";
+
+  console.log("Zoom:", zoom);
 }
 
-setZoom();
+//ZOOM NUOVO - FINE
 
 // ==========================
 // RESULTS
