@@ -93,16 +93,10 @@ setupDropdown();
 function setZoom() {
   wrapper.className = "image-wrapper";
 
-  //SCARTATO
- // const zoom = Math.max(100, 500 - errors * 80);
- // wrapper.classList.add("z" + zoom);
-  //FINE SCARTATO
+  let zoom = 400 - (errors * 10);
+  if (zoom < 100) zoom = 100;
 
-  //NUOVO ZOOM
-  const zoom = Math.max(100, 500 - errors * 10);
-  wrapper.className = "image-wrapper";
   wrapper.classList.add("z" + zoom);
-  //FINE NUOVO ZOOM
 }
 
 setZoom();
@@ -129,12 +123,10 @@ function checkGuess() {
 
   if (!guess) return;
   
-  const correct = guess === solution;
-
-  addResult(guess, correct);
    if (guessed.includes(guess)) return;
   guessed.push(guess);
-
+const correct = guess === solution;
+    addResult(guess, correct);
   if (correct) {
     wrapper.className = "image-wrapper z100";
     feedback.textContent = "🏆 Corretto!";
