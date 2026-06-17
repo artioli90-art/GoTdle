@@ -102,10 +102,10 @@ function checkGuess() {
 
     const correct = guess.nome === secretHouse.nome;
 
-    if (!correct) {
-      wrongCount++;
-       updateHints();
-    }
+    //if (!correct) {
+      //wrongCount++;
+       //updateHints();
+  //  }
  
     renderRow(guess);
 
