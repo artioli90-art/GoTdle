@@ -48,36 +48,22 @@ const solution = current.answer;
 // ==========================
 // INIT IMAGE old
 // ==========================
-//wrapper.style.backgroundImage = `url("${current.image}")`;
+wrapper.style.backgroundImage = `url("${current.image}")`;
 
 // ==========================
 // INIT IMAGE NEW
 // ==========================
 const img = new Image();
 
-//SCARTATO:
-//img.onload = () => {
-//wrapper.style.background = "url('images/zoom/daenerys1.png')";
-//FINE SCARTATO
-
-//NUOVA VARIANTE
-//const img = new Image();
 
 img.onload = () => {
-  wrapper.style.backgroundImage = `url("${current.image}")`;
-  wrapper.style.backgroundSize = "400%";
-  wrapper.style.backgroundPosition = "center";
-};
-
-img.src = current.image;
-//FINE NUOVA VARIANTE
+wrapper.style.background = "url('images/zoom/daenerys1.png')";
 
 wrapper.style.backgroundSize = "400%";
 wrapper.style.width = "320px";
 wrapper.style.height = "320px";
 wrapper.style.border = "3px solid black";
   };
-  //FINE NUOVO TEST
   
 img.onerror = () => {
   console.error("Immagine non trovata:", current.image);
