@@ -116,9 +116,6 @@ function checkGuess() {
         document.getElementById("victory-card").textContent =
             "🎉 Hai indovinato la casata!";
 }
-
-   
-    }
 }
 
 // =========================
