@@ -112,10 +112,25 @@ function checkGuess() {
     renderDropdown();
     select.value = "";
 
-    if (correct) {
-        document.getElementById("victory-card").textContent =
-            "🎉 Hai indovinato la casata!";
-}
+   // if (correct) {
+     //   document.getElementById("victory-card").textContent =
+       //     "🎉 Hai indovinato la casata!";
+
+  //NUOVA
+ if (correct) {
+    wrapper.className = "image-wrapper z100";
+    feedback.textContent = "🏆 Corretto!";
+    feedback.style.color = "green";
+    return;
+  }
+
+  errors++;
+  setZoom();
+
+  feedback.textContent = "✖ Sbagliato";
+  feedback.style.color = "red";
+  //FINE NUOVA
+//}
 }
 
 // =========================
