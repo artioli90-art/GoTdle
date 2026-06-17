@@ -56,8 +56,16 @@ const solution = current.answer;
 const img = new Image();
 
 img.onload = () => {
-  wrapper.style.backgroundImage = `url("${current.image}")`;
-};
+//PROVA QUI --- wrapper.style.backgroundImage = `url("${current.image}")`;
+//};
+//NUOVO TEST
+wrapper.style.background = "url('images/zoom/daenerys1.png')";
+wrapper.style.backgroundSize = "400%";
+wrapper.style.width = "320px";
+wrapper.style.height = "320px";
+wrapper.style.border = "3px solid red";
+  //FINE NUOVO TEST
+  
 img.onerror = () => {
   console.error("Immagine non trovata:", current.image);
 };
