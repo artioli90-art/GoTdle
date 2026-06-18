@@ -9,38 +9,31 @@ h1 {
     margin: 20px;
 }
 
+/* MAPPA CONTAINER */
 .map-wrapper {
     position: relative;
     width: 900px;
-    height: 500px;
-    overflow: hidden;
+    height: auto;
+    margin: 20px auto;
 }
 
 #mapImage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3358px;
-    height: 1681px;
-    transform-origin: top left;
+    width: 100%;
+    border: 3px solid #8b6f2b;
+    display: block;
 }
 
 /* MARKER ROSSO */
 #marker {
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
     background: red;
-    border: 1px solid black;
+    border: 2px solid white;
     border-radius: 50%;
     transform: translate(-50%, -50%);
     display: none;
-    z-index: 999;
 }
-
-box-shadow:
-    0 0 0 4px rgba(255,255,255,0.5),
-    0 0 20px red;
 
 /* CONTROLS */
 .controls {
