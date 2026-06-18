@@ -13,23 +13,28 @@ h1 {
 .map-wrapper {
     position: relative;
     width: 900px;
-    height: auto;
+    height: 500px;
     margin: 20px auto;
+    overflow: hidden; /* 🔥 fondamentale */
+    border: 3px solid #8b6f2b;
 }
 
 #mapImage {
-    width: 100%;
-    border: 3px solid #8b6f2b;
-    display: block;
+    position: absolute;
+    width: 3358px;
+    height: 1681px;
+
+    transform: scale(0.35);  /* 🔥 ZOOM BASE */
+    transform-origin: top left;
 }
 
 /* MARKER ROSSO */
 #marker {
     position: absolute;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     background: red;
-    border: 2px solid white;
+    border: 2px solid red;
     border-radius: 50%;
     transform: translate(-50%, -50%);
     display: none;
