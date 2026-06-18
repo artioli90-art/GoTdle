@@ -34,73 +34,53 @@ const index = getDailyIndex(seed, locations.length);
 const current = locations[index];
 
 // ==========================
+// COSTANTI VIEWPORT
+// ==========================
+const VIEWPORT_WIDTH = 900;
+const VIEWPORT_HEIGHT = 500;
+
+// ==========================
 // MAPPA
 // ==========================
 mapImage.src = "images/map/map.png";
 
-mapImage.onload = () => {
-    centerMap();
-};
-
 // ==========================
-// CENTRA MAPPA SUL MARKER -- OLD
+// ZOOM CENTRATO SUL PUNTO
 // ==========================
-//function centerMap() {
-
-    //const zoom = 1.5;
-
- //   const viewportWidth = 900;
-  //  const viewportHeight = 500;
-
- //   const offsetX =
-   //     viewportWidth / 2 -
-  //      current.x * zoom;
-
- //   const offsetY =
-  //      viewportHeight / 2 -
-   //     current.y * zoom;
-
-  //  mapImage.style.transformOrigin = "top left";
-
- //   mapImage.style.transform =
-  //      `translate(${offsetX}px, ${offsetY}px) scale(${zoom})`;
-
-  //  marker.style.display = "block";
-
-  //  marker.style.left = "450px";
-  //  marker.style.top = "250px";
-//}
-
 function centerMap() {
 
-    const zoom = 1.6;
+    const zoom = 1.6; // 👈 regola qui zoom generale
 
-    const MAP_WIDTH = 3358;
-    const MAP_HEIGHT = 1681;
-
-    const VIEWPORT_WIDTH = 900;
-    const VIEWPORT_HEIGHT = 500;
-
-    // --------------------------
-    // ZOOM MAPPA (solo visivo)
-    // --------------------------
-    const offsetX = VIEWPORT_WIDTH / 2 - current.x * zoom;
-    const offsetY = VIEWPORT_HEIGHT / 2 - current.y * zoom;
+    const offsetX = VIEWPORT_WIDTH / 2 - (current.x * zoom);
+    const offsetY = VIEWPORT_HEIGHT / 2 - (current.y * zoom);
 
     mapImage.style.transformOrigin = "top left";
     mapImage.style.transform =
         `translate(${offsetX}px, ${offsetY}px) scale(${zoom})`;
 
-    // --------------------------
-    // MARKER (CORRETTO)
-    // --------------------------
-    const markerX = (current.x / MAP_WIDTH) * VIEWPORT_WIDTH;
-    const markerY = (current.y / MAP_HEIGHT) * VIEWPORT_HEIGHT;
+    placeMarker(offsetX, offsetY, zoom);
+}
+
+// ==========================
+// MARKER CORRETTO (FIX DEFINITIVO)
+// ==========================
+function placeMarker(offsetX, offsetY, zoom) {
 
     marker.style.display = "block";
-    marker.style.left = markerX + "px";
-    marker.style.top = markerY + "px";
+
+    const x = current.x * zoom + offsetX;
+    const y = current.y * zoom + offsetY;
+
+    marker.style.left = x + "px";
+    marker.style.top = y + "px";
 }
+
+// ==========================
+// ON IMAGE LOAD
+// ==========================
+mapImage.onload = () => {
+    centerMap();
+};
 
 // ==========================
 // DROPDOWN
@@ -152,7 +132,7 @@ function getHint() {
 }
 
 // ==========================
-// RISULTATI
+// RESULTS
 // ==========================
 function addResult(name, correct) {
 
