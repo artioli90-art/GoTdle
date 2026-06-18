@@ -43,32 +43,56 @@ mapImage.onload = () => {
 };
 
 // ==========================
-// CENTRA MAPPA SUL MARKER
+// CENTRA MAPPA SUL MARKER -- OLD
 // ==========================
+//function centerMap() {
+
+    //const zoom = 1.5;
+
+ //   const viewportWidth = 900;
+  //  const viewportHeight = 500;
+
+ //   const offsetX =
+   //     viewportWidth / 2 -
+  //      current.x * zoom;
+
+ //   const offsetY =
+  //      viewportHeight / 2 -
+   //     current.y * zoom;
+
+  //  mapImage.style.transformOrigin = "top left";
+
+ //   mapImage.style.transform =
+  //      `translate(${offsetX}px, ${offsetY}px) scale(${zoom})`;
+
+  //  marker.style.display = "block";
+
+  //  marker.style.left = "450px";
+  //  marker.style.top = "250px";
+//}
+
 function centerMap() {
 
-    const zoom = 1.5;
+    const zoom = 1.6; // 👈 REGOLA QUI LO ZOOM
 
     const viewportWidth = 900;
     const viewportHeight = 500;
 
-    const offsetX =
-        viewportWidth / 2 -
-        current.x * zoom;
+    const scaledWidth = 3358 * zoom;
+    const scaledHeight = 1681 * zoom;
 
-    const offsetY =
-        viewportHeight / 2 -
-        current.y * zoom;
+    const offsetX = viewportWidth / 2 - current.x * zoom;
+    const offsetY = viewportHeight / 2 - current.y * zoom;
 
     mapImage.style.transformOrigin = "top left";
-
     mapImage.style.transform =
         `translate(${offsetX}px, ${offsetY}px) scale(${zoom})`;
 
+    // 🔴 FIX CHIAVE: marker nello stesso sistema della mappa
     marker.style.display = "block";
 
-    marker.style.left = "450px";
-    marker.style.top = "250px";
+    marker.style.left = (current.x * zoom + offsetX) + "px";
+    marker.style.top = (current.y * zoom + offsetY) + "px";
 }
 
 // ==========================
