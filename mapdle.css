@@ -44,7 +44,7 @@ h1 {
     transform-origin: top left;
 }
 
-/* MARKER ROSSO */
+/* MARKER ROSSO 
 #marker {
     position: absolute;
     /*aggiunta prossima riga*/
@@ -55,9 +55,10 @@ h1 {
     background: red;
     border: 2px solid white;
     border-radius: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0.6);
+   /* transform: translate(-50%, -50%);*/
     display: block/*none*/;
-}
+} */
 
 /* CONTROLS */
 .controls {
