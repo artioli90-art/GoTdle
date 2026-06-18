@@ -1,3 +1,4 @@
+const viewport = document.getElementById("mapViewport");
 const mapImage = document.getElementById("mapImage");
 const marker = document.getElementById("marker");
 const select = document.getElementById("guessInput");
@@ -35,29 +36,23 @@ const current = locations[index];
 // immagine fissa mappa
 mapImage.src = "images/map/map.png";
 
-mapImage.style.left = "-800px";
-mapImage.style.top = "-200px";
-
 // ==========================
-// MARKER POSITION - versione vecchia
+// MARKER POSITION - versione old
 // ==========================
 //function placeMarker() {
-  //  marker.style.display = "block";
+   // marker.style.display = "block";
 
-  //  marker.style.left = current.x + "px";
-  //  marker.style.top = current.y + "px";
+   // marker.style.left = current.x + "px";
+   // marker.style.top = current.y + "px";
+
+  //  marker.style.zIndex = "999";
 //}
-
 // ==========================
-// MARKER POSITION - versione nuova
+// MARKER POSITION - versione new
 // ==========================
 function placeMarker() {
-    marker.style.display = "block";
-
     marker.style.left = current.x + "px";
     marker.style.top = current.y + "px";
-
-    marker.style.zIndex = "999";
 }
 // ==========================
 // DROPDOWN
