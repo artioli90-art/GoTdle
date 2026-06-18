@@ -47,7 +47,7 @@ mapImage.onload = () => {
 // ==========================
 function centerMap() {
 
-    const zoom = 2;
+    const zoom = 1.5;
 
     const viewportWidth = 900;
     const viewportHeight = 500;
