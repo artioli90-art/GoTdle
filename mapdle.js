@@ -6,20 +6,17 @@ const feedback = document.getElementById("feedback");
 
 let guessed = [];
 
-const VIEWPORT_W = 900;
-const VIEWPORT_H = 500;
-const MAP_W = 3358;
-const MAP_H = 1681;
-
 // ==========================
 // DAILY SEED
 // ==========================
 function getDailyIndex(seed, length) {
     let value = 0;
+
     for (let i = 0; i < seed.toString().length; i++) {
         value = ((value << 5) - value) + seed.toString().charCodeAt(i);
         value |= 0;
     }
+
     return Math.abs(value) % length;
 }
 
@@ -29,89 +26,104 @@ const seed =
     (today.getMonth() + 1) * 100 +
     today.getDate();
 
+// ==========================
+// LOAD DATA (da map.js)
+// ==========================
 const index = getDailyIndex(seed, locations.length);
 const current = locations[index];
 
-// ==========================
-// MAP INIT
-// ==========================
+// immagine fissa mappa
 mapImage.src = "images/map/map.png";
 
-mapImage.onload = () => {
-    render();
-};
-
 // ==========================
-// CORE RENDER (MAP + MARKER)
+// MARKER POSITION
 // ==========================
-function render() {
-
-    const zoom = 1.2;
-
-    // centro sul punto
-    const offsetX = VIEWPORT_W / 2 - current.x * zoom;
-    const offsetY = VIEWPORT_H / 2 - current.y * zoom;
-
-    // applico SOLO alla mappa
-    mapImage.style.transform =
-        `translate(${offsetX}px, ${offsetY}px) scale(${zoom})`;
-
-    // marker nello stesso sistema della mappa trasformata
+function placeMarker() {
     marker.style.display = "block";
-    marker.style.left = (current.x * zoom + offsetX) + "px";
-    marker.style.top = (current.y * zoom + offsetY) + "px";
+
+    marker.style.left = current.x + "px";
+    marker.style.top = current.y + "px";
 }
 
 // ==========================
 // DROPDOWN
 // ==========================
 function setupDropdown() {
-
     select.innerHTML = `<option value="">Seleziona un luogo</option>`;
 
     const names = [...new Set(locations.map(l => l.name))];
-    names.sort();
 
-    for (const name of names) {
+    names.forEach(name => {
         const opt = document.createElement("option");
         opt.value = name;
         opt.textContent = name;
         select.appendChild(opt);
-    }
+    });
 }
 
 setupDropdown();
 
 // ==========================
+// HINTS
+// ==========================
+function getHint() {
+    if (guessed.length === 3) {
+        feedback.textContent = "📍 Regione: " + current.region;
+    }
+
+    if (guessed.length === 6) {
+        feedback.textContent = "🏰 Casata: " + current.house;
+    }
+
+    if (guessed.length === 9) {
+        feedback.textContent = "🔤 Inizia con: " + current.name[0].toUpperCase();
+    }
+}
+
+// ==========================
+// RESULTS
+// ==========================
+function addResult(name, correct) {
+    const row = document.createElement("tr");
+
+    const guessCell = document.createElement("td");
+    guessCell.textContent = name;
+
+    const resultCell = document.createElement("td");
+    resultCell.textContent = correct ? "✔" : "✖";
+
+    resultCell.className = correct ? "correct" : "wrong";
+
+    row.appendChild(guessCell);
+    row.appendChild(resultCell);
+
+    tbody.prepend(row);
+}
+
+// ==========================
 // CHECK
 // ==========================
-document.getElementById("checkBtn").addEventListener("click", () => {
-
+function checkGuess() {
     const guess = select.value;
-    if (!guess || guessed.includes(guess)) return;
+
+    if (!guess) return;
+    if (guessed.includes(guess)) return;
 
     guessed.push(guess);
 
     const correct = guess === current.name;
 
-    const row = document.createElement("tr");
-
-    const a = document.createElement("td");
-    const b = document.createElement("td");
-
-    a.textContent = guess;
-    b.textContent = correct ? "✔" : "✖";
-    b.className = correct ? "correct" : "wrong";
-
-    row.appendChild(a);
-    row.appendChild(b);
-
-    tbody.prepend(row);
+    addResult(guess, correct);
 
     if (correct) {
         feedback.textContent = "🏆 Corretto!";
+        placeMarker();
         return;
     }
 
     feedback.textContent = "✖ Sbagliato";
-});
+
+    getHint();
+}
+
+document.getElementById("checkBtn").addEventListener("click", checkGuess);
