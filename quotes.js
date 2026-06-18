@@ -141,7 +141,7 @@ const quotes = [
 },
 {
   testo: "Io sono solo onesto. È il mondo che è orribile",
-  autore: "Sandro Clegane",
+  autore: "Sandor Clegane",
   destinatario: "Sansa Stark"
 },
 {
