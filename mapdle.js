@@ -55,7 +55,13 @@ function placeMarker() {
     marker.style.top = "250px";
 }
 //VERIFICA - FINE
-
+//PROVA QUI PER VEDERLO SEMPRE
+if (correct) {
+        feedback.textContent = "🏆 Corretto!";
+        placeMarker();
+        return;
+    }
+//FINE PROVA
 // ==========================
 // DROPDOWN
 // ==========================
@@ -126,11 +132,12 @@ function checkGuess() {
 
     addResult(guess, correct);
 
-    if (correct) {
-        feedback.textContent = "🏆 Corretto!";
-        placeMarker();
-        return;
-    }
+    //SPOSTATO DA QUI
+    //if (correct) {
+      //  feedback.textContent = "🏆 Corretto!";
+       // placeMarker();
+        //return;
+    //}
 
     feedback.textContent = "✖ Sbagliato";
 
