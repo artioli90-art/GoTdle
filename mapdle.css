@@ -1,57 +1,82 @@
 body {
     background: #111;
-    color: white;
+    color: #e5d3a1;
     font-family: Cinzel, serif;
     text-align: center;
 }
 
-h1 {
-    margin: 20px;
-}
-
+/* MAPPA */
 .map-wrapper {
     position: relative;
     width: 900px;
     margin: 20px auto;
-    border: 3px solid #8b6f2b;
 }
 
-/* mappa sempre scalata in modo stabile */
 #mapImage {
     width: 100%;
+    border: 3px solid #8b6f2b;
     display: block;
 }
 
-/* marker SEMPRE visibile */
+/* MARKER */
 #marker {
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     background: red;
     border: 2px solid white;
     border-radius: 50%;
     transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
-/* UI */
-select, button {
+/* DROPDOWN GOT STYLE */
+select {
+    background: #1a1a1a;
+    color: #e5d3a1;
+    border: 2px solid #8b6f2b;
     padding: 10px;
-    margin: 10px;
+    font-family: Cinzel, serif;
     font-size: 16px;
 }
 
+button {
+    padding: 10px;
+    background: #8b6f2b;
+    border: none;
+    color: black;
+    font-family: Cinzel, serif;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #b08a3a;
+}
+
+/* FEEDBACK */
 #feedback {
-    margin: 10px;
+    margin-top: 10px;
     font-weight: bold;
-    color: white;
+    color: #fff;
 }
 
+/* TABLE */
 table {
-    margin: auto;
+    margin: 20px auto;
+    border-collapse: collapse;
     width: 60%;
-    color: white;
+    color: #fff;
 }
 
-td {
-    padding: 5px;
+th, td {
+    border: 1px solid #8b6f2b;
+    padding: 8px;
+}
+
+.correct {
+    background: rgba(0, 200, 0, 0.2);
+}
+
+.wrong {
+    background: rgba(200, 0, 0, 0.2);
 }
