@@ -21,47 +21,33 @@ function getDailyIndex(seed, length) {
 }
 
 const today = new Date();
+
 const seed =
     today.getFullYear() * 10000 +
     (today.getMonth() + 1) * 100 +
     today.getDate();
 
 // ==========================
-// LOAD DATA (da map.js)
+// PERSONAGGIO DEL GIORNO
 // ==========================
 const index = getDailyIndex(seed, locations.length);
 const current = locations[index];
 
-// immagine fissa mappa
+// ==========================
+// MAPPA
+// ==========================
 mapImage.src = "images/map/map.png";
 
+mapImage.onload = () => {
+    centerMap();
+};
+
 // ==========================
-// MARKER POSITION - CONSERVA
+// CENTRA MAPPA SUL MARKER
 // ==========================
-//function placeMarker() {
-  //  marker.style.display = "block";
+function centerMap() {
 
-    //const scale = 0.35;
-
-    //marker.style.left = (current.x * scale) + "px";
-    //marker.style.top = (current.y * scale) + "px";
-//}
-
-//VERIFICA - INIZIO
-function placeMarker() {
-    marker.style.display = "block";
-
-    marker.style.left = "450px";
-    marker.style.top = "250px";
-}
-//VERIFICA - FINE
-//PROVA QUI PER VEDERLO SEMPRE
-if (correct) {
-        feedback.textContent = "🏆 Corretto!";
-        placeMarker();
-    function centerMap() {
-
-    const zoom = 1.8;
+    const zoom = 2;
 
     const viewportWidth = 900;
     const viewportHeight = 500;
@@ -74,30 +60,38 @@ if (correct) {
         viewportHeight / 2 -
         current.y * zoom;
 
+    mapImage.style.transformOrigin = "top left";
+
     mapImage.style.transform =
         `translate(${offsetX}px, ${offsetY}px) scale(${zoom})`;
 
-    marker.style.left =
-        (current.x * zoom + offsetX) + "px";
+    marker.style.display = "block";
 
-    marker.style.top =
-        (current.y * zoom + offsetY) + "px";
+    marker.style.left = "450px";
+    marker.style.top = "250px";
 }
-        return;
-    }
-//FINE PROVA
+
 // ==========================
 // DROPDOWN
 // ==========================
 function setupDropdown() {
-    select.innerHTML = `<option value="">Seleziona un luogo</option>`;
 
-    const names = [...new Set(locations.map(l => l.name))];
+    select.innerHTML =
+        `<option value="">Seleziona un luogo</option>`;
+
+    const names =
+        [...new Set(locations.map(l => l.name))];
+
+    names.sort();
 
     names.forEach(name => {
-        const opt = document.createElement("option");
+
+        const opt =
+            document.createElement("option");
+
         opt.value = name;
         opt.textContent = name;
+
         select.appendChild(opt);
     });
 }
@@ -108,32 +102,45 @@ setupDropdown();
 // HINTS
 // ==========================
 function getHint() {
+
     if (guessed.length === 3) {
-        feedback.textContent = "📍 Regione: " + current.region;
+        feedback.textContent =
+            "📍 Regione: " + current.region;
     }
 
     if (guessed.length === 6) {
-        feedback.textContent = "🏰 Casata: " + current.house;
+        feedback.textContent =
+            "🏰 Casata: " + current.house;
     }
 
     if (guessed.length === 9) {
-        feedback.textContent = "🔤 Inizia con: " + current.name[0].toUpperCase();
+        feedback.textContent =
+            "🔤 Inizia con: " +
+            current.name[0].toUpperCase();
     }
 }
 
 // ==========================
-// RESULTS
+// RISULTATI
 // ==========================
 function addResult(name, correct) {
-    const row = document.createElement("tr");
 
-    const guessCell = document.createElement("td");
+    const row =
+        document.createElement("tr");
+
+    const guessCell =
+        document.createElement("td");
+
+    const resultCell =
+        document.createElement("td");
+
     guessCell.textContent = name;
 
-    const resultCell = document.createElement("td");
-    resultCell.textContent = correct ? "✔" : "✖";
+    resultCell.textContent =
+        correct ? "✔" : "✖";
 
-    resultCell.className = correct ? "correct" : "wrong";
+    resultCell.className =
+        correct ? "correct" : "wrong";
 
     row.appendChild(guessCell);
     row.appendChild(resultCell);
@@ -145,27 +152,35 @@ function addResult(name, correct) {
 // CHECK
 // ==========================
 function checkGuess() {
+
     const guess = select.value;
 
     if (!guess) return;
-    if (guessed.includes(guess)) return;
+
+    if (guessed.includes(guess))
+        return;
 
     guessed.push(guess);
 
-    const correct = guess === current.name;
+    const correct =
+        guess === current.name;
 
     addResult(guess, correct);
 
-    //SPOSTATO DA QUI
-    //if (correct) {
-      //  feedback.textContent = "🏆 Corretto!";
-       // placeMarker();
-        //return;
-    //}
+    if (correct) {
 
-    feedback.textContent = "✖ Sbagliato";
+        feedback.textContent =
+            "🏆 Corretto!";
+
+        return;
+    }
+
+    feedback.textContent =
+        "✖ Sbagliato";
 
     getHint();
 }
 
-document.getElementById("checkBtn").addEventListener("click", checkGuess);
+document
+    .getElementById("checkBtn")
+    .addEventListener("click", checkGuess);
