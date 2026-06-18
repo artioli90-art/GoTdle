@@ -35,6 +35,9 @@ const current = locations[index];
 
 // immagine fissa mappa
 mapImage.src = "images/map/map.png";
+mapImage.onload = () => {
+    placeMarker(); // SEMPRE visibile
+};
 
 // ==========================
 // MARKER POSITION - versione old
@@ -51,6 +54,8 @@ mapImage.src = "images/map/map.png";
 // MARKER POSITION - versione new
 // ==========================
 function placeMarker() {
+    marker.style.display = "block";
+
     marker.style.left = current.x + "px";
     marker.style.top = current.y + "px";
 }
