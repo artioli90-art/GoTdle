@@ -1,1 +1,73 @@
+body {
+    background: #111;
+    color: #e5d3a1;
+    font-family: Cinzel, serif;
+    text-align: center;
+}
 
+h1 {
+    margin: 20px;
+}
+
+/* MAPPA CONTAINER */
+.map-wrapper {
+    position: relative;
+    width: 900px;
+    height: auto;
+    margin: 20px auto;
+}
+
+#mapImage {
+    width: 100%;
+    border: 3px solid #8b6f2b;
+    display: block;
+}
+
+/* MARKER ROSSO */
+#marker {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: red;
+    border: 2px solid white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+/* CONTROLS */
+.controls {
+    margin-top: 15px;
+}
+
+select, button {
+    padding: 10px;
+    font-size: 16px;
+    margin: 5px;
+}
+
+/* FEEDBACK */
+#feedback {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* TABELLA */
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 60%;
+}
+
+th, td {
+    border: 1px solid #8b6f2b;
+    padding: 8px;
+}
+
+.correct {
+    background: rgba(0, 200, 0, 0.2);
+}
+
+.wrong {
+    background: rgba(200, 0, 0, 0.2);
+}
