@@ -8,8 +8,7 @@ body {
 h1 {
     margin: 20px;
 }
-
-/* MAPPA CONTAINER */
+/* VERSIONE PRECEDENTE
 .map-wrapper {
     position: relative;
     width: 900px;
@@ -21,6 +20,28 @@ h1 {
     width: 100%;
     border: 3px solid #8b6f2b;
     display: block;
+}
+/*
+/* VERSIONE NUOVA */
+.map-wrapper {
+    position: relative;
+    width: 900px;
+    height: 500px;
+    margin: 20px auto;
+    overflow: hidden;
+    border: 3px solid #8b6f2b;
+}
+
+#mapImage {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 3358px;
+    height: 1681px;
+
+    transform: scale(0.6); /* 👈 ZOOM BASE */
+    transform-origin: top left;
 }
 
 /* MARKER ROSSO */
