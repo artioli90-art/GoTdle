@@ -36,15 +36,26 @@ const current = locations[index];
 mapImage.src = "images/map/map.png";
 
 // ==========================
-// MARKER POSITION
+// MARKER POSITION - versione vecchia
+// ==========================
+//function placeMarker() {
+  //  marker.style.display = "block";
+
+  //  marker.style.left = current.x + "px";
+  //  marker.style.top = current.y + "px";
+//}
+
+// ==========================
+// MARKER POSITION - versione nuova
 // ==========================
 function placeMarker() {
     marker.style.display = "block";
 
     marker.style.left = current.x + "px";
     marker.style.top = current.y + "px";
-}
 
+    marker.style.zIndex = "999";
+}
 // ==========================
 // DROPDOWN
 // ==========================
