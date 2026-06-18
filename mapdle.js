@@ -1,35 +1,13 @@
-const viewport = document.getElementById("mapViewport");
+const mapInner = document.getElementById("mapInner");
 const mapImage = document.getElementById("mapImage");
 const marker = document.getElementById("marker");
-const select = document.getElementById("guessInput");
-const tbody = document.querySelector("#results tbody");
-const feedback = document.getElementById("feedback");
 
-//NUOVA ADD 1//
 const MAP_WIDTH = 3358;
 const MAP_HEIGHT = 1681;
-const VIEWPORT_WIDTH = 900;
-const VIEWPORT_HEIGHT = 500;
-//FINE ADD 1//
 
-let guessed = [];
+const VIEW_W = 900;
+const VIEW_H = 500;
 
-//NUOVA ADD 2//
-
-function centerOnMarker() {
-    const scaleX = VIEWPORT_WIDTH / MAP_WIDTH;
-    const scaleY = VIEWPORT_HEIGHT / MAP_HEIGHT;
-
-    const offsetX = VIEWPORT_WIDTH / 2 - current.x * scaleX;
-    const offsetY = VIEWPORT_HEIGHT / 2 - current.y * scaleY;
-
-    mapViewport.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scaleX}, ${scaleY})`;
-}
-//FINE ADD 2//
-
-// ==========================
-// DAILY SEED
-// ==========================
 function getDailyIndex(seed, length) {
     let value = 0;
 
@@ -47,37 +25,22 @@ const seed =
     (today.getMonth() + 1) * 100 +
     today.getDate();
 
-// ==========================
-// LOAD DATA (da map.js)
-// ==========================
 const index = getDailyIndex(seed, locations.length);
 const current = locations[index];
 
-// immagine fissa mappa
+// ==========================
+// INIT MAP
+// ==========================
 mapImage.src = "images/map/map.png";
-mapImage.onload = () => {
-    placeMarker(); // SEMPRE visibile
-};
 
 // ==========================
-// MARKER POSITION - versione old
-// ==========================
-//function placeMarker() {
-   // marker.style.display = "block";
-
-   // marker.style.left = current.x + "px";
-   // marker.style.top = current.y + "px";
-
-  //  marker.style.zIndex = "999";
-//}
-// ==========================
-// MARKER POSITION - versione new
+// PLACE MARKER (SEMPRE)
 // ==========================
 function placeMarker() {
-    marker.style.display = "block";
-
     marker.style.left = current.x + "px";
     marker.style.top = current.y + "px";
+}
+
 }
 // ==========================
 // DROPDOWN
@@ -94,6 +57,32 @@ function setupDropdown() {
         select.appendChild(opt);
     });
 }
+// ==========================
+// CENTER CAMERA ON TARGET
+// ==========================
+function centerMapOnTarget() {
+    const scale = 0.32;
+
+    const scaledW = MAP_WIDTH * scale;
+    const scaledH = MAP_HEIGHT * scale;
+
+    const targetX = current.x * scale;
+    const targetY = current.y * scale;
+
+    const offsetX = (VIEW_W / 2) - targetX;
+    const offsetY = (VIEW_H / 2) - targetY;
+
+    mapInner.style.transform =
+        `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+}
+
+// ==========================
+// INIT
+// ==========================
+mapImage.onload = () => {
+    placeMarker();
+    centerMapOnTarget();
+};
 
 setupDropdown();
 
