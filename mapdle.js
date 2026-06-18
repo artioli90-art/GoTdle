@@ -1,13 +1,26 @@
-const mapInner = document.getElementById("mapInner");
-const mapImage = document.getElementById("mapImage");
+const canvas = document.getElementById("mapCanvas");
 const marker = document.getElementById("marker");
+const select = document.getElementById("guessInput");
+const feedback = document.getElementById("feedback");
+const tbody = document.querySelector("#results tbody");
 
-const MAP_WIDTH = 3358;
-const MAP_HEIGHT = 1681;
+let guessed = [];
+
+// ==========================
+// MAP SETTINGS
+// ==========================
+const MAP_W = 3358;
+const MAP_H = 1681;
 
 const VIEW_W = 900;
 const VIEW_H = 500;
 
+// zoom base (più piccolo = più zoom)
+const BASE_ZOOM = 0.25;
+
+// ==========================
+// DAILY SEED
+// ==========================
 function getDailyIndex(seed, length) {
     let value = 0;
 
@@ -29,124 +42,89 @@ const index = getDailyIndex(seed, locations.length);
 const current = locations[index];
 
 // ==========================
-// INIT MAP
+// INIT DROPDOWN
 // ==========================
-mapImage.src = "images/map/map.png";
+function setupDropdown() {
+    select.innerHTML = `<option value="">Seleziona luogo</option>`;
+
+    locations.forEach(l => {
+        const opt = document.createElement("option");
+        opt.value = l.name;
+        opt.textContent = l.name;
+        select.appendChild(opt);
+    });
+}
+
+setupDropdown();
 
 // ==========================
-// PLACE MARKER (SEMPRE)
+// PLACE MARKER
 // ==========================
 function placeMarker() {
     marker.style.left = current.x + "px";
     marker.style.top = current.y + "px";
 }
 
-}
 // ==========================
-// DROPDOWN
+// CAMERA (zoom + focus)
 // ==========================
-function setupDropdown() {
-    select.innerHTML = `<option value="">Seleziona un luogo</option>`;
+function centerOnTarget() {
 
-    const names = [...new Set(locations.map(l => l.name))];
+    const scale = BASE_ZOOM;
 
-    names.forEach(name => {
-        const opt = document.createElement("option");
-        opt.value = name;
-        opt.textContent = name;
-        select.appendChild(opt);
-    });
-}
-// ==========================
-// CENTER CAMERA ON TARGET
-// ==========================
-function centerMapOnTarget() {
-    const scale = 0.32;
+    const scaledX = current.x * scale;
+    const scaledY = current.y * scale;
 
-    const scaledW = MAP_WIDTH * scale;
-    const scaledH = MAP_HEIGHT * scale;
+    const offsetX = (VIEW_W / 2) - scaledX;
+    const offsetY = (VIEW_H / 2) - scaledY;
 
-    const targetX = current.x * scale;
-    const targetY = current.y * scale;
-
-    const offsetX = (VIEW_W / 2) - targetX;
-    const offsetY = (VIEW_H / 2) - targetY;
-
-    mapInner.style.transform =
+    canvas.style.transform =
         `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
 }
 
 // ==========================
-// INIT
+// INIT MAP
 // ==========================
-mapImage.onload = () => {
+window.onload = () => {
     placeMarker();
-    centerMapOnTarget();
+    centerOnTarget();
 };
 
-setupDropdown();
-
 // ==========================
-// HINTS
-// ==========================
-function getHint() {
-    if (guessed.length === 3) {
-        feedback.textContent = "📍 Regione: " + current.region;
-    }
-
-    if (guessed.length === 6) {
-        feedback.textContent = "🏰 Casata: " + current.house;
-    }
-
-    if (guessed.length === 9) {
-        feedback.textContent = "🔤 Inizia con: " + current.name[0].toUpperCase();
-    }
-}
-
-// ==========================
-// RESULTS
-// ==========================
-function addResult(name, correct) {
-    const row = document.createElement("tr");
-
-    const guessCell = document.createElement("td");
-    guessCell.textContent = name;
-
-    const resultCell = document.createElement("td");
-    resultCell.textContent = correct ? "✔" : "✖";
-
-    resultCell.className = correct ? "correct" : "wrong";
-
-    row.appendChild(guessCell);
-    row.appendChild(resultCell);
-
-    tbody.prepend(row);
-}
-
-// ==========================
-// CHECK
+// GAME
 // ==========================
 function checkGuess() {
     const guess = select.value;
 
-    if (!guess) return;
-    if (guessed.includes(guess)) return;
-
+    if (!guess || guessed.includes(guess)) return;
     guessed.push(guess);
 
     const correct = guess === current.name;
 
-    addResult(guess, correct);
+    const row = document.createElement("tr");
+    row.innerHTML = `
+        <td>${guess}</td>
+        <td class="${correct ? "correct" : "wrong"}">
+            ${correct ? "✔" : "✖"}
+        </td>
+    `;
+
+    tbody.prepend(row);
 
     if (correct) {
         feedback.textContent = "🏆 Corretto!";
-        placeMarker();
-        return;
+        marker.style.background = "lime";
+    } else {
+        feedback.textContent = "✖ Sbagliato";
+
+        // piccolo shake “game feel”
+        let z = parseFloat(canvas.dataset.zoom || BASE_ZOOM);
+        z = Math.max(0.18, z - 0.02);
+        canvas.dataset.zoom = z;
+
+        canvas.style.transform =
+            `translate(${parseFloat(canvas.style.left||0)}px, ${parseFloat(canvas.style.top||0)}px) scale(${z})`;
     }
-
-    feedback.textContent = "✖ Sbagliato";
-
-    getHint();
 }
 
 document.getElementById("checkBtn").addEventListener("click", checkGuess);
