@@ -1,366 +1,333 @@
 const locations = [
-{
-  name: "forte terrore",
-  region: "",
-  house: "",
-  x: 205,
-  y: 115
-},
-{
-  name: "karhold",
-  region: "",
-  house: "",
-  x: 239,
-  y: 94
-},
-{
-  name: "ultimo focolare",
-  region: "",
-  house: "",
-  x: 200,
-  y: 83
-},
-{
-  name: "deepwood motte",
-  region: "",
-  house: "",
-  x: 118,
-  y: 100
-},
-{
-  name: "isola dell'orso",
-  region: "",
-  house: "",
-  x: 107,
-  y: 71
-},
-{
-  name: "pugno dei primi uomini",
-  region: "",
-  house: "",
-  x: 147,
-  y: 15
-},
-{
-  name: "castello di craster",
-  region: "",
-  house: "",
-  x: 180,
-  y: 30
-},
-{
-  name: "aspra dimora",
-  region: "",
-  house: "",
-  x: 216,
-  y: 16
-},
-{
-  name: "torre delle ombre",
-  region: "",
-  house: "",
-  x: 167,
-  y: 43
-},
-{
-  name: "castello nero",
-  region: "",
-  house: "",
-  x: 188,
-  y: 45
-},
-{
-  name: "piazza di torrhen",
-  region: "",
-  house: "",
-  x: 121,
-  y: 143
-},
-{
-  name: "grande inverno",
-  region: "",
-  house: "",
-  x: 154,
-  y: 127
-},
-{
-  name: "porto bianco",
-  region: "",
-  house: "",
-  x: 180,
-  y: 174
-},
-{
-  name: "moat cailin",
-  region: "",
-  house: "",
-  x: 157,
-  y: 184
-},
-{
-  name: "delta delle acque",
-  region: "",
-  house: "",
-  x: 135,
-  y: 286
-},
-{
-  name: "castel granito",
-  region: "",
-  house: "",
-  x: 77,
-  y: 318
-},
-{
-  name: "lannisport",
-  region: "",
-  house: "",
-  x: 77,
-  y: 326
-},
-{
-  name: "pyke",
-  region: "",
-  house: "",
-  x: 80,
-  y: 266
-},
-{
-  name: "forte clegane",
-  region: "",
-  house: "",
-  x: 80,
-  y: 329
-},
-{
-  name: "harrenhal",
-  region: "",
-  house: "",
-  x: 174,
-  y: 296
-},
-{
-  name: "nido dell'aquila",
-  region: "",
-  house: "",
-  x: 215,
-  y: 260
-},
-{
-  name: "porta insanguinata",
-  region: "",
-  house: "",
-  x: 205,
-  y: 265
-},
-{
-  name: "maidenpool",
-  region: "",
-  house: "",
-  x: 207,
-  y: 302
-},
-{
-  name: "roccia del drago",
-  region: "",
-  house: "",
-  x: 244,
-  y: 314
-},
-{
-  name: "tarth",
-  region: "",
-  house: "",
-  x: 255,
-  y: 378
-},
-{
-  name: "capo tempesta",
-  region: "",
-  house: "",
-  x: 227,
-  y: 384
-},
-{
-  name: "sala dell'estate",
-  region: "",
-  house: "",
-  x: 191,
-  y: 387
-},
-{
-  name: "rostro del grifone",
-  region: "",
-  house: "",
-  x: 219,
-  y: 392
-},
-{
-  name: "lancia del sole",
-  region: "",
-  house: "",
-  x: 249,
-  y: 465
-},
-{
-  name: "arbor",
-  region: "",
-  house: "",
-  x: 57,
-  y: 471
-},
-{
-  name: "collina del corno",
-  region: "",
-  house: "",
-  x: 114,
-  y: 414
-},
-{
-  name: "vecchia citta",
-  region: "",
-  house: "",
-  x: 75,
-  y: 434
-},
-{
-  name: "stelle al tramonto",
-  region: "",
-  house: "",
-  x: 115,
-  y: 448
-},
-{
-  name: "approdo del re",
-  region: "",
-  house: "",
-  x: 208,
-  y: 337
-},
-{
-  name: "baia delle acque nere",
-  region: "",
-  house: "",
-  x: 228,
-  y: 330
-},
-{
-  name: "le stepstone",
-  region: "",
-  house: "",
-  x: 280,
-  y: 435
-},
-{
-  name: "collina fantasma",
-  region: "",
-  house: "",
-  x: 244,
-  y: 446
-},
-{
-  name: "alto giardino",
-  region: "",
-  house: "",
-  x: 107,
-  y: 399
-},
-{
-  name: "ashford",
-  region: "",
-  house: "",
-  x: 144,
-  y: 393
-},
-{
-  name: "le dita",
-  region: "",
-  house: "",
-  x: 242,
-  y: 222
-},
-{
-  name: "braavos",
-  region: "",
-  house: "",
-  x: 314,
-  y: 231
-},
-{
-  name: "pentos",
-  region: "",
-  house: "",
-  x: 314,
-  y: 341
-},
-{
-  name: "volantis",
-  region: "",
-  house: "",
-  x: 428,
-  y: 466
-},
-{
-  name: "valyria",
-  region: "",
-  house: "",
-  x: 488,
-  y: 560
-},
-{
-  name: "lys",
-  region: "",
-  house: "",
-  x: 320,
-  y: 466
-},
-{
-  name: "tyrosh",
-  region: "",
-  house: "",
-  x: 291,
-  y: 411
-},
-{
-  name: "myr",
-  region: "",
-  house: "",
-  x: 336,
-  y: 408
-},
-{
-  name: "vaes dothrak",
-  region: "",
-  house: "",
-  x: 743,
-  y: 311
-},
-{
-  name: "mereen",
-  region: "",
-  house: "",
-  x: 623,
-  y: 436
-},
-{
-  name: "astapor",
-  region: "",
-  house: "",
-  x: 596,
-  y: 493
-},
-{
-  name: "yunkai",
-  region: "",
-  house: "",
-  x: 605,
-  y: 451
-},
-{
-  name: "qarth",
-  region: "",
-  house: "",
-  x: 802,
-  y: 537
-}
+    // =========================
+    // MAP 1
+    // =========================
+    {
+        map: "map1.png",
+        name: "forte terrore",
+        x: 167,
+        y: 115
+    },
+    {
+        map: "map1.png",
+        name: "karhold",
+        x: 201,
+        y: 95
+    },
+    {
+        map: "map1.png",
+        name: "ultimo focolare",
+        x: 162,
+        y: 83
+    },
+    {
+        map: "map1.png",
+        name: "deepwood motte",
+        x: 81,
+        y: 100
+    },
+    {
+        map: "map1.png",
+        name: "isola dell'orso",
+        x: 69,
+        y: 71
+    },
+    {
+        map: "map1.png",
+        name: "pugno dei primi uomini",
+        x: 110,
+        y: 16
+    },
+    {
+        map: "map1.png",
+        name: "castello di craster",
+        x: 142,
+        y: 30
+    },
+    {
+        map: "map1.png",
+        name: "aspra dimora",
+        x: 178,
+        y: 16
+    },
+    {
+        map: "map1.png",
+        name: "torre delle ombre",
+        x: 128,
+        y: 43
+    },
+    {
+        map: "map1.png",
+        name: "castello nero",
+        x: 150,
+        y: 45
+    },
+    {
+        map: "map1.png",
+        name: "piazza di torrhen",
+        x: 83,
+        y: 143
+    },
+    {
+        map: "map1.png",
+        name: "grande inverno",
+        x: 116,
+        y: 127
+    },
+    {
+        map: "map1.png",
+        name: "porto bianco",
+        x: 141,
+        y: 174
+    },
+    {
+        map: "map1.png",
+        name: "moat cailin",
+        x: 119,
+        y: 184
+    },
+    {
+        map: "map1.png",
+        name: "le dita",
+        x: 202,
+        y: 220
+    },
+
+    // =========================
+    // MAP 2
+    // =========================
+    {
+        map: "map2.png",
+        name: "delta delle acque",
+        x: 87,
+        y: 46
+    },
+    {
+        map: "map2.png",
+        name: "castel granito",
+        x: 30,
+        y: 78
+    },
+    {
+        map: "map2.png",
+        name: "lannisport",
+        x: 29,
+        y: 87
+    },
+    {
+        map: "map2.png",
+        name: "pyke",
+        x: 32,
+        y: 26
+    },
+    {
+        map: "map2.png",
+        name: "forte clegane",
+        x: 32,
+        y: 89
+    },
+    {
+        map: "map2.png",
+        name: "harrenhal",
+        x: 126,
+        y: 56
+    },
+    {
+        map: "map2.png",
+        name: "nido dell'aquila",
+        x: 167,
+        y: 21
+    },
+    {
+        map: "map2.png",
+        name: "porta insanguinata",
+        x: 157,
+        y: 26
+    },
+    {
+        map: "map2.png",
+        name: "maidenpool",
+        x: 160,
+        y: 63
+    },
+    {
+        map: "map2.png",
+        name: "roccia del drago",
+        x: 196,
+        y: 74
+    },
+    {
+        map: "map2.png",
+        name: "tarth",
+        x: 208,
+        y: 137
+    },
+    {
+        map: "map2.png",
+        name: "capo tempesta",
+        x: 179,
+        y: 144
+    },
+    {
+        map: "map2.png",
+        name: "sala dell'estate",
+        x: 144,
+        y: 148
+    },
+    {
+        map: "map2.png",
+        name: "rostro del grifone",
+        x: 171,
+        y: 152
+    },
+    {
+        map: "map2.png",
+        name: "lancia del sole",
+        x: 201,
+        y: 225
+    },
+    {
+        map: "map2.png",
+        name: "arbor",
+        x: 10,
+        y: 232
+    },
+    {
+        map: "map2.png",
+        name: "collina del corno",
+        x: 67,
+        y: 175
+    },
+    {
+        map: "map2.png",
+        name: "vecchia citta",
+        x: 28,
+        y: 194
+    },
+    {
+        map: "map2.png",
+        name: "stelle al tramonto",
+        x: 68,
+        y: 208
+    },
+    {
+        map: "map2.png",
+        name: "approdo del re",
+        x: 160,
+        y: 98
+    },
+    {
+        map: "map2.png",
+        name: "baia delle acque nere",
+        x: 180,
+        y: 95
+    },
+    {
+        map: "map2.png",
+        name: "le stepstone",
+        x: 229,
+        y: 195
+    },
+    {
+        map: "map2.png",
+        name: "collina fantasma",
+        x: 196,
+        y: 206
+    },
+    {
+        map: "map2.png",
+        name: "alto giardino",
+        x: 60,
+        y: 160
+    },
+    {
+        map: "map2.png",
+        name: "ashford",
+        x: 97,
+        y: 153
+    },
+
+    // =========================
+    // MAP 3
+    // =========================
+    {
+        map: "map3.png",
+        name: "braavos",
+        x: 27,
+        y: 8
+    },
+    {
+        map: "map3.png",
+        name: "pentos",
+        x: 28,
+        y: 118
+    },
+    {
+        map: "map3.png",
+        name: "volantis",
+        x: 142,
+        y: 243
+    },
+    {
+        map: "map3.png",
+        name: "lys",
+        x: 34,
+        y: 243
+    },
+    {
+        map: "map3.png",
+        name: "tyrosh",
+        x: 5,
+        y: 188
+    },
+    {
+        map: "map3.png",
+        name: "myr",
+        x: 50,
+        y: 185
+    },
+
+    // =========================
+    // MAP 4
+    // =========================
+    {
+        map: "map4.png",
+        name: "valyria",
+        x: 13,
+        y: 147
+    },
+    {
+        map: "map4.png",
+        name: "mereen",
+        x: 147,
+        y: 22
+    },
+    {
+        map: "map4.png",
+        name: "astapor",
+        x: 120,
+        y: 80
+    },
+    {
+        map: "map4.png",
+        name: "yunkai",
+        x: 130,
+        y: 37
+    },
+
+    // =========================
+    // MAP 5
+    // =========================
+    {
+        map: "map5.png",
+        name: "vaes dothrak",
+        x: 67,
+        y: 32
+    },
+    {
+        map: "map5.png",
+        name: "qarth",
+        x: 126,
+        y: 258
+    }
 ];
