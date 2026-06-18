@@ -5,7 +5,27 @@ const select = document.getElementById("guessInput");
 const tbody = document.querySelector("#results tbody");
 const feedback = document.getElementById("feedback");
 
+//NUOVA ADD 1//
+const MAP_WIDTH = 3358;
+const MAP_HEIGHT = 1681;
+const VIEWPORT_WIDTH = 900;
+const VIEWPORT_HEIGHT = 500;
+//FINE ADD 1//
+
 let guessed = [];
+
+//NUOVA ADD 2//
+
+function centerOnMarker() {
+    const scaleX = VIEWPORT_WIDTH / MAP_WIDTH;
+    const scaleY = VIEWPORT_HEIGHT / MAP_HEIGHT;
+
+    const offsetX = VIEWPORT_WIDTH / 2 - current.x * scaleX;
+    const offsetY = VIEWPORT_HEIGHT / 2 - current.y * scaleY;
+
+    mapViewport.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scaleX}, ${scaleY})`;
+}
+//FINE ADD 2//
 
 // ==========================
 // DAILY SEED
