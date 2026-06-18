@@ -59,6 +59,30 @@ function placeMarker() {
 if (correct) {
         feedback.textContent = "🏆 Corretto!";
         placeMarker();
+    function centerMap() {
+
+    const zoom = 1.8;
+
+    const viewportWidth = 900;
+    const viewportHeight = 500;
+
+    const offsetX =
+        viewportWidth / 2 -
+        current.x * zoom;
+
+    const offsetY =
+        viewportHeight / 2 -
+        current.y * zoom;
+
+    mapImage.style.transform =
+        `translate(${offsetX}px, ${offsetY}px) scale(${zoom})`;
+
+    marker.style.left =
+        (current.x * zoom + offsetX) + "px";
+
+    marker.style.top =
+        (current.y * zoom + offsetY) + "px";
+}
         return;
     }
 //FINE PROVA
