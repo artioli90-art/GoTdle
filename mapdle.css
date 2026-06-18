@@ -1,3 +1,10 @@
+body {
+    background: #111;
+    color: #e5d3a1;
+    font-family: Cinzel, serif;
+    text-align: center;
+}
+
 .map-wrapper {
     width: 900px;
     height: 500px;
@@ -7,14 +14,10 @@
     position: relative;
 }
 
-/* questo è il “mondo reale” della mappa */
-#mapInner {
+#mapCanvas {
     position: absolute;
     width: 3358px;
     height: 1681px;
-
-    /* 🔥 ZOOM BASE (importante) */
-    transform: scale(0.32);
     transform-origin: top left;
 }
 
@@ -26,11 +29,16 @@
 
 #marker {
     position: absolute;
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     background: red;
     border: 2px solid white;
     border-radius: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
+}
+
+select, button {
+    padding: 10px;
+    margin: 10px;
 }
