@@ -25,45 +25,65 @@ const seed =
     today.getDate();
 
 // ==========================
-// SAFETY CHECK (IMPORTANTISSIMO)
-// ==========================
-if (!window.locations || locations.length === 0) {
-    console.error("❌ locations non caricato o vuoto");
-}
-
-// ==========================
 // LOAD LOCATION
 // ==========================
 const index = getDailyIndex(seed, locations.length);
 const current = locations[index];
 
-console.log("DEBUG CURRENT:", current);
+// normalizzazione coordinate (BASE 900x500 viewport)
+const VIEWPORT_W = 900;
+const VIEWPORT_H = 500;
 
 // ==========================
-// MAP IMAGE SAFE LOAD
+// MAP LOAD
 // ==========================
-const mapFile = current.map || "map1"; // fallback sicuro
-mapImage.src = `images/map/${mapFile}.png`;
+mapImage.src = `images/map/${current.map}`;
 
-// se non carica la mappa
+mapImage.onload = () => {
+    placeMarker();
+};
+
+// fallback safety
 mapImage.onerror = () => {
-    console.error("❌ Errore caricamento mappa:", mapImage.src);
+    console.error("Errore caricamento mappa:", mapImage.src);
 };
 
 // ==========================
-// MARKER
+// MARKER FIX (CORRETTO)
 // ==========================
 function placeMarker() {
     marker.style.display = "block";
 
-    marker.style.left = current.x + "px";
-    marker.style.top = current.y + "px";
+    // IMPORTANTISSIMO:
+    // coordinate normalizzate rispetto alla "mappa logica"
+    // (assumiamo che tutte le mappe siano scalate a viewport)
+    const x = (current.x / getMapWidth(current.map)) * VIEWPORT_W;
+    const y = (current.y / getMapHeight(current.map)) * VIEWPORT_H;
+
+    marker.style.left = x + "px";
+    marker.style.top = y + "px";
 }
 
-// quando immagine pronta
-mapImage.onload = () => {
-    placeMarker();
-};
+// ==========================
+// DIMENSIONI MAPPE (CRUCIALE)
+// ==========================
+function getMapWidth(map) {
+    if (map === "map1.png") return 220;  // max X map1 ~ 202
+    if (map === "map2.png") return 240;
+    if (map === "map3.png") return 150;
+    if (map === "map4.png") return 160;
+    if (map === "map5.png") return 130;
+    return 220;
+}
+
+function getMapHeight(map) {
+    if (map === "map1.png") return 230;
+    if (map === "map2.png") return 250;
+    if (map === "map3.png") return 260;
+    if (map === "map4.png") return 170;
+    if (map === "map5.png") return 270;
+    return 230;
+}
 
 // ==========================
 // DROPDOWN
@@ -88,7 +108,6 @@ setupDropdown();
 // ==========================
 function checkGuess() {
     const guess = select.value;
-
     if (!guess || guessed.includes(guess)) return;
 
     guessed.push(guess);
@@ -106,10 +125,9 @@ function checkGuess() {
 
     if (correct) {
         feedback.textContent = "🏆 Corretto!";
-        return;
+    } else {
+        feedback.textContent = "✖ Sbagliato";
     }
-
-    feedback.textContent = "✖ Sbagliato";
 }
 
 document.getElementById("checkBtn").addEventListener("click", checkGuess);
