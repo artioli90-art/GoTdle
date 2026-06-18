@@ -18,9 +18,11 @@ h1 {
 }
 
 #mapViewport {
-    position: absolute;
-    left: 0;
-    top: 0;
+    position: relative;
+    width: 3358px;
+    height: 1681px;
+    transform: scale(0.27); /* zoom base iniziale */
+    transform-origin: top left;
 }
 
 #mapImage {
