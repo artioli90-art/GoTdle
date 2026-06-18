@@ -3,364 +3,364 @@ const locations = [
   name: "forte terrore",
   region: "",
   house: "",
-  x: 0.061,
-  y: 0.068
+  x: 205,
+  y: 115
 },
 {
   name: "karhold",
   region: "",
   house: "",
-  x: 0.071,
-  y: 0.056
+  x: 239,
+  y: 94
 },
 {
   name: "ultimo focolare",
   region: "",
   house: "",
-  x: 0.060,
-  y: 0.049
+  x: 200,
+  y: 83
 },
 {
   name: "deepwood motte",
   region: "",
   house: "",
-  x: 0.035,
-  y: 0.059
+  x: 118,
+  y: 100
 },
 {
   name: "isola dell'orso",
   region: "",
   house: "",
-  x: 0.032,
-  y: 0.042
+  x: 107,
+  y: 71
 },
 {
   name: "pugno dei primi uomini",
   region: "",
   house: "",
-  x: 0.044,
-  y: 0.009
+  x: 147,
+  y: 15
 },
 {
   name: "castello di craster",
   region: "",
   house: "",
-  x: 0.054,
-  y: 0.018
+  x: 180,
+  y: 30
 },
 {
   name: "aspra dimora",
   region: "",
   house: "",
-  x: 0.064,
-  y: 0.010
+  x: 216,
+  y: 16
 },
 {
   name: "torre delle ombre",
   region: "",
   house: "",
-  x: 0.050,
-  y: 0.026
+  x: 167,
+  y: 43
 },
 {
   name: "castello nero",
   region: "",
   house: "",
-  x: 0.056,
-  y: 0.027
+  x: 188,
+  y: 45
 },
 {
   name: "piazza di torrhen",
   region: "",
   house: "",
-  x: 0.036,
-  y: 0.085
+  x: 121,
+  y: 143
 },
 {
   name: "grande inverno",
   region: "",
   house: "",
-  x: 0.046,
-  y: 0.076
+  x: 154,
+  y: 127
 },
 {
   name: "porto bianco",
   region: "",
   house: "",
-  x: 0.054,
-  y: 0.104
+  x: 180,
+  y: 174
 },
 {
   name: "moat cailin",
   region: "",
   house: "",
-  x: 0.047,
-  y: 0.110
+  x: 157,
+  y: 184
 },
 {
   name: "delta delle acque",
   region: "",
   house: "",
-  x: 0.040,
-  y: 0.170
+  x: 135,
+  y: 286
 },
 {
   name: "castel granito",
   region: "",
   house: "",
-  x: 0.023,
-  y: 0.189
+  x: 77,
+  y: 318
 },
 {
   name: "lannisport",
   region: "",
   house: "",
-  x: 0.023,
-  y: 0.194
+  x: 77,
+  y: 326
 },
 {
   name: "pyke",
   region: "",
   house: "",
-  x: 0.024,
-  y: 0.158
+  x: 80,
+  y: 266
 },
 {
   name: "forte clegane",
   region: "",
   house: "",
-  x: 0.024,
-  y: 0.196
+  x: 80,
+  y: 329
 },
 {
   name: "harrenhal",
   region: "",
   house: "",
-  x: 0.052,
-  y: 0.176
+  x: 174,
+  y: 296
 },
 {
   name: "nido dell'aquila",
   region: "",
   house: "",
-  x: 0.064,
-  y: 0.155
+  x: 215,
+  y: 260
 },
 {
   name: "porta insanguinata",
   region: "",
   house: "",
-  x: 0.061,
-  y: 0.157
+  x: 205,
+  y: 265
 },
 {
   name: "maidenpool",
   region: "",
   house: "",
-  x: 0.062,
-  y: 0.180
+  x: 207,
+  y: 302
 },
 {
   name: "roccia del drago",
   region: "",
   house: "",
-  x: 0.073,
-  y: 0.187
+  x: 244,
+  y: 314
 },
 {
   name: "tarth",
   region: "",
   house: "",
-  x: 0.076,
-  y: 0.225
+  x: 255,
+  y: 378
 },
 {
   name: "capo tempesta",
   region: "",
   house: "",
-  x: 0.068,
-  y: 0.229
+  x: 227,
+  y: 384
 },
 {
   name: "sala dell'estate",
   region: "",
   house: "",
-  x: 0.057,
-  y: 0.230
+  x: 191,
+  y: 387
 },
 {
   name: "rostro del grifone",
   region: "",
   house: "",
-  x: 0.065,
-  y: 0.233
+  x: 219,
+  y: 392
 },
 {
   name: "lancia del sole",
   region: "",
   house: "",
-  x: 0.074,
-  y: 0.277
+  x: 249,
+  y: 465
 },
 {
   name: "arbor",
   region: "",
   house: "",
-  x: 0.017,
-  y: 0.280
+  x: 57,
+  y: 471
 },
 {
   name: "collina del corno",
   region: "",
   house: "",
-  x: 0.034,
-  y: 0.246
+  x: 114,
+  y: 414
 },
 {
   name: "vecchia citta",
   region: "",
   house: "",
-  x: 0.022,
-  y: 0.258
+  x: 75,
+  y: 434
 },
 {
   name: "stelle al tramonto",
   region: "",
   house: "",
-  x: 0.034,
-  y: 0.266
+  x: 115,
+  y: 448
 },
 {
   name: "approdo del re",
   region: "",
   house: "",
-  x: 0.062,
-  y: 0.201
+  x: 208,
+  y: 337
 },
 {
   name: "baia delle acque nere",
   region: "",
   house: "",
-  x: 0.068,
-  y: 0.196
+  x: 228,
+  y: 330
 },
 {
   name: "le stepstone",
   region: "",
   house: "",
-  x: 0.083,
-  y: 0.259
+  x: 280,
+  y: 435
 },
 {
   name: "collina fantasma",
   region: "",
   house: "",
-  x: 0.073,
-  y: 0.265
+  x: 244,
+  y: 446
 },
 {
   name: "alto giardino",
   region: "",
   house: "",
-  x: 0.032,
-  y: 0.237
+  x: 107,
+  y: 399
 },
 {
   name: "ashford",
   region: "",
   house: "",
-  x: 0.043,
-  y: 0.234
+  x: 144,
+  y: 393
 },
 {
   name: "le dita",
   region: "",
   house: "",
-  x: 0.072,
-  y: 0.132
+  x: 242,
+  y: 222
 },
 {
   name: "braavos",
   region: "",
   house: "",
-  x: 0.094,
-  y: 0.138
+  x: 314,
+  y: 231
 },
 {
   name: "pentos",
   region: "",
   house: "",
-  x: 0.094,
-  y: 0.203
+  x: 314,
+  y: 341
 },
 {
   name: "volantis",
   region: "",
   house: "",
-  x: 0.128,
-  y: 0.277
+  x: 428,
+  y: 466
 },
 {
   name: "valyria",
   region: "",
   house: "",
-  x: 0.145,
-  y: 0.334
+  x: 488,
+  y: 560
 },
 {
   name: "lys",
   region: "",
   house: "",
-  x: 0.095,
-  y: 0.277
+  x: 320,
+  y: 466
 },
 {
   name: "tyrosh",
   region: "",
   house: "",
-  x: 0.087,
-  y: 0.245
+  x: 291,
+  y: 411
 },
 {
   name: "myr",
   region: "",
   house: "",
-  x: 0.100,
-  y: 0.242
+  x: 336,
+  y: 408
 },
 {
   name: "vaes dothrak",
   region: "",
   house: "",
-  x: 0.221,
-  y: 0.185
+  x: 743,
+  y: 311
 },
 {
   name: "mereen",
   region: "",
   house: "",
-  x: 0.185,
-  y: 0.260
+  x: 623,
+  y: 436
 },
 {
   name: "astapor",
   region: "",
   house: "",
-  x: 0.178,
-  y: 0.293
+  x: 596,
+  y: 493
 },
 {
   name: "yunkai",
   region: "",
   house: "",
-  x: 0.180,
-  y: 0.269
+  x: 605,
+  y: 451
 },
 {
   name: "qarth",
   region: "",
   house: "",
-  x: 0.239,
-  y: 0.319
+  x: 802,
+  y: 537
 }
 ];
