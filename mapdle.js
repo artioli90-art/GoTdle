@@ -4,6 +4,9 @@ const select = document.getElementById("guessInput");
 const tbody = document.querySelector("#results tbody");
 const feedback = document.getElementById("feedback");
 
+const scaleX = rect.width / getMapWidth(current.map);
+const scaleY = rect.height / getMapHeight(current.map);
+
 let guessed = [];
 
 // ==========================
@@ -30,9 +33,9 @@ const seed =
 const index = getDailyIndex(seed, locations.length);
 const current = locations[index];
 
-// normalizzazione coordinate (BASE 900x500 viewport)
-const VIEWPORT_W = 900;
-const VIEWPORT_H = 500;
+// normalizzazione coordinate (BASE 900x500 viewport) -- provoa a commentarli
+//const VIEWPORT_W = 900;
+//const VIEWPORT_H = 500;
 
 // ==========================
 // MAP LOAD
@@ -57,12 +60,17 @@ function placeMarker() {
     // IMPORTANTISSIMO:
     // coordinate normalizzate rispetto alla "mappa logica"
     // (assumiamo che tutte le mappe siano scalate a viewport)
-    const x = (current.x / getMapWidth(current.map)) * VIEWPORT_W;
-    const y = (current.y / getMapHeight(current.map)) * VIEWPORT_H;
+   // const x = (current.x / getMapWidth(current.map)) * VIEWPORT_W;
+   // const y = (current.y / getMapHeight(current.map)) * VIEWPORT_H;
+
+//    marker.style.left = x + "px";
+  //  marker.style.top = y + "px";
+//}
+    const x = current.x * scaleX;
+    const y = current.y * scaleY;
 
     marker.style.left = x + "px";
     marker.style.top = y + "px";
-}
 
 // ==========================
 // DIMENSIONI MAPPE (CRUCIALE)
