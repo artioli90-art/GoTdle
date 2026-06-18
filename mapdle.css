@@ -34,31 +34,24 @@ h1 {
 
 #mapImage {
     position: absolute;
-    left: 0;
-    top: 0;
-
     width: 3358px;
     height: 1681px;
-
-    transform: scale(0.6); /* 👈 ZOOM BASE */
-    transform-origin: top left;
+    left: 0;
+    top: 0;
 }
 
-/* MARKER ROSSO 
+/* MARKER ROSSO */
 #marker {
     position: absolute;
-    /*aggiunta prossima riga*/
-    z-index: 10;
-    /*fine aggiunta*/
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     background: red;
-    border: 2px solid white;
     border-radius: 50%;
-    transform: translate(-50%, -50%) scale(0.6);
-   /* transform: translate(-50%, -50%);*/
-    display: block/*none*/;
-} */
+    border: 2px solid white;
+
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
 
 /* CONTROLS */
 .controls {
