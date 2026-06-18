@@ -41,8 +41,10 @@ mapImage.src = "images/map/map.png";
 function placeMarker() {
     marker.style.display = "block";
 
-    marker.style.left = current.x + "px";
-    marker.style.top = current.y + "px";
+    const scale = 0.35;
+
+    marker.style.left = (current.x * scale) + "px";
+    marker.style.top = (current.y * scale) + "px";
 }
 
 // ==========================
