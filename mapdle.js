@@ -35,6 +35,9 @@ const current = locations[index];
 // immagine fissa mappa
 mapImage.src = "images/map/map.png";
 
+mapImage.style.left = "-800px";
+mapImage.style.top = "-200px";
+
 // ==========================
 // MARKER POSITION - versione vecchia
 // ==========================
