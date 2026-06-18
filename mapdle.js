@@ -25,18 +25,33 @@ const seed =
     today.getDate();
 
 // ==========================
+// SAFETY CHECK (IMPORTANTISSIMO)
+// ==========================
+if (!window.locations || locations.length === 0) {
+    console.error("❌ locations non caricato o vuoto");
+}
+
+// ==========================
 // LOAD LOCATION
 // ==========================
 const index = getDailyIndex(seed, locations.length);
 const current = locations[index];
 
-// ==========================
-// MAP CHANGE (MULTI MAP SYSTEM)
-// ==========================
-mapImage.src = `images/map/${current.map}.png`;
+console.log("DEBUG CURRENT:", current);
 
 // ==========================
-// MARKER (CORRETTO E STABILE)
+// MAP IMAGE SAFE LOAD
+// ==========================
+const mapFile = current.map || "map1"; // fallback sicuro
+mapImage.src = `images/map/${mapFile}.png`;
+
+// se non carica la mappa
+mapImage.onerror = () => {
+    console.error("❌ Errore caricamento mappa:", mapImage.src);
+};
+
+// ==========================
+// MARKER
 // ==========================
 function placeMarker() {
     marker.style.display = "block";
@@ -45,12 +60,13 @@ function placeMarker() {
     marker.style.top = current.y + "px";
 }
 
+// quando immagine pronta
 mapImage.onload = () => {
     placeMarker();
 };
 
 // ==========================
-// DROPDOWN (GOT FONT OK)
+// DROPDOWN
 // ==========================
 function setupDropdown() {
     select.innerHTML = `<option value="">Seleziona un luogo</option>`;
@@ -72,6 +88,7 @@ setupDropdown();
 // ==========================
 function checkGuess() {
     const guess = select.value;
+
     if (!guess || guessed.includes(guess)) return;
 
     guessed.push(guess);
