@@ -73,26 +73,33 @@ mapImage.onload = () => {
 
 function centerMap() {
 
-    const zoom = 1.6; // 👈 REGOLA QUI LO ZOOM
+    const zoom = 1.6;
 
-    const viewportWidth = 900;
-    const viewportHeight = 500;
+    const MAP_WIDTH = 3358;
+    const MAP_HEIGHT = 1681;
 
-    const scaledWidth = 3358 * zoom;
-    const scaledHeight = 1681 * zoom;
+    const VIEWPORT_WIDTH = 900;
+    const VIEWPORT_HEIGHT = 500;
 
-    const offsetX = viewportWidth / 2 - current.x * zoom;
-    const offsetY = viewportHeight / 2 - current.y * zoom;
+    // --------------------------
+    // ZOOM MAPPA (solo visivo)
+    // --------------------------
+    const offsetX = VIEWPORT_WIDTH / 2 - current.x * zoom;
+    const offsetY = VIEWPORT_HEIGHT / 2 - current.y * zoom;
 
     mapImage.style.transformOrigin = "top left";
     mapImage.style.transform =
         `translate(${offsetX}px, ${offsetY}px) scale(${zoom})`;
 
-    // 🔴 FIX CHIAVE: marker nello stesso sistema della mappa
-    marker.style.display = "block";
+    // --------------------------
+    // MARKER (CORRETTO)
+    // --------------------------
+    const markerX = (current.x / MAP_WIDTH) * VIEWPORT_WIDTH;
+    const markerY = (current.y / MAP_HEIGHT) * VIEWPORT_HEIGHT;
 
-    marker.style.left = (current.x * zoom + offsetX) + "px";
-    marker.style.top = (current.y * zoom + offsetY) + "px";
+    marker.style.display = "block";
+    marker.style.left = markerX + "px";
+    marker.style.top = markerY + "px";
 }
 
 // ==========================
