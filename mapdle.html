@@ -1,40 +1,50 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MapDle</title>
+    <title>🗺️ Daily Westeros - MapDle</title>
 
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mapdle.css">
 </head>
 
 <body>
 
 <nav class="top-nav">
-    <a href="index.html">Personaggio</a>
-    <a href="bannerdle.html">Stendardo</a>
-    <a href="quotedle.html">Citazione</a>
-    <a href="zoomdle.html">Zoom</a>
-    <a href="mapdle.html">Map</a>
+    <a href="index.html">👑 Indovina il personaggio</a>
+    <a href="bannerdle.html">🛡️ Indovina lo stendardo</a>
+    <a href="quotedle.html">❓ Indovina la citazione</a>
+    <a href="zoomdle.html">👓 Chi è?</a>
+    <a href="mapdle.html">🗺️ MapDle</a>
 </nav>
 
-<h1>🗺️ MapDle</h1>
+<h1>🗺️ Daily Westeros - MapDle</h1>
 
 <div class="map-wrapper">
-    <div id="mapCanvas">
-        <img id="mapImage" src="images/map/map.png">
-        <div id="marker"></div>
-    </div>
+    <img id="mapImage" src="" alt="Mappa Westeros">
+
+    <div id="marker"></div>
 </div>
 
 <div class="controls">
-    <select id="guessInput"></select>
-    <button id="checkBtn">Indovina</button>
+    <select id="guessInput">
+        <option value="">Seleziona un luogo</option>
+    </select>
+
+    <button id="checkBtn">Verifica</button>
 </div>
 
 <div id="feedback"></div>
 
 <table id="results">
+    <thead>
+        <tr>
+            <th>Tentativo</th>
+            <th>Risultato</th>
+        </tr>
+    </thead>
     <tbody></tbody>
 </table>
 
