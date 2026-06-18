@@ -8,8 +8,9 @@ body {
 /* MAPPA */
 .map-wrapper {
     position: relative;
-    width: 900px;
+    display: inline-block;
     margin: 20px auto;
+    border: 3px solid #8b6f2b;
 }
 
 #mapImage {
