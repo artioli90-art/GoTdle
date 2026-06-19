@@ -8,27 +8,53 @@ const tbody = document.querySelector("#results tbody");
 const feedback = document.getElementById("feedback");
 
 let guessed = [];
-let debugDayOffset = 0;
-let debugMode = false;
 
 // ==========================
-// DAILY HASH
+// SEEDED RANDOM
 // ==========================
-function getDailyIndex(seed, length) {
+function mulberry32(seed) {
 
-    let value = 0;
-    const str = seed.toString();
+    return function() {
 
-    for (let i = 0; i < str.length; i++) {
-        value = ((value << 5) - value) + str.charCodeAt(i);
-        value |= 0;
+        let t = seed += 0x6D2B79F5;
+
+        t = Math.imul(
+            t ^ (t >>> 15),
+            t | 1
+        );
+
+        t ^= t + Math.imul(
+            t ^ (t >>> 7),
+            t | 61
+        );
+
+        return (
+            (t ^ (t >>> 14)) >>> 0
+        ) / 4294967296;
+    };
+}
+
+function shuffle(array, seed) {
+
+    const rng = mulberry32(seed);
+
+    const arr = [...array];
+
+    for (let i = arr.length - 1; i > 0; i--) {
+
+        const j = Math.floor(
+            rng() * (i + 1)
+        );
+
+        [arr[i], arr[j]] =
+            [arr[j], arr[i]];
     }
 
-    return Math.abs(value) % length;
+    return arr;
 }
 
 // ==========================
-// STATE ENGINE (SINGLE SOURCE OF TRUTH)
+// STATE ENGINE
 // ==========================
 function getState() {
 
@@ -37,32 +63,29 @@ function getState() {
     const seed =
         today.getFullYear() * 10000 +
         (today.getMonth() + 1) * 100 +
-        (today.getDate() + debugDayOffset);
+        today.getDate();
 
-    const index = getDailyIndex(seed, locations.length);
+    const shuffled =
+        shuffle(locations, seed);
 
     return {
-        index,
-        current: locations[index]
+        current: shuffled[0]
     };
 }
 
 // ==========================
-// RENDER ENGINE
+// MAP RENDER
 // ==========================
 function refreshMap() {
 
     const state = getState();
 
-    mapImage.src = `images/map/${state.current.map}`;
+    mapImage.src =
+        `images/map/${state.current.map}`;
 
     mapImage.onload = () => {
         placeMarker();
     };
-
-    console.log("MAP →", state.index, state.current.name);
-
-    showDebugInfo();
 }
 
 // ==========================
@@ -73,17 +96,27 @@ function placeMarker() {
     const state = getState();
     const current = state.current;
 
-    if (!mapImage || !marker) return;
+    if (!mapImage || !marker)
+        return;
 
     marker.style.display = "block";
 
-    const rect = mapImage.getBoundingClientRect();
+    const rect =
+        mapImage.getBoundingClientRect();
 
-    const scaleX = rect.width / mapImage.naturalWidth;
-    const scaleY = rect.height / mapImage.naturalHeight;
+    const scaleX =
+        rect.width /
+        mapImage.naturalWidth;
 
-    marker.style.left = (current.x * scaleX) + "px";
-    marker.style.top = (current.y * scaleY) + "px";
+    const scaleY =
+        rect.height /
+        mapImage.naturalHeight;
+
+    marker.style.left =
+        (current.x * scaleX) + "px";
+
+    marker.style.top =
+        (current.y * scaleY) + "px";
 }
 
 // ==========================
@@ -98,14 +131,22 @@ function setupDropdown() {
 
     if (!select) return;
 
-    select.innerHTML = `<option value="">Seleziona un luogo</option>`;
+    select.innerHTML =
+        `<option value="">Seleziona un luogo</option>`;
 
-    const names = [...new Set(locations.map(l => l.name))].sort();
+    const names =
+        [...new Set(
+            locations.map(l => l.name)
+        )].sort();
 
     names.forEach(name => {
-        const opt = document.createElement("option");
+
+        const opt =
+            document.createElement("option");
+
         opt.value = name;
         opt.textContent = name;
+
         select.appendChild(opt);
     });
 }
@@ -123,13 +164,17 @@ function checkGuess() {
     const guess = select?.value;
 
     if (!guess) return;
-    if (guessed.includes(guess)) return;
+
+    if (guessed.includes(guess))
+        return;
 
     guessed.push(guess);
 
-    const correct = guess === current.name;
+    const correct =
+        guess === current.name;
 
-    const row = document.createElement("tr");
+    const row =
+        document.createElement("tr");
 
     row.innerHTML = `
         <td>${guess}</td>
@@ -141,76 +186,17 @@ function checkGuess() {
     tbody?.prepend(row);
 
     if (feedback) {
-        feedback.textContent = correct
-            ? "🏆 Corretto!"
-            : "✖ Sbagliato";
+
+        feedback.textContent =
+            correct
+                ? "🏆 Corretto!"
+                : "✖ Sbagliato";
     }
 }
 
-document.getElementById("checkBtn")?.addEventListener("click", checkGuess);
-
-// ==========================
-// DEBUG CONTROLS
-// ==========================
-document.getElementById("nextMapBtn")?.addEventListener("click", () => {
-    debugDayOffset++;
-    refreshMap();
-});
-
-document.getElementById("prevMapBtn")?.addEventListener("click", () => {
-    debugDayOffset--;
-    refreshMap();
-});
-
-// ==========================
-// DEBUG TOGGLE + OVERLAY
-// ==========================
-document.getElementById("toggleDebugBtn")?.addEventListener("click", () => {
-    debugMode = !debugMode;
-    console.log("DEBUG MODE:", debugMode);
-    showDebugInfo();
-});
-
-function showDebugInfo() {
-
-    const overlay = document.getElementById("debugOverlay");
-    if (!overlay) return;
-
-    if (!debugMode) {
-        overlay.style.display = "none";
-        return;
-    }
-
-    const state = getState();
-
-    overlay.style.display = "block";
-    overlay.innerHTML = `
-        🧭 DEBUG MODE<br>
-        Index: ${state.index}<br>
-        Name: ${state.current.name}<br>
-        Map: ${state.current.map}
-    `;
-}
-
-// ==========================
-// CLICK → COORDINATE DEBUG
-// ==========================
-mapImage?.addEventListener("click", (e) => {
-
-    if (!debugMode) return;
-
-    const rect = mapImage.getBoundingClientRect();
-
-    const scaleX = mapImage.naturalWidth / rect.width;
-    const scaleY = mapImage.naturalHeight / rect.height;
-
-    const x = Math.round((e.clientX - rect.left) * scaleX);
-    const y = Math.round((e.clientY - rect.top) * scaleY);
-
-    console.log("📍 COORDS:", x, y);
-    console.log(`{ x: ${x}, y: ${y}, map: "${getState().current.map}" }`);
-
-    marker.style.display = "block";
-    marker.style.left = (e.clientX - rect.left) + "px";
-    marker.style.top = (e.clientY - rect.top) + "px";
-});
+document
+    .getElementById("checkBtn")
+    ?.addEventListener(
+        "click",
+        checkGuess
+    );
