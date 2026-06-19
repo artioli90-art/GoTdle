@@ -167,7 +167,26 @@ function checkGuess() {
             "✖ Sbagliato";
     }
 }
+//DEBUG
+document.getElementById("nextMapBtn").addEventListener("click", () => {
 
+    debugDayOffset++;
+
+    // ricalcola tutto
+    const newIndex = getDailyIndex(seed, locations.length);
+    const newCurrent = locations[newIndex];
+
+    current = newCurrent; // <-- IMPORTANT: vedi nota sotto
+
+    mapImage.src = `images/map/${current.map}`;
+
+    mapImage.onload = () => {
+        placeMarker();
+    };
+
+    console.log("DEBUG MAP INDEX:", newIndex, current.name);
+});
+//FINE DEBUG
 document
     .getElementById("checkBtn")
     .addEventListener("click", checkGuess);
