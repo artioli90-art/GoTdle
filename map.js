@@ -5,56 +5,56 @@ const locations = [
     {
         map: "map1.png",
         name: "forte terrore",
-        x: 167,
-        y: 115
+        x: 500,
+        y: 300
     },
     {
         map: "map1.png",
         name: "karhold",
-        x: 201,
-        y: 95
-    },
-    {
-        map: "map1.png",
-        name: "ultimo focolare",
-        x: 162,
-        y: 83
-    },
-    {
-        map: "map1.png",
-        name: "deepwood motte",
-        x: 81,
-        y: 100
-    },
-    {
-        map: "map1.png",
-        name: "isola dell'orso",
-        x: 208,
+        x: 560,
         y: 240
     },
     {
         map: "map1.png",
+        name: "ultimo focolare",
+        x: 510,
+        y: 200
+    },
+    {
+        map: "map1.png",
+        name: "deepwood motte",
+        x: 225,
+        y: 260
+    },
+    {
+        map: "map1.png",
+        name: "isola dell'orso",
+        x: 194,
+        y: 208
+    },
+    {
+        map: "map1.png",
         name: "pugno dei primi uomini",
-        x: 250,
+        x: 300,
         y: 46
     },
     {
         map: "map1.png",
         name: "castello di craster",
-        x: 405,
+        x: 401,
         y: 90
     },
     {
         map: "map1.png",
         name: "aspra dimora",
-        x: 500,
-        y: 50
+        x: 510,
+        y: 49
     },
     {
         map: "map1.png",
         name: "torre delle ombre",
-        x: 366,
-        y: 120
+        x: 368,
+        y: 124
     },
     {
         map: "map1.png",
@@ -189,7 +189,7 @@ const locations = [
     {
         map: "map2.png",
         name: "arbor",
-        x: 18,
+        x: 26,
         y: 650
     },
     {
