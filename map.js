@@ -5,7 +5,7 @@ const locations = [
     {
         map: "map1.png",
         name: "forte terrore",
-        x: 465,
+        x: 473,
         y: 328
     },
     {
@@ -17,7 +17,7 @@ const locations = [
     {
         map: "map1.png",
         name: "ultimo focolare",
-        x: 454,
+        x: 459,
         y: 235
     },
     {
@@ -171,20 +171,20 @@ const locations = [
     {
         map: "map2.png",
         name: "sala dell'estate",
-        x: 144,
-        y: 148
+        x: 184,
+        y: 396
     },
     {
         map: "map2.png",
         name: "rostro del grifone",
-        x: 141,
-        y: 50
+        x: 276,
+        y: 422
     },
     {
         map: "map2.png",
         name: "lancia del sole",
-        x: 201,
-        y: 225
+        x: 605,
+        y: 620
     },
     {
         map: "map2.png",
@@ -327,7 +327,7 @@ const locations = [
     {
         map: "map5.png",
         name: "qarth",
-        x: 360,
-        y: 700
+        x: 352,
+        y: 730
     }
 ];
