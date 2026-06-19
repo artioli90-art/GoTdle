@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+
 const select = document.getElementById("guessInput");
 const tbody = document.querySelector("#results tbody");
-
 const bannerImg = document.getElementById("bannerImage");
 
 const hintRegionBtn = document.getElementById("hint-region");
@@ -9,36 +9,23 @@ const hintAffiliationBtn = document.getElementById("hint-affiliation");
 const hintLetterBtn = document.getElementById("hint-letter");
 const hintOutput = document.getElementById("hint-output");
 
-const guessed = [];
-let wrongCount = 0;
-
-//AGGIUNTE NUOVE
 const winPopup = document.getElementById("winPopup");
 const closeWinPopup = document.getElementById("closeWinPopup");
 
-  closeWinPopup.addEventListener("click", () => {
+const victoryCard = document.getElementById("victory-card");
+
+const guessed = [];
+let wrongCount = 0;
+
+// =========================
+// POPUP CLOSE
+// =========================
+closeWinPopup.addEventListener("click", () => {
     winPopup.classList.add("hidden");
 });
 
-  //FINE AGGIUNTE
-
-  
 // =========================
-// CASA DEL GIORNO -- vecchia versione
-// =========================
-//const today = new Date();
-//const seed =
-  //  today.getFullYear() * 10000 +
-  //  (today.getMonth() + 1) * 100 +
-   // today.getDate();
-
-//const secretHouse = houses[seed % houses.length];
-
-// set banner immagine
-//bannerImg.src = secretHouse.immagine;
-
-    // =========================
-// CASA DEL GIORNO (HASH DETERMINISTICO) - nuova versione
+// DAILY SEED
 // =========================
 const today = new Date();
 
@@ -48,23 +35,21 @@ const seed =
     today.getDate();
 
 function getDailyIndex(seed, length) {
-    let value = 0;
 
+    let value = 0;
     const str = seed.toString();
 
     for (let i = 0; i < str.length; i++) {
         value = ((value << 5) - value) + str.charCodeAt(i);
-        value |= 0; // force 32-bit int
+        value |= 0;
     }
 
     return Math.abs(value) % length;
 }
 
 const index = getDailyIndex(seed, houses.length);
-
 const secretHouse = houses[index];
 
-// set banner immagine
 bannerImg.src = secretHouse.immagine;
 
 // =========================
@@ -95,10 +80,11 @@ function renderDropdown() {
 renderDropdown();
 
 // =========================
-// CHECK GUESS - FUNZIONANTE MA NESSUN AVVISO
+// CHECK GUESS
 // =========================
-document.getElementById("guessButton").addEventListener("click", checkGuess);
-    
+document.getElementById("guessButton")
+    .addEventListener("click", checkGuess);
+
 function checkGuess() {
 
     const guessName = select.value;
@@ -113,53 +99,32 @@ function checkGuess() {
 
     const correct = guess.nome === secretHouse.nome;
 
- 
     renderRow(guess);
-
     renderDropdown();
     select.value = "";
 
+    if (correct) {
 
-  //OLD
-//if (correct) {
-    //wrapper.className = "image-wrapper z100";
+        winPopup.classList.remove("hidden");
 
-    //feedback.textContent = "🏆 Corretto!";
-   // feedback.style.color = "green";
+        victoryCard.textContent = "🎉 Hai indovinato la casata!";
+        victoryCard.style.color = "gold";
 
-  //  return;
-//}
+        return;
+    }
 
-  //NUOVA
-  if (correct) {
+    wrongCount++;
+    updateHints();
 
-    winPopup.classList.remove("hidden");
-
-    document.getElementById("victory-card").textContent =
-        "🎉 Hai indovinato la casata!";
-
-    return;
-}
-
-// tentativo sbagliato
-wrongCount++;
-updateHints();
-
-errors++;
-setZoom();
-
-feedback.textContent = "✖ Sbagliato";
-feedback.style.color = "red";
-  //FINE NUOVA
-//}
+    victoryCard.textContent = "";
 }
 
 // =========================
 // ROW UI
 // =========================
 function renderRow(house) {
-        
-          const row = document.createElement("tr");
+
+    const row = document.createElement("tr");
     tbody.prepend(row);
 
     const data = [
@@ -177,16 +142,17 @@ function renderRow(house) {
         }
     ];
 
-    data.forEach((cell, i) => {
+    data.forEach(cell => {
 
         const td = document.createElement("td");
         td.textContent = cell.value;
 
-        td.style.backgroundColor = cell.ok ? "#6ea76e" : "#a34b4b";
+        td.style.backgroundColor = cell.ok
+            ? "#6ea76e"
+            : "#a34b4b";
+
         td.style.color = "white";
         td.style.padding = "8px";
-
-        td.style.animation = "flipIn 0.3s ease";
 
         row.appendChild(td);
     });
@@ -200,14 +166,16 @@ function updateHints() {
     if (wrongCount >= 3) {
         hintRegionBtn.disabled = false;
         hintRegionBtn.onclick = () => {
-            hintOutput.textContent = "🌍 Regione: " + secretHouse.regione;
+            hintOutput.textContent =
+                "🌍 Regione: " + secretHouse.regione;
         };
     }
 
     if (wrongCount >= 7) {
         hintAffiliationBtn.disabled = false;
         hintAffiliationBtn.onclick = () => {
-            hintOutput.textContent = "🏰 Affiliazione: " + secretHouse.affiliazione;
+            hintOutput.textContent =
+                "🏰 Affiliazione: " + secretHouse.affiliazione;
         };
     }
 
