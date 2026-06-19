@@ -130,31 +130,31 @@ const locations = [
         map: "map2.png",
         name: "harrenhal",
         x: 372,
-        y: 172
+        y: 162
     },
     {
         map: "map2.png",
         name: "nido dell'aquila",
-        x: 471,
-        y: 60
+        x: 473,
+        y: 62
     },
     {
         map: "map2.png",
         name: "porta insanguinata",
         x: 445,
-        y: 80
+        y: 77
     },
     {
         map: "map2.png",
         name: "maidenpool",
-        x: 446,
-        y: 195
+        x: 458,
+        y: 181
     },
     {
         map: "map2.png",
         name: "roccia del drago",
-        x: 589,
-        y: 236
+        x: 569,
+        y: 210
     },
     {
         map: "map2.png",
