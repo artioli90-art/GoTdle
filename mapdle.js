@@ -10,7 +10,6 @@ let guessed = [];
 // DAILY SEED
 // ==========================
 function getDailyIndex(seed, length) {
-
     let value = 0;
 
     const str = seed.toString();
@@ -23,48 +22,43 @@ function getDailyIndex(seed, length) {
     return Math.abs(value) % length;
 }
 
+// ==========================
+// SEED DEL GIORNO
+// ==========================
 const today = new Date();
 
 const seed =
-     today.getFullYear() * 10000 +
+    today.getFullYear() * 10000 +
     (today.getMonth() + 1) * 100 +
     today.getDate();
 
 // ==========================
 // LOCATION OF THE DAY
 // ==========================
-const index =
-    getDailyIndex(seed, locations.length);
-
-const current =
-    locations[index];
+const index = getDailyIndex(seed, locations.length);
+const current = locations[index];
 
 // ==========================
 // LOAD MAP
 // ==========================
- SOSPESO
-mapImage.src =
-    `images/map/${current.map}`;
+mapImage.src = `images/map/${current.map}`;
 
 mapImage.onload = () => {
     placeMarker();
 };
 
 mapImage.onerror = () => {
-    console.error(
-        "Errore caricamento:",
-        mapImage.src
-    );
+    console.error("Errore caricamento:", mapImage.src);
 };
 
-//---MARKER---
+// ==========================
+// MARKER
+// ==========================
 function placeMarker() {
-
     marker.style.display = "block";
 
     const rect = mapImage.getBoundingClientRect();
 
-    // scala tra immagine originale e renderizzata
     const scaleX = rect.width / mapImage.naturalWidth;
     const scaleY = rect.height / mapImage.naturalHeight;
 
@@ -79,22 +73,14 @@ function placeMarker() {
 // DROPDOWN
 // ==========================
 function setupDropdown() {
+    select.innerHTML = `<option value="">Seleziona un luogo</option>`;
 
-    select.innerHTML =
-        `<option value="">Seleziona un luogo</option>`;
-
-    const names =
-        [...new Set(locations.map(l => l.name))]
-        .sort();
+    const names = [...new Set(locations.map(l => l.name))].sort();
 
     names.forEach(name => {
-
-        const opt =
-            document.createElement("option");
-
+        const opt = document.createElement("option");
         opt.value = name;
         opt.textContent = name;
-
         select.appendChild(opt);
     });
 }
@@ -102,24 +88,19 @@ function setupDropdown() {
 setupDropdown();
 
 // ==========================
-// CHECK
+// CHECK GUESS
 // ==========================
 function checkGuess() {
-
     const guess = select.value;
 
     if (!guess) return;
-
-    if (guessed.includes(guess))
-        return;
+    if (guessed.includes(guess)) return;
 
     guessed.push(guess);
 
-    const correct =
-        guess === current.name;
+    const correct = guess === current.name;
 
-    const row =
-        document.createElement("tr");
+    const row = document.createElement("tr");
 
     row.innerHTML = `
         <td>${guess}</td>
@@ -131,16 +112,15 @@ function checkGuess() {
     tbody.prepend(row);
 
     if (correct) {
-
-        feedback.textContent =
-            "🏆 Corretto!";
-
+        feedback.textContent = "🏆 Corretto!";
     } else {
-
-        feedback.textContent =
-            "✖ Sbagliato";
+        feedback.textContent = "✖ Sbagliato";
     }
 }
+
+// ==========================
+// EVENT LISTENER
+// ==========================
 document
     .getElementById("checkBtn")
     .addEventListener("click", checkGuess);
