@@ -259,32 +259,32 @@ const locations = [
     {
         map: "map3.png",
         name: "pentos",
-        x: 92,
-        y: 350
+        x: 73,
+        y: 330
     },
     {
         map: "map3.png",
         name: "volantis",
-        x: 400,
-        y: 630
+        x: 407,
+        y: 675
     },
     {
         map: "map3.png",
         name: "lys",
-        x: 94,
-        y: 650
+        x: 98,
+        y: 670
     },
     {
         map: "map3.png",
         name: "tyrosh",
-        x: 25,
-        y: 565
+        x: 17,
+        y: 550
     },
     {
         map: "map3.png",
         name: "myr",
-        x: 145,
-        y: 550
+        x: 142,
+        y: 522
     },
 
     // =========================
@@ -293,14 +293,14 @@ const locations = [
     {
         map: "map4.png",
         name: "valyria",
-        x: 39,
+        x: 41,
         y: 415
     },
     {
         map: "map4.png",
         name: "mereen",
-        x: 420,
-        y: 65
+        x: 416,
+        y: 66
     },
     {
         map: "map4.png",
