@@ -99,14 +99,14 @@ const locations = [
     {
         map: "map2.png",
         name: "delta delle acque",
-        x: 220,
-        y: 90
+        x: 250,
+        y: 120
     },
     {
         map: "map2.png",
         name: "castel granito",
         x: 87,
-        y: 250
+        y: 220
     },
     {
         map: "map2.png",
