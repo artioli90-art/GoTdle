@@ -77,7 +77,7 @@ const locations = [
     {
         map: "map1.png",
         name: "porto bianco",
-        x: 395,
+        x: 398,
         y: 494
     },
     {
@@ -231,20 +231,20 @@ const locations = [
     {
         map: "map2.png",
         name: "collina fantasma",
-        x: 196,
-        y: 206
+        x: 390,
+        y: 563
     },
     {
         map: "map2.png",
         name: "alto giardino",
-        x: 160,
+        x: 170,
         y: 448
     },
     {
         map: "map2.png",
         name: "ashford",
         x: 274,
-        y: 438
+        y: 443
     },
 
     // =========================
