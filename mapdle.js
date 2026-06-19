@@ -60,6 +60,8 @@ function refreshMap() {
     };
 
     console.log("MAP DEBUG → index:", state.index, state.current.name);
+
+    showDebugInfo(); // 👈 aggiunto
 }
 
 // ==========================
@@ -82,6 +84,26 @@ function placeMarker() {
 
     marker.style.left = x + "px";
     marker.style.top = y + "px";
+}
+//DEBUG INFO
+function showDebugInfo() {
+
+    const overlay = document.getElementById("debugOverlay");
+
+    if (!debugMode) {
+        overlay.style.display = "none";
+        return;
+    }
+
+    const state = getState();
+
+    overlay.style.display = "block";
+    overlay.innerHTML = `
+        🧭 DEBUG MODE<br>
+        Map Index: ${state.index}<br>
+        Location: ${state.current.name}<br>
+        Map file: ${state.current.map}
+    `;
 }
 
 // ==========================
