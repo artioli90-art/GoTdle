@@ -1,58 +1,54 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🗺️ MapDle</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mapdle.css">
 </head>
 
 <body>
 
+    <nav class="top-nav">
+        <a href="index.html">👑 Personaggi</a>
+        <a href="bannerdle.html">🛡️ Stendardi</a>
+        <a href="quotedle.html">❓ Citazioni</a>
+        <a href="zoomdle.html">👓 Zoom</a>
+        <a href="mapdle.html">🗺️ Mappa</a>
+    </nav>
 
-<nav class="top-nav">
-    <a href="index.html">👑 Personaggi</a>
-    <a href="bannerdle.html">🛡️ Stendardi</a>
-    <a href="quotedle.html">❓ Citazioni</a>
-    <a href="zoomdle.html">👓 ZoomDle</a>
-    <a href="mapdle.html">🗺️ MapDle</a>
-</nav>
+    <h1>🗺️ MapDle</h1>
 
-<h1>🗺️ MapDle</h1>
+    <div class="map-wrapper">
+        <img id="mapImage" src="" alt="map">
+        <div id="marker"></div>
+    </div>
 
-<div class="map-wrapper">
-    <img id="mapImage" src="" alt="map">
-    <div id="debugOverlay"></div>
-    <div id="marker"></div>
-</div>
+    <div class="controls">
+        <select id="guessInput"></select>
+        <button id="checkBtn">Verifica</button>
+    </div>
 
-<div class="controls">
-    <select id="guessInput"></select>
-    <button id="checkBtn">Verifica</button>
-</div>
-    <!-- DEBUG CONTROLS -->
-<div class="debug-controls">
-    <button id="prevMapBtn">⬅ Prev</button>
-    <button id="nextMapBtn">Next ➡</button>
-</div>
-<!-- DEBUG CONTROLS fine -->
-<div id="feedback"></div>
+    <div id="feedback"></div>
 
-<table id="results">
-    <thead>
-        <tr>
-            <th>Tentativo</th>
-            <th>Risultato</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+    <table id="results">
+        <thead>
+            <tr>
+                <th>Tentativo</th>
+                <th>Risultato</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 
-<script src="map.js"></script>
-<script src="mapdle.js"></script>
+    <script src="map.js"></script>
+    <script src="mapdle.js"></script>
 
 </body>
+
 </html>
