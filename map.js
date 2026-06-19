@@ -29,32 +29,32 @@ const locations = [
     {
         map: "map1.png",
         name: "isola dell'orso",
-        x: 69,
-        y: 71
+        x: 208,
+        y: 240
     },
     {
         map: "map1.png",
         name: "pugno dei primi uomini",
-        x: 110,
-        y: 16
+        x: 250,
+        y: 46
     },
     {
         map: "map1.png",
         name: "castello di craster",
-        x: 142,
-        y: 30
+        x: 405,
+        y: 90
     },
     {
         map: "map1.png",
         name: "aspra dimora",
-        x: 550,
-        y: 60
+        x: 500,
+        y: 50
     },
     {
         map: "map1.png",
         name: "torre delle ombre",
         x: 366,
-        y: 130
+        y: 120
     },
     {
         map: "map1.png",
@@ -189,14 +189,14 @@ const locations = [
     {
         map: "map2.png",
         name: "arbor",
-        x: 10,
+        x: 18,
         y: 650
     },
     {
         map: "map2.png",
         name: "collina del corno",
-        x: 193,
-        y: 491
+        x: 189,
+        y: 489
     },
     {
         map: "map2.png",
@@ -213,8 +213,8 @@ const locations = [
     {
         map: "map2.png",
         name: "approdo del re",
-        x: 454,
-        y: 275
+        x: 451,
+        y: 277
     },
     {
         map: "map2.png",
