@@ -125,7 +125,7 @@ function checkGuess() {
     //wrapper.className = "image-wrapper z100";
 
     //feedback.textContent = "🏆 Corretto!";
-   / feedback.style.color = "green";
+   // feedback.style.color = "green";
 
   //  return;
 //}
