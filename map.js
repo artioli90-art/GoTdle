@@ -83,8 +83,8 @@ const locations = [
     {
         map: "map1.png",
         name: "moat cailin",
-        x: 119,
-        y: 184
+        x: 400,
+        y: 500
     },
     {
         map: "map1.png",
