@@ -253,8 +253,8 @@ const locations = [
     {
         map: "map3.png",
         name: "braavos",
-        x: 27,
-        y: 8
+        x: 57,
+        y: 15
     },
     {
         map: "map3.png",
