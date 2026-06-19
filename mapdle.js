@@ -68,7 +68,7 @@ mapImage.onerror = () => {
 
   //  marker.style.top =
       //  current.y + "px";
-}
+//}
 //DEBUG ON
 
 console.log(
