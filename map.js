@@ -117,8 +117,8 @@ const locations = [
     {
         map: "map2.png",
         name: "pyke",
-        x: 85,
-        y: 44
+        x: 98,
+        y: 65
     },
     {
         map: "map2.png",
