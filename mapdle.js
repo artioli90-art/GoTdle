@@ -57,18 +57,37 @@ mapImage.onerror = () => {
 };
 
 // ==========================
-// MARKER
+// MARKER . old
 // ==========================
+//function placeMarker() {
+
+    //marker.style.display = "block";
+
+    //marker.style.left =
+        //current.x + "px";
+
+  //  marker.style.top =
+       // current.y + "px";
+//}
+
+//---NEW---
 function placeMarker() {
 
     marker.style.display = "block";
 
-    marker.style.left =
-        current.x + "px";
+    const rect = mapImage.getBoundingClientRect();
 
-    marker.style.top =
-        current.y + "px";
+    // scala tra immagine originale e renderizzata
+    const scaleX = rect.width / mapImage.naturalWidth;
+    const scaleY = rect.height / mapImage.naturalHeight;
+
+    const x = current.x * scaleX;
+    const y = current.y * scaleY;
+
+    marker.style.left = x + "px";
+    marker.style.top = y + "px";
 }
+//--FINE NEW--
 
 // ==========================
 // DROPDOWN
