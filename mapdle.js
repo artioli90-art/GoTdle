@@ -57,18 +57,30 @@ mapImage.onerror = () => {
 };
 
 // ==========================
-// MARKER
+// MARKER - SOSPESO PER ORA
 // ==========================
-function placeMarker() {
+//function placeMarker() {
 
-    marker.style.display = "block";
+  //  marker.style.display = "block";
 
-    marker.style.left =
-        current.x + "px";
+  //  marker.style.left =
+       // current.x + "px";
 
-    marker.style.top =
-        current.y + "px";
+  //  marker.style.top =
+      //  current.y + "px";
 }
+//DEBUG ON
+
+console.log(
+    current.name,
+    current.x,
+    current.y
+);
+
+marker.style.left = current.x + "px";
+marker.style.top = current.y + "px";
+
+//DEBUG OFF
 
 // ==========================
 // DROPDOWN
