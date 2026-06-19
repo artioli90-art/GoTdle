@@ -6,25 +6,25 @@ const locations = [
         map: "map1.png",
         name: "forte terrore",
         x: 415,
-        y: 190
+        y: 320
     },
     {
         map: "map1.png",
         name: "karhold",
-        x: 567,
-        y: 285
+        x: 569,
+        y: 258
     },
     {
         map: "map1.png",
         name: "ultimo focolare",
-        x: 420,
-        y: 250
+        x: 450,
+        y: 232
     },
     {
         map: "map1.png",
         name: "deepwood motte",
         x: 228,
-        y: 278
+        y: 282
     },
     {
         map: "map1.png",
