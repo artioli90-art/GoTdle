@@ -213,25 +213,25 @@ const locations = [
     {
         map: "map2.png",
         name: "approdo del re",
-        x: 460,
-        y: 200
+        x: 445,
+        y: 260
     },
     {
         map: "map2.png",
         name: "baia delle acque nere",
-        x: 500,
-        y: 215
+        x: 510,
+        y: 295
     },
     {
         map: "map2.png",
         name: "le stepstone",
-        x: 120,
+        x: 620,
         y: 560
     },
     {
         map: "map2.png",
         name: "collina fantasma",
-        x: 590,
+        x: 565,
         y: 583
     },
     {
