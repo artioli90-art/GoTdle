@@ -129,7 +129,7 @@ const locations = [
     {
         map: "map2.png",
         name: "harrenhal",
-        x: 372,
+        x: 355,
         y: 162
     },
     {
@@ -147,14 +147,14 @@ const locations = [
     {
         map: "map2.png",
         name: "maidenpool",
-        x: 458,
-        y: 181
+        x: 452,
+        y: 179
     },
     {
         map: "map2.png",
         name: "roccia del drago",
-        x: 569,
-        y: 210
+        x: 561,
+        y: 213
     },
     {
         map: "map2.png",
@@ -299,20 +299,20 @@ const locations = [
     {
         map: "map4.png",
         name: "mereen",
-        x: 147,
-        y: 22
+        x: 450,
+        y: 57
     },
     {
         map: "map4.png",
         name: "astapor",
-        x: 120,
-        y: 80
+        x: 370,
+        y: 186
     },
     {
         map: "map4.png",
         name: "yunkai",
-        x: 130,
-        y: 37
+        x: 390,
+        y: 97
     },
 
     // =========================
@@ -321,8 +321,8 @@ const locations = [
     {
         map: "map5.png",
         name: "vaes dothrak",
-        x: 67,
-        y: 32
+        x: 187,
+        y: 122
     },
     {
         map: "map5.png",
