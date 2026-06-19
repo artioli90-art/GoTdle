@@ -1,3 +1,7 @@
+// --- CANCELLLA DOPO DEBUGGING - INIZIO ---
+let debugDayOffset = 0;
+// --- CANCELLLA DOPO DEBUGGING - FINE ---
+
 const mapImage = document.getElementById("mapImage");
 const marker = document.getElementById("marker");
 const select = document.getElementById("guessInput");
@@ -23,12 +27,20 @@ function getDailyIndex(seed, length) {
     return Math.abs(value) % length;
 }
 
+// --- RIMETTILO POST DEBUG ---
+//const today = new Date();
+
+//const seed =
+   //  today.getFullYear() * 10000 +
+  //  (today.getMonth() + 1) * 100 +
+//    today.getDate();
+
 const today = new Date();
 
 const seed =
     today.getFullYear() * 10000 +
     (today.getMonth() + 1) * 100 +
-    today.getDate();
+    (today.getDate() + debugDayOffset);
 
 // ==========================
 // LOCATION OF THE DAY
