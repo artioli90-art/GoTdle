@@ -17,24 +17,33 @@ const seed =
     today.getFullYear() * 10000 +
     (today.getMonth() + 1) * 100 +
     today.getDate();
-
-//QUESTO L'HO SOSTITUITO CON QUELLA CHIAMATA "RANDOMIZZATO"
-    //const index = seed % characters.length;
     
-//QUESTA è LA FUNZIONE RANDOMIZZATA
-    function getDailyIndex(seed, length) {
-    let hash = seed.toString();
+//QUESTA è LA FUNZIONE RANDOMIZZATA - vecchia
+    //function getDailyIndex(seed, length) {
+    //let hash = seed.toString();
 
-    let value = 0;
+    //let value = 0;
 
-    for (let i = 0; i < hash.length; i++) {
-        value = ((value << 5) - value) + hash.charCodeAt(i);
-        value |= 0; // converte in intero 32 bit
-    }
+    //for (let i = 0; i < hash.length; i++) {
+        //value = ((value << 5) - value) + hash.charCodeAt(i);
+      //  value |= 0; // converte in intero 32 bit
+    //}
 
-    return Math.abs(value) % length;
+  //  return Math.abs(value) % length;
+//}
+//QUESTA è LA FUNZIONE RANDOMIZZATA - NUOVA
+
+function getDailyIndex(seed, length) {
+
+    let x = seed;
+
+    x = ((x >> 16) ^ x) * 0x45d9f3b;
+    x = ((x >> 16) ^ x) * 0x45d9f3b;
+    x = (x >> 16) ^ x;
+
+    return Math.abs(x) % length;
 }
-
+    
 const index = getDailyIndex(seed, characters.length);
 
     //FINO A QUA SOPRA è LA FUNZIONE RANDOMIZZATA
