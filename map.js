@@ -160,31 +160,31 @@ const locations = [
         map: "map2.png",
         name: "tarth",
         x: 208,
-        y: 137
+        y: 666
     },
     {
         map: "map2.png",
         name: "capo tempesta",
-        x: 179,
-        y: 144
+        x: 511,
+        y: 405
     },
     {
         map: "map2.png",
         name: "sala dell'estate",
-        x: 184,
-        y: 396
+        x: 391,
+        y: 418
     },
     {
         map: "map2.png",
         name: "rostro del grifone",
-        x: 276,
-        y: 422
+        x: 483,
+        y: 431
     },
     {
         map: "map2.png",
         name: "lancia del sole",
-        x: 605,
-        y: 620
+        x: 566,
+        y: 640
     },
     {
         map: "map2.png",
@@ -327,7 +327,7 @@ const locations = [
     {
         map: "map5.png",
         name: "qarth",
-        x: 352,
-        y: 730
+        x: 357,
+        y: 732
     }
 ];
