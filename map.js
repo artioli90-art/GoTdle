@@ -123,8 +123,8 @@ const locations = [
     {
         map: "map2.png",
         name: "forte clegane",
-        x: 93,
-        y: 251
+        x: 95,
+        y: 254
     },
     {
         map: "map2.png",
@@ -265,8 +265,8 @@ const locations = [
     {
         map: "map3.png",
         name: "volantis",
-        x: 408,
-        y: 689
+        x: 400,
+        y: 685
     },
     {
         map: "map3.png",
