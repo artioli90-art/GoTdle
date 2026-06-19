@@ -12,6 +12,17 @@ const hintOutput = document.getElementById("hint-output");
 const guessed = [];
 let wrongCount = 0;
 
+//AGGIUNTE NUOVE
+const winPopup = document.getElementById("winPopup");
+const closeWinPopup = document.getElementById("closeWinPopup");
+
+  closeWinPopup.addEventListener("click", () => {
+    winPopup.classList.add("hidden");
+});
+
+  //FINE AGGIUNTE
+
+  
 // =========================
 // CASA DEL GIORNO -- vecchia versione
 // =========================
@@ -102,26 +113,30 @@ function checkGuess() {
 
     const correct = guess.nome === secretHouse.nome;
 
-    //if (!correct) {
-      //wrongCount++;
-       //updateHints();
-  //  }
  
     renderRow(guess);
 
     renderDropdown();
     select.value = "";
 
-   // if (correct) {
-     //   document.getElementById("victory-card").textContent =
-       //     "🎉 Hai indovinato la casata!";
+
+  //OLD
+//if (correct) {
+    //wrapper.className = "image-wrapper z100";
+
+    //feedback.textContent = "🏆 Corretto!";
+   / feedback.style.color = "green";
+
+  //  return;
+//}
 
   //NUOVA
-if (correct) {
-    wrapper.className = "image-wrapper z100";
+  if (correct) {
 
-    feedback.textContent = "🏆 Corretto!";
-    feedback.style.color = "green";
+    winPopup.classList.remove("hidden");
+
+    document.getElementById("victory-card").textContent =
+        "🎉 Hai indovinato la casata!";
 
     return;
 }
