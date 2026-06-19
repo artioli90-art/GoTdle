@@ -5,20 +5,20 @@ const locations = [
     {
         map: "map1.png",
         name: "forte terrore",
-        x: 415,
-        y: 320
+        x: 465,
+        y: 328
     },
     {
         map: "map1.png",
         name: "karhold",
-        x: 569,
-        y: 258
+        x: 565,
+        y: 265
     },
     {
         map: "map1.png",
         name: "ultimo focolare",
-        x: 450,
-        y: 232
+        x: 454,
+        y: 235
     },
     {
         map: "map1.png",
@@ -327,7 +327,7 @@ const locations = [
     {
         map: "map5.png",
         name: "qarth",
-        x: 126,
-        y: 258
+        x: 360,
+        y: 700
     }
 ];
