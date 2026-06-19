@@ -111,8 +111,8 @@ const locations = [
     {
         map: "map2.png",
         name: "lannisport",
-        x: 87,
-        y: 255
+        x: 83,
+        y: 245
     },
     {
         map: "map2.png",
