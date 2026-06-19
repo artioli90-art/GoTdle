@@ -1,3 +1,6 @@
+// ==========================
+// GLOBAL STATE
+// ==========================
 const mapImage = document.getElementById("mapImage");
 const marker = document.getElementById("marker");
 const select = document.getElementById("guessInput");
@@ -5,13 +8,14 @@ const tbody = document.querySelector("#results tbody");
 const feedback = document.getElementById("feedback");
 
 let guessed = [];
+let debugDayOffset = 0;
 
 // ==========================
-// DAILY SEED
+// DAILY HASH
 // ==========================
 function getDailyIndex(seed, length) {
-    let value = 0;
 
+    let value = 0;
     const str = seed.toString();
 
     for (let i = 0; i < str.length; i++) {
@@ -23,38 +27,49 @@ function getDailyIndex(seed, length) {
 }
 
 // ==========================
-// SEED DEL GIORNO
+// STATE (SINGLE SOURCE OF TRUTH)
 // ==========================
-const today = new Date();
+function getState() {
 
-const seed =
-    today.getFullYear() * 10000 +
-    (today.getMonth() + 1) * 100 +
-    today.getDate();
+    const today = new Date();
+
+    const seed =
+        today.getFullYear() * 10000 +
+        (today.getMonth() + 1) * 100 +
+        (today.getDate() + debugDayOffset);
+
+    const index = getDailyIndex(seed, locations.length);
+
+    return {
+        index,
+        current: locations[index]
+    };
+}
 
 // ==========================
-// LOCATION OF THE DAY
+// RENDER ENGINE
 // ==========================
-const index = getDailyIndex(seed, locations.length);
-const current = locations[index];
+function refreshMap() {
 
-// ==========================
-// LOAD MAP
-// ==========================
-mapImage.src = `images/map/${current.map}`;
+    const state = getState();
 
-mapImage.onload = () => {
-    placeMarker();
-};
+    mapImage.src = `images/map/${state.current.map}`;
 
-mapImage.onerror = () => {
-    console.error("Errore caricamento:", mapImage.src);
-};
+    mapImage.onload = () => {
+        placeMarker();
+    };
+
+    console.log("MAP DEBUG → index:", state.index, state.current.name);
+}
 
 // ==========================
 // MARKER
 // ==========================
 function placeMarker() {
+
+    const state = getState();
+    const current = state.current;
+
     marker.style.display = "block";
 
     const rect = mapImage.getBoundingClientRect();
@@ -70,9 +85,15 @@ function placeMarker() {
 }
 
 // ==========================
+// INIT MAP
+// ==========================
+refreshMap();
+
+// ==========================
 // DROPDOWN
 // ==========================
 function setupDropdown() {
+
     select.innerHTML = `<option value="">Seleziona un luogo</option>`;
 
     const names = [...new Set(locations.map(l => l.name))].sort();
@@ -88,9 +109,13 @@ function setupDropdown() {
 setupDropdown();
 
 // ==========================
-// CHECK GUESS
+// GUESS CHECK
 // ==========================
 function checkGuess() {
+
+    const state = getState();
+    const current = state.current;
+
     const guess = select.value;
 
     if (!guess) return;
@@ -111,16 +136,26 @@ function checkGuess() {
 
     tbody.prepend(row);
 
-    if (correct) {
-        feedback.textContent = "🏆 Corretto!";
-    } else {
-        feedback.textContent = "✖ Sbagliato";
-    }
+    feedback.textContent = correct
+        ? "🏆 Corretto!"
+        : "✖ Sbagliato";
 }
 
 // ==========================
-// EVENT LISTENER
+// EVENTS
 // ==========================
-document
-    .getElementById("checkBtn")
+document.getElementById("checkBtn")
     .addEventListener("click", checkGuess);
+
+// ==========================
+// DEBUG CONTROLS (NEXT / PREV MAP)
+// ==========================
+document.getElementById("nextMapBtn")?.addEventListener("click", () => {
+    debugDayOffset++;
+    refreshMap();
+});
+
+document.getElementById("prevMapBtn")?.addEventListener("click", () => {
+    debugDayOffset--;
+    refreshMap();
+});
