@@ -71,19 +71,19 @@ const locations = [
     {
         map: "map1.png",
         name: "grande inverno",
-        x: 329,
+        x: 328,
         y: 360
     },
     {
         map: "map1.png",
         name: "porto bianco",
-        x: 385,
-        y: 498
+        x: 395,
+        y: 494
     },
     {
         map: "map1.png",
         name: "moat cailin",
-        x: 330,
+        x: 335,
         y: 520
     },
     {
@@ -237,14 +237,14 @@ const locations = [
     {
         map: "map2.png",
         name: "alto giardino",
-        x: 60,
-        y: 160
+        x: 160,
+        y: 448
     },
     {
         map: "map2.png",
         name: "ashford",
-        x: 270,
-        y: 440
+        x: 274,
+        y: 438
     },
 
     // =========================
