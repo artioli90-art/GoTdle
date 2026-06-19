@@ -59,32 +59,32 @@ const locations = [
     {
         map: "map1.png",
         name: "castello nero",
-        x: 410,
-        y: 140
+        x: 435,
+        y: 120
     },
     {
         map: "map1.png",
         name: "piazza di torrhen",
-        x: 220,
-        y: 400
+        x: 240,
+        y: 415
     },
     {
         map: "map1.png",
         name: "grande inverno",
-        x: 300,
-        y: 370
+        x: 330,
+        y: 360
     },
     {
         map: "map1.png",
         name: "porto bianco",
-        x: 350,
-        y: 490
+        x: 450,
+        y: 500
     },
     {
         map: "map1.png",
         name: "moat cailin",
-        x: 300,
-        y: 550
+        x: 350,
+        y: 510
     },
     {
         map: "map1.png",
@@ -243,8 +243,8 @@ const locations = [
     {
         map: "map2.png",
         name: "ashford",
-        x: 597,
-        y: 303
+        x: 482,
+        y: 350
     },
 
     // =========================
