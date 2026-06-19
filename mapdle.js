@@ -35,27 +35,52 @@ function getDailyIndex(seed, length) {
   //  (today.getMonth() + 1) * 100 +
 //    today.getDate();
 
-const today = new Date();
+//SOSPESE PER ORA//
+//const today = new Date();
 
-const seed =
-    today.getFullYear() * 10000 +
-    (today.getMonth() + 1) * 100 +
-    (today.getDate() + debugDayOffset);
+//const seed =
+   // today.getFullYear() * 10000 +
+   // (today.getMonth() + 1) * 100 +
+   // (today.getDate() + debugDayOffset);
 
 // ==========================
 // LOCATION OF THE DAY
 // ==========================
-const index =
-    getDailyIndex(seed, locations.length);
+//const index =
+    //getDailyIndex(seed, locations.length);
 
-const current =
-    locations[index];
+//const current =
+    //locations[index];
+//DOPO TOGLI ANCHE QUESTO - INIZIO
+
+function getCurrentLocation() {
+
+    const today = new Date();
+
+    const seed =
+        today.getFullYear() * 10000 +
+        (today.getMonth() + 1) * 100 +
+        (today.getDate() + debugDayOffset);
+
+    const index = getDailyIndex(seed, locations.length);
+
+    return {
+        index,
+        location: locations[index]
+    };
+}
+//DOPO TOGLI ANCHE QUESTO -FINE
 
 // ==========================
 // LOAD MAP
 // ==========================
-mapImage.src =
-    `images/map/${current.map}`;
+// SOSPESO
+//mapImage.src =
+  //  `images/map/${current.map}`;
+
+//TOGLI DOPO
+mapImage.src = `images/map/${getCurrentLocation().location.map}`;
+//TOGLI DOPO - FINE
 
 mapImage.onload = () => {
     placeMarker();
