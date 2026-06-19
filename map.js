@@ -259,26 +259,26 @@ const locations = [
     {
         map: "map3.png",
         name: "pentos",
-        x: 73,
-        y: 330
+        x: 88,
+        y: 346
     },
     {
         map: "map3.png",
         name: "volantis",
-        x: 407,
-        y: 675
+        x: 386,
+        y: 689
     },
     {
         map: "map3.png",
         name: "lys",
-        x: 98,
-        y: 670
+        x: 102,
+        y: 686
     },
     {
         map: "map3.png",
         name: "tyrosh",
-        x: 17,
-        y: 550
+        x: 18,
+        y: 533
     },
     {
         map: "map3.png",
