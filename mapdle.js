@@ -159,3 +159,26 @@ document.getElementById("prevMapBtn")?.addEventListener("click", () => {
     debugDayOffset--;
     refreshMap();
 });
+
+mapImage.addEventListener("click", (e) => {
+
+    if (!debugMode) return;
+
+    const rect = mapImage.getBoundingClientRect();
+
+    const scaleX = mapImage.naturalWidth / rect.width;
+    const scaleY = mapImage.naturalHeight / rect.height;
+
+    const x = Math.round((e.clientX - rect.left) * scaleX);
+    const y = Math.round((e.clientY - rect.top) * scaleY);
+
+    console.log("📍 COORDINATE:");
+    console.log("x:", x, "y:", y);
+    console.log(`{ x: ${x}, y: ${y}, map: "${getState().current.map}" }`);
+
+    // marker visivo immediato (opzionale)
+    marker.style.display = "block";
+    marker.style.left = (e.clientX - rect.left) + "px";
+    marker.style.top = (e.clientY - rect.top) + "px";
+});
+
