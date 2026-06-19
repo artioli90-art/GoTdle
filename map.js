@@ -47,14 +47,14 @@ const locations = [
     {
         map: "map1.png",
         name: "aspra dimora",
-        x: 178,
-        y: 116
+        x: 550,
+        y: 60
     },
     {
         map: "map1.png",
         name: "torre delle ombre",
-        x: 328,
-        y: 116
+        x: 366,
+        y: 130
     },
     {
         map: "map1.png",
@@ -189,32 +189,32 @@ const locations = [
     {
         map: "map2.png",
         name: "arbor",
-        x: 6,
+        x: 10,
         y: 650
     },
     {
         map: "map2.png",
         name: "collina del corno",
-        x: 190,
-        y: 488
+        x: 193,
+        y: 491
     },
     {
         map: "map2.png",
         name: "vecchia citta",
-        x: 83,
-        y: 548
+        x: 81,
+        y: 550
     },
     {
         map: "map2.png",
         name: "stelle al tramonto",
-        x: 195,
-        y: 592
+        x: 194,
+        y: 590
     },
     {
         map: "map2.png",
         name: "approdo del re",
-        x: 452,
-        y: 272
+        x: 454,
+        y: 275
     },
     {
         map: "map2.png",
@@ -231,7 +231,7 @@ const locations = [
     {
         map: "map2.png",
         name: "collina fantasma",
-        x: 548,
+        x: 550,
         y: 583
     },
     {
