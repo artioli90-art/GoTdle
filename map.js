@@ -5,26 +5,26 @@ const locations = [
     {
         map: "map1.png",
         name: "forte terrore",
-        x: 500,
-        y: 300
+        x: 415,
+        y: 190
     },
     {
         map: "map1.png",
         name: "karhold",
-        x: 560,
-        y: 240
+        x: 567,
+        y: 285
     },
     {
         map: "map1.png",
         name: "ultimo focolare",
-        x: 510,
-        y: 200
+        x: 420,
+        y: 250
     },
     {
         map: "map1.png",
         name: "deepwood motte",
-        x: 225,
-        y: 260
+        x: 228,
+        y: 278
     },
     {
         map: "map1.png",
@@ -35,7 +35,7 @@ const locations = [
     {
         map: "map1.png",
         name: "pugno dei primi uomini",
-        x: 300,
+        x: 310,
         y: 46
     },
     {
@@ -47,7 +47,7 @@ const locations = [
     {
         map: "map1.png",
         name: "aspra dimora",
-        x: 510,
+        x: 506,
         y: 49
     },
     {
