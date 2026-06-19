@@ -213,38 +213,38 @@ const locations = [
     {
         map: "map2.png",
         name: "approdo del re",
-        x: 160,
-        y: 98
+        x: 460,
+        y: 200
     },
     {
         map: "map2.png",
         name: "baia delle acque nere",
-        x: 180,
-        y: 95
+        x: 500,
+        y: 215
     },
     {
         map: "map2.png",
         name: "le stepstone",
-        x: 229,
-        y: 195
+        x: 120,
+        y: 560
     },
     {
         map: "map2.png",
         name: "collina fantasma",
-        x: 390,
-        y: 563
+        x: 590,
+        y: 583
     },
     {
         map: "map2.png",
         name: "alto giardino",
         x: 170,
-        y: 448
+        y: 450
     },
     {
         map: "map2.png",
         name: "ashford",
-        x: 274,
-        y: 443
+        x: 276,
+        y: 440
     },
 
     // =========================
