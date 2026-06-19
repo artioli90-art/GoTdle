@@ -293,26 +293,26 @@ const locations = [
     {
         map: "map4.png",
         name: "valyria",
-        x: 13,
-        y: 147
+        x: 60,
+        y: 430
     },
     {
         map: "map4.png",
         name: "mereen",
-        x: 450,
-        y: 57
+        x: 403,
+        y: 70
     },
     {
         map: "map4.png",
         name: "astapor",
-        x: 370,
-        y: 186
+        x: 350,
+        y: 216
     },
     {
         map: "map4.png",
         name: "yunkai",
-        x: 390,
-        y: 97
+        x: 376,
+        y: 105
     },
 
     // =========================
@@ -321,8 +321,8 @@ const locations = [
     {
         map: "map5.png",
         name: "vaes dothrak",
-        x: 187,
-        y: 122
+        x: 195,
+        y: 98
     },
     {
         map: "map5.png",
