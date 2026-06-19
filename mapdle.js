@@ -1,7 +1,3 @@
-// --- CANCELLLA DOPO DEBUGGING - INIZIO ---
-let debugDayOffset = 0;
-// --- CANCELLLA DOPO DEBUGGING - FINE ---
-
 const mapImage = document.getElementById("mapImage");
 const marker = document.getElementById("marker");
 const select = document.getElementById("guessInput");
@@ -27,60 +23,28 @@ function getDailyIndex(seed, length) {
     return Math.abs(value) % length;
 }
 
-// --- RIMETTILO POST DEBUG ---
-//const today = new Date();
+const today = new Date();
 
-//const seed =
-   //  today.getFullYear() * 10000 +
-  //  (today.getMonth() + 1) * 100 +
-//    today.getDate();
-
-//SOSPESE PER ORA//
-//const today = new Date();
-
-//const seed =
-   // today.getFullYear() * 10000 +
-   // (today.getMonth() + 1) * 100 +
-   // (today.getDate() + debugDayOffset);
+const seed =
+     today.getFullYear() * 10000 +
+    (today.getMonth() + 1) * 100 +
+    today.getDate();
 
 // ==========================
 // LOCATION OF THE DAY
 // ==========================
-//const index =
-    //getDailyIndex(seed, locations.length);
+const index =
+    getDailyIndex(seed, locations.length);
 
-//const current =
-    //locations[index];
-//DOPO TOGLI ANCHE QUESTO - INIZIO
-
-function getCurrentLocation() {
-
-    const today = new Date();
-
-    const seed =
-        today.getFullYear() * 10000 +
-        (today.getMonth() + 1) * 100 +
-        (today.getDate() + debugDayOffset);
-
-    const index = getDailyIndex(seed, locations.length);
-
-    return {
-        index,
-        location: locations[index]
-    };
-}
-//DOPO TOGLI ANCHE QUESTO -FINE
+const current =
+    locations[index];
 
 // ==========================
 // LOAD MAP
 // ==========================
-// SOSPESO
-//mapImage.src =
-  //  `images/map/${current.map}`;
-
-//TOGLI DOPO
-mapImage.src = `images/map/${getCurrentLocation().location.map}`;
-//TOGLI DOPO - FINE
+ SOSPESO
+mapImage.src =
+    `images/map/${current.map}`;
 
 mapImage.onload = () => {
     placeMarker();
@@ -93,21 +57,7 @@ mapImage.onerror = () => {
     );
 };
 
-// ==========================
-// MARKER . old
-// ==========================
-//function placeMarker() {
-
-    //marker.style.display = "block";
-
-    //marker.style.left =
-        //current.x + "px";
-
-  //  marker.style.top =
-       // current.y + "px";
-//}
-
-//---NEW---
+//---MARKER---
 function placeMarker() {
 
     marker.style.display = "block";
@@ -124,7 +74,6 @@ function placeMarker() {
     marker.style.left = x + "px";
     marker.style.top = y + "px";
 }
-//--FINE NEW--
 
 // ==========================
 // DROPDOWN
@@ -192,26 +141,6 @@ function checkGuess() {
             "✖ Sbagliato";
     }
 }
-//DEBUG
-document.getElementById("nextMapBtn").addEventListener("click", () => {
-
-    debugDayOffset++;
-
-    // ricalcola tutto
-    const newIndex = getDailyIndex(seed, locations.length);
-    const newCurrent = locations[newIndex];
-
-    current = newCurrent; // <-- IMPORTANT: vedi nota sotto
-
-    mapImage.src = `images/map/${current.map}`;
-
-    mapImage.onload = () => {
-        placeMarker();
-    };
-
-    console.log("DEBUG MAP INDEX:", newIndex, current.name);
-});
-//FINE DEBUG
 document
     .getElementById("checkBtn")
     .addEventListener("click", checkGuess);
