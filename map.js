@@ -129,62 +129,62 @@ const locations = [
     {
         map: "map2.png",
         name: "harrenhal",
-        x: 126,
-        y: 56
+        x: 335,
+        y: 122
     },
     {
         map: "map2.png",
         name: "nido dell'aquila",
-        x: 167,
-        y: 21
+        x: 478,
+        y: 56
     },
     {
         map: "map2.png",
         name: "porta insanguinata",
-        x: 157,
-        y: 26
+        x: 445,
+        y: 66
     },
     {
         map: "map2.png",
         name: "maidenpool",
-        x: 160,
-        y: 63
+        x: 455,
+        y: 145
     },
     {
         map: "map2.png",
         name: "roccia del drago",
-        x: 196,
-        y: 74
+        x: 530,
+        y: 174
     },
     {
         map: "map2.png",
         name: "tarth",
-        x: 208,
-        y: 666
+        x: 574,
+        y: 375
     },
     {
         map: "map2.png",
         name: "capo tempesta",
-        x: 511,
-        y: 405
+        x: 504,
+        y: 408
     },
     {
         map: "map2.png",
         name: "sala dell'estate",
-        x: 391,
+        x: 402,
         y: 418
     },
     {
         map: "map2.png",
         name: "rostro del grifone",
-        x: 483,
+        x: 486,
         y: 431
     },
     {
         map: "map2.png",
         name: "lancia del sole",
-        x: 566,
-        y: 640
+        x: 570,
+        y: 633
     },
     {
         map: "map2.png",
