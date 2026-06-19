@@ -9,6 +9,7 @@ const feedback = document.getElementById("feedback");
 
 let guessed = [];
 let debugDayOffset = 0;
+let debugMode = false;
 
 // ==========================
 // DAILY HASH
@@ -27,7 +28,7 @@ function getDailyIndex(seed, length) {
 }
 
 // ==========================
-// STATE (SINGLE SOURCE OF TRUTH)
+// STATE ENGINE (SINGLE SOURCE OF TRUTH)
 // ==========================
 function getState() {
 
@@ -59,9 +60,9 @@ function refreshMap() {
         placeMarker();
     };
 
-    console.log("MAP DEBUG → index:", state.index, state.current.name);
+    console.log("MAP →", state.index, state.current.name);
 
-    showDebugInfo(); // 👈 aggiunto
+    showDebugInfo();
 }
 
 // ==========================
@@ -72,6 +73,8 @@ function placeMarker() {
     const state = getState();
     const current = state.current;
 
+    if (!mapImage || !marker) return;
+
     marker.style.display = "block";
 
     const rect = mapImage.getBoundingClientRect();
@@ -79,35 +82,12 @@ function placeMarker() {
     const scaleX = rect.width / mapImage.naturalWidth;
     const scaleY = rect.height / mapImage.naturalHeight;
 
-    const x = current.x * scaleX;
-    const y = current.y * scaleY;
-
-    marker.style.left = x + "px";
-    marker.style.top = y + "px";
-}
-//DEBUG INFO
-function showDebugInfo() {
-
-    const overlay = document.getElementById("debugOverlay");
-
-    if (!debugMode) {
-        overlay.style.display = "none";
-        return;
-    }
-
-    const state = getState();
-
-    overlay.style.display = "block";
-    overlay.innerHTML = `
-        🧭 DEBUG MODE<br>
-        Map Index: ${state.index}<br>
-        Location: ${state.current.name}<br>
-        Map file: ${state.current.map}
-    `;
+    marker.style.left = (current.x * scaleX) + "px";
+    marker.style.top = (current.y * scaleY) + "px";
 }
 
 // ==========================
-// INIT MAP
+// INIT
 // ==========================
 refreshMap();
 
@@ -115,6 +95,8 @@ refreshMap();
 // DROPDOWN
 // ==========================
 function setupDropdown() {
+
+    if (!select) return;
 
     select.innerHTML = `<option value="">Seleziona un luogo</option>`;
 
@@ -138,7 +120,7 @@ function checkGuess() {
     const state = getState();
     const current = state.current;
 
-    const guess = select.value;
+    const guess = select?.value;
 
     if (!guess) return;
     if (guessed.includes(guess)) return;
@@ -156,21 +138,19 @@ function checkGuess() {
         </td>
     `;
 
-    tbody.prepend(row);
+    tbody?.prepend(row);
 
-    feedback.textContent = correct
-        ? "🏆 Corretto!"
-        : "✖ Sbagliato";
+    if (feedback) {
+        feedback.textContent = correct
+            ? "🏆 Corretto!"
+            : "✖ Sbagliato";
+    }
 }
 
-// ==========================
-// EVENTS
-// ==========================
-document.getElementById("checkBtn")
-    .addEventListener("click", checkGuess);
+document.getElementById("checkBtn")?.addEventListener("click", checkGuess);
 
 // ==========================
-// DEBUG CONTROLS (NEXT / PREV MAP)
+// DEBUG CONTROLS
 // ==========================
 document.getElementById("nextMapBtn")?.addEventListener("click", () => {
     debugDayOffset++;
@@ -182,7 +162,40 @@ document.getElementById("prevMapBtn")?.addEventListener("click", () => {
     refreshMap();
 });
 
-mapImage.addEventListener("click", (e) => {
+// ==========================
+// DEBUG TOGGLE + OVERLAY
+// ==========================
+document.getElementById("toggleDebugBtn")?.addEventListener("click", () => {
+    debugMode = !debugMode;
+    console.log("DEBUG MODE:", debugMode);
+    showDebugInfo();
+});
+
+function showDebugInfo() {
+
+    const overlay = document.getElementById("debugOverlay");
+    if (!overlay) return;
+
+    if (!debugMode) {
+        overlay.style.display = "none";
+        return;
+    }
+
+    const state = getState();
+
+    overlay.style.display = "block";
+    overlay.innerHTML = `
+        🧭 DEBUG MODE<br>
+        Index: ${state.index}<br>
+        Name: ${state.current.name}<br>
+        Map: ${state.current.map}
+    `;
+}
+
+// ==========================
+// CLICK → COORDINATE DEBUG
+// ==========================
+mapImage?.addEventListener("click", (e) => {
 
     if (!debugMode) return;
 
@@ -194,13 +207,10 @@ mapImage.addEventListener("click", (e) => {
     const x = Math.round((e.clientX - rect.left) * scaleX);
     const y = Math.round((e.clientY - rect.top) * scaleY);
 
-    console.log("📍 COORDINATE:");
-    console.log("x:", x, "y:", y);
+    console.log("📍 COORDS:", x, y);
     console.log(`{ x: ${x}, y: ${y}, map: "${getState().current.map}" }`);
 
-    // marker visivo immediato (opzionale)
     marker.style.display = "block";
     marker.style.left = (e.clientX - rect.left) + "px";
     marker.style.top = (e.clientY - rect.top) + "px";
 });
-
