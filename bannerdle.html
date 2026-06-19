@@ -32,9 +32,15 @@
 </div>
 
 <button id="guessButton">Indovina</button>
-
     <div id="victory-card"></div>
-
+        <!-- POPUP VITTORIA -->
+<div id="winPopup" class="win-popup hidden">
+    <div class="win-popup-content">
+        <h2>🎉 Hai vinto!</h2>
+        <p>Hai indovinato la casata del giorno.</p>
+        <button id="closeWinPopup">OK</button>
+    </div>
+</div>
 <!-- HINT BUTTONS -->
 <div id="hints">
     <button id="hint-region" disabled>🔒 Regione (3 errori)</button>
@@ -55,14 +61,7 @@
     </thead>
     <tbody></tbody>
 </table>
-    <!-- POPUP VITTORIA -->
-<div id="winPopup" class="win-popup hidden">
-    <div class="win-popup-content">
-        <h2>🎉 Hai vinto!</h2>
-        <p>Hai indovinato la casata del giorno.</p>
-        <button id="closeWinPopup">OK</button>
-    </div>
-</div>
+
 
 <!-- SCRIPTS (ORDINE FONDAMENTALE) -->
 <script src="houses.js"></script>
