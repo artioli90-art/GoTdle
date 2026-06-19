@@ -445,7 +445,7 @@ const characters = [
     sesso: "Femmina",
     regione: "Dorne",
     stagione: 4,
-    stato: "Vivo"
+    stato: "Morto"
 },
 {
     nome: "Doran Martell",
