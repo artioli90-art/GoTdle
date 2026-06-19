@@ -117,18 +117,24 @@ function checkGuess() {
        //     "🎉 Hai indovinato la casata!";
 
   //NUOVA
- if (correct) {
+if (correct) {
     wrapper.className = "image-wrapper z100";
+
     feedback.textContent = "🏆 Corretto!";
     feedback.style.color = "green";
+
     return;
-  }
+}
 
-  errors++;
-  setZoom();
+// tentativo sbagliato
+wrongCount++;
+updateHints();
 
-  feedback.textContent = "✖ Sbagliato";
-  feedback.style.color = "red";
+errors++;
+setZoom();
+
+feedback.textContent = "✖ Sbagliato";
+feedback.style.color = "red";
   //FINE NUOVA
 //}
 }
