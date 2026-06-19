@@ -89,8 +89,8 @@ const locations = [
     {
         map: "map1.png",
         name: "le dita",
-        x: 202,
-        y: 220
+        x: 602,
+        y: 620
     },
 
     // =========================
@@ -99,14 +99,14 @@ const locations = [
     {
         map: "map2.png",
         name: "delta delle acque",
-        x: 250,
-        y: 120
+        x: 247,
+        y: 134
     },
     {
         map: "map2.png",
         name: "castel granito",
         x: 87,
-        y: 220
+        y: 222
     },
     {
         map: "map2.png",
