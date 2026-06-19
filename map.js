@@ -177,8 +177,8 @@ const locations = [
     {
         map: "map2.png",
         name: "rostro del grifone",
-        x: 171,
-        y: 152
+        x: 141,
+        y: 50
     },
     {
         map: "map2.png",
@@ -189,49 +189,49 @@ const locations = [
     {
         map: "map2.png",
         name: "arbor",
-        x: 10,
-        y: 232
+        x: 2,
+        y: 750
     },
     {
         map: "map2.png",
         name: "collina del corno",
-        x: 67,
-        y: 175
+        x: 205,
+        y: 500
     },
     {
         map: "map2.png",
         name: "vecchia citta",
-        x: 28,
-        y: 194
+        x: 90,
+        y: 535
     },
     {
         map: "map2.png",
         name: "stelle al tramonto",
-        x: 68,
-        y: 208
+        x: 195,
+        y: 595
     },
     {
         map: "map2.png",
         name: "approdo del re",
-        x: 445,
-        y: 260
+        x: 460,
+        y: 280
     },
     {
         map: "map2.png",
         name: "baia delle acque nere",
         x: 510,
-        y: 295
+        y: 260
     },
     {
         map: "map2.png",
         name: "le stepstone",
-        x: 620,
+        x: 670,
         y: 560
     },
     {
         map: "map2.png",
         name: "collina fantasma",
-        x: 565,
+        x: 545,
         y: 583
     },
     {
