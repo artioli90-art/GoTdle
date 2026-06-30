@@ -101,7 +101,7 @@ const characters = [
     nome: "Renly Baratheon",
     casata: "Baratheon",
     sesso: "Maschio",
-    regione: "Approdo del Re",
+    regione: "Capo Tempesta, Approdo del Re",
     stagione: 1,
     stato: "Morto"
 },
@@ -119,7 +119,7 @@ const characters = [
     casata: "Baratheon",
     sesso: "Maschio",
     regione: "Approdo del Re",
-    stagione: 4,
+    stagione: 1,
     stato: "Morto"
 },
 {
@@ -127,7 +127,7 @@ const characters = [
     casata: "Baratheon",
     sesso: "Femmina",
     regione: "Approdo del Re, Dorne",
-    stagione: 2,
+    stagione: 1,
     stato: "Morto"
 },
 
@@ -151,7 +151,7 @@ const characters = [
     nome: "Jorah Mormont",
     casata: "Mormont",
     sesso: "Maschio",
-    regione: "Nord",
+    regione: "Nord, Essos",
     stagione: 1,
     stato: "Morto"
 },
@@ -159,7 +159,7 @@ const characters = [
     nome: "Theon Greyjoy",
     casata: "Greyjoy",
     sesso: "Maschio",
-    regione: "Isole di Ferro",
+    regione: "Isole di Ferro, Nord",
     stagione: 1,
     stato: "Morto"
 },
@@ -182,9 +182,9 @@ const characters = [
 
 {
     nome: "Brienne di Tarth",
-    casata: "Nessuna",
+    casata: "Tarth",
     sesso: "Femmina",
-    regione: "Tarth",
+    regione: "Terre della Tempesta",
     stagione: 2,
     stato: "Vivo"
 },
@@ -194,7 +194,7 @@ const characters = [
     sesso: "Maschio",
     regione: "Approdo del Re",
     stagione: 1,
-    stato: "Vivo"
+    stato: "Morto"
 },
 {
     nome: "Gregor Clegane",
@@ -216,7 +216,7 @@ const characters = [
     nome: "Samwell Tarly",
     casata: "Tarly",
     sesso: "Maschio",
-    regione: "Nord",
+    regione: "Altopiano, Guardiani della Notte",
     stagione: 1,
     stato: "Vivo"
 },
@@ -246,7 +246,7 @@ const characters = [
     stato: "Morto"
 },
 {
-    nome: "Grey Worm",
+    nome: "Verme Grigio",
     casata: "Nessuna",
     sesso: "Maschio",
     regione: "Essos",
@@ -271,7 +271,7 @@ const characters = [
     stato: "Morto"
 },
 {
-    nome: "Tormund Giantsbane",
+    nome: "Tormund Veleno-dei-Giganti",
     casata: "Nessuna",
     sesso: "Maschio",
     regione: "Oltre la Barriera",
@@ -291,7 +291,7 @@ const characters = [
     casata: "Tyrell",
     sesso: "Femmina",
     regione: "Alto Giardino",
-    stagione: 1,
+    stagione: 3,
     stato: "Morto"
 },
 {
@@ -321,9 +321,9 @@ const characters = [
 },
 {
     nome: "Beric Dondarrion",
-    casata: "Nessuna",
+    casata: "Dondarrion",
     sesso: "Maschio",
-    regione: "Nido dell'Aquila",
+    regione: "Terre della Tempesta",
     stagione: 1,
     stato: "Morto"
 },
@@ -331,7 +331,7 @@ const characters = [
     nome: "Thoros di Myr",
     casata: "Nessuna",
     sesso: "Maschio",
-    regione: "Nido dell'Aquila",
+    regione: "Essos",
     stagione: 1,
     stato: "Morto"
 },
@@ -347,7 +347,7 @@ const characters = [
     nome: "Shae",
     casata: "Nessuna",
     sesso: "Femmina",
-    regione: "Approdo del Re",
+    regione: "Essos, Approdo del Re",
     stagione: 1,
     stato: "Morto"
 },
@@ -387,13 +387,13 @@ const characters = [
     nome: "Talisa Maegyr",
     casata: "Nessuna",
     sesso: "Femmina",
-    regione: "Volantis, Nord",
+    regione: "Volantis, Terre dei Fiumi",
     stagione: 2,
     stato: "Morto"
 },
 {
     nome: "Catelyn Stark",
-    casata: "Tully",
+    casata: "Tully, Stark",
     sesso: "Femmina",
     regione: "Nord",
     stagione: 1,
