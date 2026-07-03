@@ -221,7 +221,7 @@ const houses = [
     regione: "Dorne",
     affiliazione: "Signori di Lancia del Sole",
     descrizione: "Casa Martell di Lancia del Sole è una delle grandi casate di Westeros e regna sul principato di Dorne. Viene a volte indicata come Casa Nymeros Martell, in cui 'Nymeros' indica la discendenza da Nymeria, regina del Rhoynar",
-    immagine: "images/banners/dorne.png"
+    immagine: "images/banners/martell.png"
 },{
     nome: "Mooton",
     regione: "Terre dei Fiumi",
